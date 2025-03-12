@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'news_data/src/infra/api/news_category_api.dart';
+import 'news_data/src/infra/api/news_category_details_api.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
-        //
         // TRY THIS: Try running your application with "flutter run". You'll see
         // the application has a purple toolbar. Then, without quitting the app,
         // try changing the seedColor in the colorScheme below to Colors.green
@@ -56,7 +58,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
-  void _incrementCounter() {
+  Future<void> _incrementCounter(
+    NewsCategoryDetailsApi categoryDetailsApi,
+  ) async {
+    await categoryDetailsApi.getCategoryDetailsByName('usa');
+
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -69,6 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final NewsCategoryApi newsCategoryApi = NewsCategoryApi();
+    final NewsCategoryDetailsApi categoryDetailsApi = NewsCategoryDetailsApi();
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -113,7 +122,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          _incrementCounter(categoryDetailsApi);
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

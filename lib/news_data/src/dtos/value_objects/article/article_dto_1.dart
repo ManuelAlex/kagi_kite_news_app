@@ -1,10 +1,11 @@
 import 'package:dart_mappable/dart_mappable.dart';
 
 import '../../_dto.dart';
+import '../../json_mappers/datetime_json_mapper.dart';
 
 part 'article_dto_1.mapper.dart';
 
-@MappableClass()
+@MappableClass(includeCustomMappers: <MapperBase<Object>>[DatetimeJsonMapper()])
 class ArticleDto1 extends Dto with ArticleDto1Mappable {
   const ArticleDto1({
     required this.title,
@@ -14,6 +15,12 @@ class ArticleDto1 extends Dto with ArticleDto1Mappable {
     this.image,
     this.imageCaption,
   });
+  factory ArticleDto1.random() => ArticleDto1(
+    title: 'title',
+    link: 'link',
+    domain: 'domain',
+    date: DateTime.timestamp(),
+  );
 
   final String title;
   final String link;

@@ -1,13 +1,23 @@
+import 'dart:math';
+
 import 'package:dart_mappable/dart_mappable.dart';
 
 import '../../_dto.dart';
+import '../../hook_mapper/list_or_single_hook.dart';
+import '../../json_mappers/list_or_single_json_mapper.dart';
 import '../article/article_dto_1.dart';
 import '../domain/domain_dto_1.dart';
 import '../perspective/perspective_dto_1.dart';
 
 part 'cluster_dto_1.mapper.dart';
 
-@MappableClass()
+@MappableClass(
+  includeCustomMappers: <MapperBase<Object>>[ListOrSingleJsonMapper<String>()],
+)
+// Note that eg @MappableField(key: 'humanitarian_impact',hook: ListOrSingleHook<String>())
+// we used of of json snake_case
+// and also the hook helps to in fields where sometimes is a list or a single object
+// we just cast all to a list
 class ClusterDto1 extends Dto with ClusterDto1Mappable {
   const ClusterDto1({
     required this.clusterNumber,
@@ -53,6 +63,50 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
     required this.domains,
   });
 
+  factory ClusterDto1.random() => ClusterDto1(
+    clusterNumber: Random().nextInt(100),
+    uniqueDomains: Random().nextInt(100),
+    numberOfTitles: Random().nextInt(100),
+    category: 'category',
+    title: 'title',
+    shortSummary: 'shortSummary',
+    didYouKnow: 'didYouKnow',
+    talkingPoints: const <String>['talkingPoints'],
+    quote: 'quote',
+    quoteAuthor: 'quoteAuthor',
+    quoteSourceUrl: 'quoteSourceUrl',
+    quoteSourceDomain: 'quoteSourceDomain',
+    location: 'location',
+    perspectives: <PerspectiveDto1>[PerspectiveDto1.random()],
+    emoji: 'emoji',
+    geopoliticalContext: 'geopoliticalContext',
+    historicalBackground: 'historicalBackground',
+    internationalReactions: const <String>['internationalReactions'],
+    humanitarianImpact: 'humanitarianImpact',
+    economicImplications: 'economicImplications',
+    timeline: const <String>['timeline'],
+    futureOutlook: 'futureOutlook',
+    keyPlayers: const <String>['keyPlayers'],
+    technicalDetails: 'technicalDetails',
+    businessAngleText: 'businessAngleText',
+    businessAnglePoints: const <String>['businessAnglePoints'],
+    userActionItems: const <String>['userActionItems'],
+    scientificSignificance: const <String>['scientificSignificance'],
+    travelAdvisory: const <String>['travelAdvisory'],
+    destinationHighlights: 'destinationHighlights',
+    culinarySignificance: 'culinarySignificance',
+    performanceStatistics: const <String>['performanceStatistics'],
+    leagueStandings: 'leagueStandings',
+    diyTips: 'diyTips',
+    designPrinciples: 'designPrinciples',
+    userExperienceImpact: 'userExperienceImpact',
+    gameplayMechanics: const <String>['gameplayMechanics'],
+    industryImpact: const <String>['industryImpact'],
+    technicalSpecifications: 'technicalSpecifications',
+    articles: <ArticleDto1>[ArticleDto1.random()],
+    domains: <DomainDto1>[DomainDto1.random()],
+  );
+
   @MappableField(key: 'cluster_number')
   final int clusterNumber;
   @MappableField(key: 'unique_domains')
@@ -81,36 +135,49 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
   final String geopoliticalContext;
   @MappableField(key: 'historical_background')
   final String historicalBackground;
-  @MappableField(key: 'international_reactions')
+  @MappableField(
+    key: 'international_reactions',
+    hook: ListOrSingleHook<String>(),
+  )
   final List<String> internationalReactions;
   @MappableField(key: 'humanitarian_impact')
   final String humanitarianImpact;
   @MappableField(key: 'economic_implications')
   final String economicImplications;
+  @MappableField(key: 'timeline', hook: ListOrSingleHook<String>())
   final List<String> timeline;
-  @MappableField(key: 'future_outlook')
+  @MappableField(key: 'future_outlook', hook: ListOrSingleHook<String>())
   final String futureOutlook;
-  @MappableField(key: 'key_players')
+  @MappableField(key: 'key_players', hook: ListOrSingleHook<String>())
   final List<String> keyPlayers;
   @MappableField(key: 'technical_details')
   final String technicalDetails;
   @MappableField(key: 'business_angle_text')
   final String businessAngleText;
-  @MappableField(key: 'business_angle_points')
+  @MappableField(key: 'business_angle_points', hook: ListOrSingleHook<String>())
   final List<String> businessAnglePoints;
-  @MappableField(key: 'user_action_items')
+  @MappableField(key: 'user_action_items', hook: ListOrSingleHook<String>())
   final List<String> userActionItems;
-  @MappableField(key: 'scientific_significance')
+  @MappableField(
+    key: 'scientific_significance',
+    hook: ListOrSingleHook<String>(),
+  )
   final List<String> scientificSignificance;
-  @MappableField(key: 'travel_advisory')
+  @MappableField(key: 'travel_advisory', hook: ListOrSingleHook<String>())
   final List<String> travelAdvisory;
-  @MappableField(key: 'destination_highlights')
+  @MappableField(
+    key: 'destination_highlights',
+    hook: ListOrSingleHook<String>(),
+  )
   final String destinationHighlights;
   @MappableField(key: 'culinary_significance')
   final String culinarySignificance;
-  @MappableField(key: 'performance_statistics')
+  @MappableField(
+    key: 'performance_statistics',
+    hook: ListOrSingleHook<String>(),
+  )
   final List<String> performanceStatistics;
-  @MappableField(key: 'league_standings')
+  @MappableField(key: 'league_standings', hook: ListOrSingleHook<String>())
   final String leagueStandings;
   @MappableField(key: 'diy_tips')
   final String diyTips;
@@ -118,11 +185,14 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
   final String designPrinciples;
   @MappableField(key: 'user_experience_impact')
   final String userExperienceImpact;
-  @MappableField(key: 'gameplay_mechanics')
+  @MappableField(key: 'gameplay_mechanics', hook: ListOrSingleHook<String>())
   final List<String> gameplayMechanics;
-  @MappableField(key: 'industry_impact')
+  @MappableField(key: 'industry_impact', hook: ListOrSingleHook<String>())
   final List<String> industryImpact;
-  @MappableField(key: 'technical_specifications')
+  @MappableField(
+    key: 'technical_specifications',
+    hook: ListOrSingleHook<String>(),
+  )
   final String technicalSpecifications;
   final List<ArticleDto1> articles;
   final List<DomainDto1> domains;

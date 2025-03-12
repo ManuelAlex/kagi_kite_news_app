@@ -13,6 +13,8 @@ class ArticleDto1Mapper extends ClassMapperBase<ArticleDto1> {
   static ArticleDto1Mapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = ArticleDto1Mapper._());
+      MapperContainer.globals
+          .useAll(<MapperBase<Object>>[DatetimeJsonMapper()]);
     }
     return _instance!;
   }

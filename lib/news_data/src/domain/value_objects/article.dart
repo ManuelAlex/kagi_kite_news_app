@@ -15,6 +15,13 @@ class Article with ArticleMappable {
     this.imageCaption,
   });
 
+  /// Used for testing purposes
+  factory Article.random() => Article(
+    title: 'title',
+    link: 'link',
+    domain: 'domain',
+    date: DateTime.timestamp(),
+  );
   final String title;
   final String link;
   final String domain;

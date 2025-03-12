@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dart_mappable/dart_mappable.dart';
 
 import '_mappable_value_object.dart';
@@ -52,6 +54,51 @@ class Cluster with ClusterMappable {
     required this.articles,
     required this.domains,
   });
+
+  /// Used for testing purposes
+  factory Cluster.random() => Cluster(
+    clusterNumber: Random().nextInt(100),
+    uniqueDomains: Random().nextInt(100),
+    numberOfTitles: Random().nextInt(100),
+    category: 'category',
+    title: 'title',
+    shortSummary: 'shortSummary',
+    didYouKnow: 'didYouKnow',
+    talkingPoints: const <String>['talkingPoints'],
+    quote: 'quote',
+    quoteAuthor: 'quoteAuthor',
+    quoteSourceUrl: 'quoteSourceUrl',
+    quoteSourceDomain: 'quoteSourceDomain',
+    location: 'location',
+    perspectives: <Perspective>[Perspective.random()],
+    emoji: 'emoji',
+    geopoliticalContext: 'geopoliticalContext',
+    historicalBackground: 'historicalBackground',
+    internationalReactions: const <String>['internationalReactions'],
+    humanitarianImpact: 'humanitarianImpact',
+    economicImplications: 'economicImplications',
+    timeline: const <String>['timeline'],
+    futureOutlook: 'futureOutlook',
+    keyPlayers: const <String>['keyPlayers'],
+    technicalDetails: 'technicalDetails',
+    businessAngleText: 'businessAngleText',
+    businessAnglePoints: const <String>['businessAnglePoints'],
+    userActionItems: const <String>['userActionItems'],
+    scientificSignificance: const <String>['scientificSignificance'],
+    travelAdvisory: const <String>['travelAdvisory'],
+    destinationHighlights: 'destinationHighlights',
+    culinarySignificance: 'culinarySignificance',
+    performanceStatistics: const <String>['performanceStatistics'],
+    leagueStandings: 'leagueStandings',
+    diyTips: 'diyTips',
+    designPrinciples: 'designPrinciples',
+    userExperienceImpact: 'userExperienceImpact',
+    gameplayMechanics: const <String>['gameplayMechanics'],
+    industryImpact: const <String>['industryImpact'],
+    technicalSpecifications: 'technicalSpecifications',
+    articles: <Article>[Article.random()],
+    domains: <Domain>[Domain.random()],
+  );
   final int clusterNumber;
   final int uniqueDomains;
   final int numberOfTitles;

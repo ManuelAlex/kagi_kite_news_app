@@ -35,7 +35,10 @@ dependencies:
   # improved json serialization and data classes with full support for generics, 
   # inheritance, customization and more.
   dart_mappable: ^4.3.0
-   # Testing library for flutter, built on top of package test.
+  # Testing library for flutter, built on top of package test.
+  # A powerful HTTP networking package, supports Interceptors, Aborting and
+  # canceling a request, Custom adapters, Transformers, etc.
+  dio: ">=5.4.3+1"  
   flutter_test:
     sdk: flutter
   # A string-based path manipulation library. All of the path operations you

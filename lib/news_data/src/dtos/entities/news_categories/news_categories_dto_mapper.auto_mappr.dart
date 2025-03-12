@@ -15,22 +15,22 @@ import '../../../domain/value_objects/category.dart' as _i5;
 import '../../value_objects/category/category_dto_1.dart' as _i4;
 import 'news_categories_dto_1.dart' as _i2;
 
-/// {@template package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+/// {@template package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
 /// Available mappings:
 /// - `NewsCategoriesDto1` → `NewsCategories`.
 /// - `NewsCategories` → `NewsCategoriesDto1`.
 /// - `CategoryDto1` → `Category`.
 /// - `Category` → `CategoryDto1`.
 /// {@endtemplate}
-class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
-  const $NewsCategoryDtoMapper();
+class $NewsCategoriesDtoMapper implements _i1.AutoMapprInterface {
+  const $NewsCategoriesDtoMapper();
 
   Type _typeOf<T>() => T;
 
   List<_i1.AutoMapprInterface> get _delegates => const [];
 
   /// {@macro AutoMapprInterface:canConvert}
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   bool canConvert<SOURCE, TARGET>({bool recursive = true}) {
     final sourceTypeOf = _typeOf<SOURCE>();
@@ -70,7 +70,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convert}
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   TARGET convert<SOURCE, TARGET>(SOURCE? model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -86,7 +86,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:tryConvert}
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   TARGET? tryConvert<SOURCE, TARGET>(
     SOURCE? model, {
@@ -106,7 +106,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convertIterable}
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   Iterable<TARGET> convertIterable<SOURCE, TARGET>(Iterable<SOURCE?> model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -125,7 +125,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   ///
   /// When an item in the source iterable is null, uses `whenSourceIsNull` if defined or null
   ///
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   Iterable<TARGET?> tryConvertIterable<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
@@ -147,7 +147,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convertList}
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   List<TARGET> convertList<SOURCE, TARGET>(Iterable<SOURCE?> model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -166,7 +166,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   ///
   /// When an item in the source iterable is null, uses `whenSourceIsNull` if defined or null
   ///
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   List<TARGET?> tryConvertList<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
@@ -189,7 +189,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:convertSet}
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   Set<TARGET> convertSet<SOURCE, TARGET>(Iterable<SOURCE?> model) {
     if (canConvert<SOURCE, TARGET>(recursive: false)) {
@@ -208,7 +208,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   ///
   /// When an item in the source iterable is null, uses `whenSourceIsNull` if defined or null
   ///
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   Set<TARGET?> tryConvertSet<SOURCE, TARGET>(
     Iterable<SOURCE?> model, {
@@ -302,7 +302,7 @@ class $NewsCategoryDtoMapper implements _i1.AutoMapprInterface {
   }
 
   /// {@macro AutoMapprInterface:useSafeMapping}
-  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_category_dto_mapper.dart}
+  /// {@macro package:kagi_kite_news_app/news_data/src/dtos/entities/news_categories/news_categories_dto_mapper.dart}
   @override
   bool useSafeMapping<SOURCE, TARGET>() {
     return false;

@@ -5,12 +5,16 @@ class DatetimeJsonMapper extends SimpleMapper<DateTime> {
 
   @override
   DateTime decode(Object value) {
-    if (value is! int) {
-      throw MapperException.unexpectedType(value.runtimeType, 'int');
+    if (value is int) {
+      // Convert from Unix timestamp (seconds) to DateTime
+      return DateTime.fromMillisecondsSinceEpoch(value * 1000);
+    } else if (value is String) {
+      // Parse ISO 8601 date string
+      return DateTime.parse(value);
     }
-    return DateTime.fromMillisecondsSinceEpoch(value * 1000);
+    throw MapperException.unexpectedType(value.runtimeType, 'int or String');
   }
 
   @override
-  Object encode(DateTime self) => self.millisecondsSinceEpoch ~/ 1000;
+  Object encode(DateTime self) => self.toIso8601String();
 }

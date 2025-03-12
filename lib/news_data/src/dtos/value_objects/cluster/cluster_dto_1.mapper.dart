@@ -13,6 +13,8 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
   static ClusterDto1Mapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = ClusterDto1Mapper._());
+      MapperContainer.globals
+          .useAll(<MapperBase<Object>>[ListOrSingleJsonMapper<String>()]);
       PerspectiveDto1Mapper.ensureInitialized();
       ArticleDto1Mapper.ensureInitialized();
       DomainDto1Mapper.ensureInitialized();
@@ -78,7 +80,7 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
       v.internationalReactions;
   static const Field<ClusterDto1, List<String>> _f$internationalReactions =
       Field('internationalReactions', _$internationalReactions,
-          key: r'international_reactions');
+          key: r'international_reactions', hook: ListOrSingleHook<String>());
   static String _$humanitarianImpact(ClusterDto1 v) => v.humanitarianImpact;
   static const Field<ClusterDto1, String> _f$humanitarianImpact = Field(
       'humanitarianImpact', _$humanitarianImpact,
@@ -89,13 +91,15 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
       key: r'economic_implications');
   static List<String> _$timeline(ClusterDto1 v) => v.timeline;
   static const Field<ClusterDto1, List<String>> _f$timeline =
-      Field('timeline', _$timeline);
+      Field('timeline', _$timeline, hook: ListOrSingleHook<String>());
   static String _$futureOutlook(ClusterDto1 v) => v.futureOutlook;
-  static const Field<ClusterDto1, String> _f$futureOutlook =
-      Field('futureOutlook', _$futureOutlook, key: r'future_outlook');
+  static const Field<ClusterDto1, String> _f$futureOutlook = Field(
+      'futureOutlook', _$futureOutlook,
+      key: r'future_outlook', hook: ListOrSingleHook<String>());
   static List<String> _$keyPlayers(ClusterDto1 v) => v.keyPlayers;
-  static const Field<ClusterDto1, List<String>> _f$keyPlayers =
-      Field('keyPlayers', _$keyPlayers, key: r'key_players');
+  static const Field<ClusterDto1, List<String>> _f$keyPlayers = Field(
+      'keyPlayers', _$keyPlayers,
+      key: r'key_players', hook: ListOrSingleHook<String>());
   static String _$technicalDetails(ClusterDto1 v) => v.technicalDetails;
   static const Field<ClusterDto1, String> _f$technicalDetails =
       Field('technicalDetails', _$technicalDetails, key: r'technical_details');
@@ -107,23 +111,25 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
       v.businessAnglePoints;
   static const Field<ClusterDto1, List<String>> _f$businessAnglePoints = Field(
       'businessAnglePoints', _$businessAnglePoints,
-      key: r'business_angle_points');
+      key: r'business_angle_points', hook: ListOrSingleHook<String>());
   static List<String> _$userActionItems(ClusterDto1 v) => v.userActionItems;
-  static const Field<ClusterDto1, List<String>> _f$userActionItems =
-      Field('userActionItems', _$userActionItems, key: r'user_action_items');
+  static const Field<ClusterDto1, List<String>> _f$userActionItems = Field(
+      'userActionItems', _$userActionItems,
+      key: r'user_action_items', hook: ListOrSingleHook<String>());
   static List<String> _$scientificSignificance(ClusterDto1 v) =>
       v.scientificSignificance;
   static const Field<ClusterDto1, List<String>> _f$scientificSignificance =
       Field('scientificSignificance', _$scientificSignificance,
-          key: r'scientific_significance');
+          key: r'scientific_significance', hook: ListOrSingleHook<String>());
   static List<String> _$travelAdvisory(ClusterDto1 v) => v.travelAdvisory;
-  static const Field<ClusterDto1, List<String>> _f$travelAdvisory =
-      Field('travelAdvisory', _$travelAdvisory, key: r'travel_advisory');
+  static const Field<ClusterDto1, List<String>> _f$travelAdvisory = Field(
+      'travelAdvisory', _$travelAdvisory,
+      key: r'travel_advisory', hook: ListOrSingleHook<String>());
   static String _$destinationHighlights(ClusterDto1 v) =>
       v.destinationHighlights;
   static const Field<ClusterDto1, String> _f$destinationHighlights = Field(
       'destinationHighlights', _$destinationHighlights,
-      key: r'destination_highlights');
+      key: r'destination_highlights', hook: ListOrSingleHook<String>());
   static String _$culinarySignificance(ClusterDto1 v) => v.culinarySignificance;
   static const Field<ClusterDto1, String> _f$culinarySignificance = Field(
       'culinarySignificance', _$culinarySignificance,
@@ -132,10 +138,11 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
       v.performanceStatistics;
   static const Field<ClusterDto1, List<String>> _f$performanceStatistics =
       Field('performanceStatistics', _$performanceStatistics,
-          key: r'performance_statistics');
+          key: r'performance_statistics', hook: ListOrSingleHook<String>());
   static String _$leagueStandings(ClusterDto1 v) => v.leagueStandings;
-  static const Field<ClusterDto1, String> _f$leagueStandings =
-      Field('leagueStandings', _$leagueStandings, key: r'league_standings');
+  static const Field<ClusterDto1, String> _f$leagueStandings = Field(
+      'leagueStandings', _$leagueStandings,
+      key: r'league_standings', hook: ListOrSingleHook<String>());
   static String _$diyTips(ClusterDto1 v) => v.diyTips;
   static const Field<ClusterDto1, String> _f$diyTips =
       Field('diyTips', _$diyTips, key: r'diy_tips');
@@ -149,15 +156,16 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
   static List<String> _$gameplayMechanics(ClusterDto1 v) => v.gameplayMechanics;
   static const Field<ClusterDto1, List<String>> _f$gameplayMechanics = Field(
       'gameplayMechanics', _$gameplayMechanics,
-      key: r'gameplay_mechanics');
+      key: r'gameplay_mechanics', hook: ListOrSingleHook<String>());
   static List<String> _$industryImpact(ClusterDto1 v) => v.industryImpact;
-  static const Field<ClusterDto1, List<String>> _f$industryImpact =
-      Field('industryImpact', _$industryImpact, key: r'industry_impact');
+  static const Field<ClusterDto1, List<String>> _f$industryImpact = Field(
+      'industryImpact', _$industryImpact,
+      key: r'industry_impact', hook: ListOrSingleHook<String>());
   static String _$technicalSpecifications(ClusterDto1 v) =>
       v.technicalSpecifications;
   static const Field<ClusterDto1, String> _f$technicalSpecifications = Field(
       'technicalSpecifications', _$technicalSpecifications,
-      key: r'technical_specifications');
+      key: r'technical_specifications', hook: ListOrSingleHook<String>());
   static List<ArticleDto1> _$articles(ClusterDto1 v) => v.articles;
   static const Field<ClusterDto1, List<ArticleDto1>> _f$articles =
       Field('articles', _$articles);

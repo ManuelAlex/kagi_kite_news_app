@@ -6,9 +6,9 @@ import '_mappable_entity.dart';
 part 'news_categories.mapper.dart';
 
 @MappableEntity()
-class NewsCategories extends Entity<DateTime> with NewsCategoriesMappable {
+class NewsCategories extends Entity<void> with NewsCategoriesMappable {
   const NewsCategories({required super.timestamp, required this.categories})
-    : super(id: timestamp);
+    : super(id: null);
 
   final List<Category> categories;
 }
