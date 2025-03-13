@@ -31,8 +31,8 @@ Future<int> runProcess(
     stderr.writeln(
       failureMessage != null
           ? toAnsiRed(
-              '$failureMessage $exitCode: ${args.join(' ')}@${workingDirectory ?? ''}',
-            )
+            '$failureMessage $exitCode: ${args.join(' ')}@${workingDirectory ?? ''}',
+          )
           : toAnsiRed('Process failed: exit code $exitCode: ${args.join(' ')}'),
     );
     if (terminateOnFailure) {

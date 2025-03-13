@@ -34,17 +34,35 @@ dependencies:
   auto_mappr_annotation: ">=2.2.0"
   # improved json serialization and data classes with full support for generics, 
   # inheritance, customization and more.
-  dart_mappable: ^4.3.0
+  dart_mappable: ">=4.3.0"
   # Testing library for flutter, built on top of package test.
   # A powerful HTTP networking package, supports Interceptors, Aborting and
   # canceling a request, Custom adapters, Transformers, etc.
-  dio: ">=5.4.3+1"  
+  dio: ">=5.4.3+1" 
+  # Hive is a lightweight and blazing fast key-value database written in pure Dart. 
+  # Inspired by Bitcask. 
+  hive_ce: ">=2.10.1"
+  # Hive is a lightweight and blazing fast key-value database written in pure Dart. 
+  # Inspired by Bitcask. 
+  hive_ce_flutter: ">=2.2.0"
+  # A Reactive State-Management and Dependency Injection Framework.
+  flutter_riverpod: ">=2.6.1"
   flutter_test:
     sdk: flutter
   # A string-based path manipulation library. All of the path operations you
   # know and love, with solid support for Windows, POSIX (Linux and Mac OS X),
   # and the web.
   path: ">=1.9.0"
+  # A Flutter plugin for finding commonly used locations on the filesystem. 
+  # Supports Android, iOS, Linux, macOS and Windows. 
+  # Not all methods are supported on all platforms.
+  path_provider: ">=2.1.5"
+  # A reactive caching and data-binding framework. Riverpod makes working with
+  # asynchronous code a breeze.
+  riverpod: ^2.6.1
+  # A code generator for Riverpod. This both simplifies the syntax empowers it,
+  # such as allowing stateful hot-reload.
+  riverpod_annotation: ">=2.6.1"
   
 dev_dependencies:
   # Code generator for auto_mappr.
@@ -53,10 +71,15 @@ dev_dependencies:
   build_runner: ">=2.4.8"
   # Builder for dart_mappable.
   dart_mappable_builder: ">=4.3.0"
+  # Extension for Hive. Automatically generates TypeAdapters to store any class.
+  hive_ce_generator: ">=1.8.2"
   flutter_lints: ^5.0.0
   # A Dart mock library which simplifies mocking with null safety support and no
   # manual mocks or code generation.
   mocktail: ">=1.0.4"
+  # A code generator for Riverpod. This both simplifies the syntax empowers it,
+  # such as allowing stateful hot-reload.
+  riverpod_generator: ">=2.3.10"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
