@@ -49,27 +49,32 @@ class SourceDto1Mapper extends ClassMapperBase<SourceDto1> {
 
 mixin SourceDto1Mappable {
   String toJson() {
-    return SourceDto1Mapper.ensureInitialized()
-        .encodeJson<SourceDto1>(this as SourceDto1);
+    return SourceDto1Mapper.ensureInitialized().encodeJson<SourceDto1>(
+      this as SourceDto1,
+    );
   }
 
   Map<String, dynamic> toMap() {
-    return SourceDto1Mapper.ensureInitialized()
-        .encodeMap<SourceDto1>(this as SourceDto1);
+    return SourceDto1Mapper.ensureInitialized().encodeMap<SourceDto1>(
+      this as SourceDto1,
+    );
   }
 
   SourceDto1CopyWith<SourceDto1, SourceDto1, SourceDto1> get copyWith =>
       _SourceDto1CopyWithImpl(this as SourceDto1, $identity, $identity);
   @override
   String toString() {
-    return SourceDto1Mapper.ensureInitialized()
-        .stringifyValue(this as SourceDto1);
+    return SourceDto1Mapper.ensureInitialized().stringifyValue(
+      this as SourceDto1,
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return SourceDto1Mapper.ensureInitialized()
-        .equalsValue(this as SourceDto1, other);
+    return SourceDto1Mapper.ensureInitialized().equalsValue(
+      this as SourceDto1,
+      other,
+    );
   }
 
   @override
@@ -99,15 +104,20 @@ class _SourceDto1CopyWithImpl<$R, $Out>
   late final ClassMapperBase<SourceDto1> $mapper =
       SourceDto1Mapper.ensureInitialized();
   @override
-  $R call({String? name, String? url}) => $apply(FieldCopyWithData(
-      {if (name != null) #name: name, if (url != null) #url: url}));
+  $R call({String? name, String? url}) => $apply(
+    FieldCopyWithData({
+      if (name != null) #name: name,
+      if (url != null) #url: url,
+    }),
+  );
   @override
   SourceDto1 $make(CopyWithData data) => SourceDto1(
-      name: data.get(#name, or: $value.name),
-      url: data.get(#url, or: $value.url));
+    name: data.get(#name, or: $value.name),
+    url: data.get(#url, or: $value.url),
+  );
 
   @override
   SourceDto1CopyWith<$R2, SourceDto1, $Out2> $chain<$R2, $Out2>(
-          Then<$Out2, $R2> t) =>
-      _SourceDto1CopyWithImpl($value, $cast, t);
+    Then<$Out2, $R2> t,
+  ) => _SourceDto1CopyWithImpl($value, $cast, t);
 }

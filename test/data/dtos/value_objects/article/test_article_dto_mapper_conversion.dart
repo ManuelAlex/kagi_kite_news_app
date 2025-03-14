@@ -3,7 +3,7 @@ import 'package:kagi_kite_news_app/data/dtos/value_objects/article/article_dto_1
 import 'package:kagi_kite_news_app/data/dtos/value_objects/article/article_dto_mapper.dart';
 import 'package:kagi_kite_news_app/domain/entities/value_objects/article.dart';
 
-import 'package:kagi_kite_news_app/theme/theme.dart';
+import '../../_test_dto_mapper_conversions.dart';
 
 void main() {
   group('ArticleDtoMapper', () {

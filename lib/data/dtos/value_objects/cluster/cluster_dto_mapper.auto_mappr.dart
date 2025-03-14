@@ -18,7 +18,7 @@ import '../../../../domain/entities/value_objects/source.dart' as _i7;
 import '../article/article_dto_1.dart' as _i8;
 import '../domain/domain_dto_1.dart' as _i10;
 import '../perspective/perspective_dto_1.dart' as _i4;
-import '../source.dart/source_dto_1.dart' as _i6;
+import '../source/source_dto_1.dart' as _i6;
 import 'cluster_dto_1.dart' as _i2;
 
 /// {@template package:kagi_kite_news_app/data/dtos/value_objects/cluster/cluster_dto_mapper.dart}

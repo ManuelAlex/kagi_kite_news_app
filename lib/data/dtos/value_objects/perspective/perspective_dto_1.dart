@@ -3,7 +3,7 @@ import 'package:hive_ce/hive.dart';
 
 import '../../_dto.dart';
 import '../../_hive_type_id.dart';
-import '../source.dart/source_dto_1.dart';
+import '../source/source_dto_1.dart';
 
 part 'perspective_dto_1.mapper.dart';
 part 'perspective_dto_1.g.dart';

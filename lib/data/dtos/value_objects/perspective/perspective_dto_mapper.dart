@@ -1,7 +1,7 @@
 import 'package:auto_mappr_annotation/auto_mappr_annotation.dart';
 
 import '../../../../domain/entities/value_objects/perspective.dart';
-import '../source.dart/source_dto_mapper.dart';
+import '../source/source_dto_mapper.dart';
 import 'perspective_dto_1.dart';
 import 'perspective_dto_mapper.auto_mappr.dart';
 

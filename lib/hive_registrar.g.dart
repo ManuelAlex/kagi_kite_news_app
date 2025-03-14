@@ -10,7 +10,7 @@ import 'data/dtos/value_objects/category/category_dto_1.dart';
 import 'data/dtos/value_objects/cluster/cluster_dto_1.dart';
 import 'data/dtos/value_objects/domain/domain_dto_1.dart';
 import 'data/dtos/value_objects/perspective/perspective_dto_1.dart';
-import 'data/dtos/value_objects/source.dart/source_dto_1.dart';
+import 'data/dtos/value_objects/source/source_dto_1.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {

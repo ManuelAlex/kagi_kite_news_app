@@ -29,11 +29,17 @@ class ArticleMapper extends ClassMapperBase<Article> {
   static DateTime _$date(Article v) => v.date;
   static const Field<Article, DateTime> _f$date = Field('date', _$date);
   static String? _$image(Article v) => v.image;
-  static const Field<Article, String> _f$image =
-      Field('image', _$image, opt: true);
+  static const Field<Article, String> _f$image = Field(
+    'image',
+    _$image,
+    opt: true,
+  );
   static String? _$imageCaption(Article v) => v.imageCaption;
-  static const Field<Article, String> _f$imageCaption =
-      Field('imageCaption', _$imageCaption, opt: true);
+  static const Field<Article, String> _f$imageCaption = Field(
+    'imageCaption',
+    _$imageCaption,
+    opt: true,
+  );
 
   @override
   final MappableFields<Article> fields = const {
@@ -47,12 +53,13 @@ class ArticleMapper extends ClassMapperBase<Article> {
 
   static Article _instantiate(DecodingData data) {
     return Article(
-        title: data.dec(_f$title),
-        link: data.dec(_f$link),
-        domain: data.dec(_f$domain),
-        date: data.dec(_f$date),
-        image: data.dec(_f$image),
-        imageCaption: data.dec(_f$imageCaption));
+      title: data.dec(_f$title),
+      link: data.dec(_f$link),
+      domain: data.dec(_f$domain),
+      date: data.dec(_f$date),
+      image: data.dec(_f$image),
+      imageCaption: data.dec(_f$imageCaption),
+    );
   }
 
   @override
@@ -69,8 +76,10 @@ mixin ArticleMappable {
 
   @override
   bool operator ==(Object other) {
-    return ArticleMapper.ensureInitialized()
-        .equalsValue(this as Article, other);
+    return ArticleMapper.ensureInitialized().equalsValue(
+      this as Article,
+      other,
+    );
   }
 
   @override
@@ -86,13 +95,14 @@ extension ArticleValueCopy<$R, $Out> on ObjectCopyWith<$R, Article, $Out> {
 
 abstract class ArticleCopyWith<$R, $In extends Article, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call(
-      {String? title,
-      String? link,
-      String? domain,
-      DateTime? date,
-      String? image,
-      String? imageCaption});
+  $R call({
+    String? title,
+    String? link,
+    String? domain,
+    DateTime? date,
+    String? image,
+    String? imageCaption,
+  });
   ArticleCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -105,29 +115,32 @@ class _ArticleCopyWithImpl<$R, $Out>
   late final ClassMapperBase<Article> $mapper =
       ArticleMapper.ensureInitialized();
   @override
-  $R call(
-          {String? title,
-          String? link,
-          String? domain,
-          DateTime? date,
-          Object? image = $none,
-          Object? imageCaption = $none}) =>
-      $apply(FieldCopyWithData({
-        if (title != null) #title: title,
-        if (link != null) #link: link,
-        if (domain != null) #domain: domain,
-        if (date != null) #date: date,
-        if (image != $none) #image: image,
-        if (imageCaption != $none) #imageCaption: imageCaption
-      }));
+  $R call({
+    String? title,
+    String? link,
+    String? domain,
+    DateTime? date,
+    Object? image = $none,
+    Object? imageCaption = $none,
+  }) => $apply(
+    FieldCopyWithData({
+      if (title != null) #title: title,
+      if (link != null) #link: link,
+      if (domain != null) #domain: domain,
+      if (date != null) #date: date,
+      if (image != $none) #image: image,
+      if (imageCaption != $none) #imageCaption: imageCaption,
+    }),
+  );
   @override
   Article $make(CopyWithData data) => Article(
-      title: data.get(#title, or: $value.title),
-      link: data.get(#link, or: $value.link),
-      domain: data.get(#domain, or: $value.domain),
-      date: data.get(#date, or: $value.date),
-      image: data.get(#image, or: $value.image),
-      imageCaption: data.get(#imageCaption, or: $value.imageCaption));
+    title: data.get(#title, or: $value.title),
+    link: data.get(#link, or: $value.link),
+    domain: data.get(#domain, or: $value.domain),
+    date: data.get(#date, or: $value.date),
+    image: data.get(#image, or: $value.image),
+    imageCaption: data.get(#imageCaption, or: $value.imageCaption),
+  );
 
   @override
   ArticleCopyWith<$R2, Article, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

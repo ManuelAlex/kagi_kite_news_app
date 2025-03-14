@@ -13,8 +13,9 @@ class CategoryDetailsDto1Mapper extends ClassMapperBase<CategoryDetailsDto1> {
   static CategoryDetailsDto1Mapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = CategoryDetailsDto1Mapper._());
-      MapperContainer.globals
-          .useAll(<MapperBase<Object>>[DatetimeJsonMapper()]);
+      MapperContainer.globals.useAll(<MapperBase<Object>>[
+        DatetimeJsonMapper(),
+      ]);
       ClusterDto1Mapper.ensureInitialized();
     }
     return _instance!;
@@ -24,11 +25,15 @@ class CategoryDetailsDto1Mapper extends ClassMapperBase<CategoryDetailsDto1> {
   final String id = 'CategoryDetailsDto1';
 
   static DateTime _$timestamp(CategoryDetailsDto1 v) => v.timestamp;
-  static const Field<CategoryDetailsDto1, DateTime> _f$timestamp =
-      Field('timestamp', _$timestamp);
+  static const Field<CategoryDetailsDto1, DateTime> _f$timestamp = Field(
+    'timestamp',
+    _$timestamp,
+  );
   static String _$category(CategoryDetailsDto1 v) => v.category;
-  static const Field<CategoryDetailsDto1, String> _f$category =
-      Field('category', _$category);
+  static const Field<CategoryDetailsDto1, String> _f$category = Field(
+    'category',
+    _$category,
+  );
   static int _$read(CategoryDetailsDto1 v) => v.read;
   static const Field<CategoryDetailsDto1, int> _f$read = Field('read', _$read);
   static List<ClusterDto1> _$clusters(CategoryDetailsDto1 v) => v.clusters;
@@ -45,10 +50,11 @@ class CategoryDetailsDto1Mapper extends ClassMapperBase<CategoryDetailsDto1> {
 
   static CategoryDetailsDto1 _instantiate(DecodingData data) {
     return CategoryDetailsDto1(
-        timestamp: data.dec(_f$timestamp),
-        category: data.dec(_f$category),
-        read: data.dec(_f$read),
-        clusters: data.dec(_f$clusters));
+      timestamp: data.dec(_f$timestamp),
+      category: data.dec(_f$category),
+      read: data.dec(_f$read),
+      clusters: data.dec(_f$clusters),
+    );
   }
 
   @override
@@ -74,47 +80,67 @@ mixin CategoryDetailsDto1Mappable {
         .encodeMap<CategoryDetailsDto1>(this as CategoryDetailsDto1);
   }
 
-  CategoryDetailsDto1CopyWith<CategoryDetailsDto1, CategoryDetailsDto1,
-          CategoryDetailsDto1>
-      get copyWith => _CategoryDetailsDto1CopyWithImpl(
-          this as CategoryDetailsDto1, $identity, $identity);
+  CategoryDetailsDto1CopyWith<
+    CategoryDetailsDto1,
+    CategoryDetailsDto1,
+    CategoryDetailsDto1
+  >
+  get copyWith => _CategoryDetailsDto1CopyWithImpl(
+    this as CategoryDetailsDto1,
+    $identity,
+    $identity,
+  );
   @override
   String toString() {
-    return CategoryDetailsDto1Mapper.ensureInitialized()
-        .stringifyValue(this as CategoryDetailsDto1);
+    return CategoryDetailsDto1Mapper.ensureInitialized().stringifyValue(
+      this as CategoryDetailsDto1,
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return CategoryDetailsDto1Mapper.ensureInitialized()
-        .equalsValue(this as CategoryDetailsDto1, other);
+    return CategoryDetailsDto1Mapper.ensureInitialized().equalsValue(
+      this as CategoryDetailsDto1,
+      other,
+    );
   }
 
   @override
   int get hashCode {
-    return CategoryDetailsDto1Mapper.ensureInitialized()
-        .hashValue(this as CategoryDetailsDto1);
+    return CategoryDetailsDto1Mapper.ensureInitialized().hashValue(
+      this as CategoryDetailsDto1,
+    );
   }
 }
 
 extension CategoryDetailsDto1ValueCopy<$R, $Out>
     on ObjectCopyWith<$R, CategoryDetailsDto1, $Out> {
   CategoryDetailsDto1CopyWith<$R, CategoryDetailsDto1, $Out>
-      get $asCategoryDetailsDto1 =>
-          $base.as((v, t, t2) => _CategoryDetailsDto1CopyWithImpl(v, t, t2));
+  get $asCategoryDetailsDto1 =>
+      $base.as((v, t, t2) => _CategoryDetailsDto1CopyWithImpl(v, t, t2));
 }
 
-abstract class CategoryDetailsDto1CopyWith<$R, $In extends CategoryDetailsDto1,
-    $Out> implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, ClusterDto1,
-      ClusterDto1CopyWith<$R, ClusterDto1, ClusterDto1>> get clusters;
-  $R call(
-      {DateTime? timestamp,
-      String? category,
-      int? read,
-      List<ClusterDto1>? clusters});
+abstract class CategoryDetailsDto1CopyWith<
+  $R,
+  $In extends CategoryDetailsDto1,
+  $Out
+>
+    implements ClassCopyWith<$R, $In, $Out> {
+  ListCopyWith<
+    $R,
+    ClusterDto1,
+    ClusterDto1CopyWith<$R, ClusterDto1, ClusterDto1>
+  >
+  get clusters;
+  $R call({
+    DateTime? timestamp,
+    String? category,
+    int? read,
+    List<ClusterDto1>? clusters,
+  });
   CategoryDetailsDto1CopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
-      Then<$Out2, $R2> t);
+    Then<$Out2, $R2> t,
+  );
 }
 
 class _CategoryDetailsDto1CopyWithImpl<$R, $Out>
@@ -126,31 +152,41 @@ class _CategoryDetailsDto1CopyWithImpl<$R, $Out>
   late final ClassMapperBase<CategoryDetailsDto1> $mapper =
       CategoryDetailsDto1Mapper.ensureInitialized();
   @override
-  ListCopyWith<$R, ClusterDto1,
-          ClusterDto1CopyWith<$R, ClusterDto1, ClusterDto1>>
-      get clusters => ListCopyWith($value.clusters,
-          (v, t) => v.copyWith.$chain(t), (v) => call(clusters: v));
+  ListCopyWith<
+    $R,
+    ClusterDto1,
+    ClusterDto1CopyWith<$R, ClusterDto1, ClusterDto1>
+  >
+  get clusters => ListCopyWith(
+    $value.clusters,
+    (v, t) => v.copyWith.$chain(t),
+    (v) => call(clusters: v),
+  );
   @override
-  $R call(
-          {DateTime? timestamp,
-          String? category,
-          int? read,
-          List<ClusterDto1>? clusters}) =>
-      $apply(FieldCopyWithData({
-        if (timestamp != null) #timestamp: timestamp,
-        if (category != null) #category: category,
-        if (read != null) #read: read,
-        if (clusters != null) #clusters: clusters
-      }));
+  $R call({
+    DateTime? timestamp,
+    String? category,
+    int? read,
+    List<ClusterDto1>? clusters,
+  }) => $apply(
+    FieldCopyWithData({
+      if (timestamp != null) #timestamp: timestamp,
+      if (category != null) #category: category,
+      if (read != null) #read: read,
+      if (clusters != null) #clusters: clusters,
+    }),
+  );
   @override
   CategoryDetailsDto1 $make(CopyWithData data) => CategoryDetailsDto1(
-      timestamp: data.get(#timestamp, or: $value.timestamp),
-      category: data.get(#category, or: $value.category),
-      read: data.get(#read, or: $value.read),
-      clusters: data.get(#clusters, or: $value.clusters));
+    timestamp: data.get(#timestamp, or: $value.timestamp),
+    category: data.get(#category, or: $value.category),
+    read: data.get(#read, or: $value.read),
+    clusters: data.get(#clusters, or: $value.clusters),
+  );
 
   @override
-  CategoryDetailsDto1CopyWith<$R2, CategoryDetailsDto1, $Out2>
-      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-          _CategoryDetailsDto1CopyWithImpl($value, $cast, t);
+  CategoryDetailsDto1CopyWith<$R2, CategoryDetailsDto1, $Out2> $chain<
+    $R2,
+    $Out2
+  >(Then<$Out2, $R2> t) => _CategoryDetailsDto1CopyWithImpl($value, $cast, t);
 }

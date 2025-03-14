@@ -22,7 +22,7 @@ import '../value_objects/category/category_dto_1.dart' as _i4;
 import '../value_objects/cluster/cluster_dto_1.dart' as _i6;
 import '../value_objects/domain/domain_dto_1.dart' as _i14;
 import '../value_objects/perspective/perspective_dto_1.dart' as _i8;
-import '../value_objects/source.dart/source_dto_1.dart' as _i10;
+import '../value_objects/source/source_dto_1.dart' as _i10;
 import 'category_details_dto_1.dart' as _i2;
 
 /// {@template package:kagi_kite_news_app/data/dtos/category_details/category_details_dto_mapper.dart}

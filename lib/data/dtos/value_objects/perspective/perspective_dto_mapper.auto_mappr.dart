@@ -12,7 +12,7 @@ import 'package:auto_mappr_annotation/auto_mappr_annotation.dart' as _i1;
 
 import '../../../../domain/entities/value_objects/perspective.dart' as _i3;
 import '../../../../domain/entities/value_objects/source.dart' as _i5;
-import '../source.dart/source_dto_1.dart' as _i4;
+import '../source/source_dto_1.dart' as _i4;
 import 'perspective_dto_1.dart' as _i2;
 
 /// {@template package:kagi_kite_news_app/data/dtos/value_objects/perspective/perspective_dto_mapper.dart}

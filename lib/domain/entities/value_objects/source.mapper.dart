@@ -26,10 +26,7 @@ class SourceMapper extends ClassMapperBase<Source> {
   static const Field<Source, String> _f$url = Field('url', _$url);
 
   @override
-  final MappableFields<Source> fields = const {
-    #name: _f$name,
-    #url: _f$url,
-  };
+  final MappableFields<Source> fields = const {#name: _f$name, #url: _f$url};
 
   static Source _instantiate(DecodingData data) {
     return Source(name: data.dec(_f$name), url: data.dec(_f$url));
@@ -76,12 +73,17 @@ class _SourceCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Source, $Out>
   @override
   late final ClassMapperBase<Source> $mapper = SourceMapper.ensureInitialized();
   @override
-  $R call({String? name, String? url}) => $apply(FieldCopyWithData(
-      {if (name != null) #name: name, if (url != null) #url: url}));
+  $R call({String? name, String? url}) => $apply(
+    FieldCopyWithData({
+      if (name != null) #name: name,
+      if (url != null) #url: url,
+    }),
+  );
   @override
   Source $make(CopyWithData data) => Source(
-      name: data.get(#name, or: $value.name),
-      url: data.get(#url, or: $value.url));
+    name: data.get(#name, or: $value.name),
+    url: data.get(#url, or: $value.url),
+  );
 
   @override
   SourceCopyWith<$R2, Source, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/utils/results.dart';
 import '../../domain/entities/news_categories.dart';
 import '../../domain/entities/value_objects/category.dart';
-import '../provider/news_category_providers/news_category_provider.dart';
+import '../providers/news_category_providers/news_category_provider.dart';
 import '../widgets/error_block.dart';
 
 class NewHomePage extends ConsumerWidget {
@@ -28,7 +28,7 @@ class NewHomePage extends ConsumerWidget {
               null,
             ),
 
-            _ => const ErrorBlock('Unknown', null),
+            _ => const ErrorBlock('Unknown error', null),
           };
         },
         error: ErrorBlock.new,
