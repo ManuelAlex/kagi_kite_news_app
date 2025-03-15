@@ -24,10 +24,8 @@ class PerspectiveDto1Mapper extends ClassMapperBase<PerspectiveDto1> {
   static String _$text(PerspectiveDto1 v) => v.text;
   static const Field<PerspectiveDto1, String> _f$text = Field('text', _$text);
   static List<SourceDto1> _$sources(PerspectiveDto1 v) => v.sources;
-  static const Field<PerspectiveDto1, List<SourceDto1>> _f$sources = Field(
-    'sources',
-    _$sources,
-  );
+  static const Field<PerspectiveDto1, List<SourceDto1>> _f$sources =
+      Field('sources', _$sources);
 
   @override
   final MappableFields<PerspectiveDto1> fields = const {
@@ -37,9 +35,7 @@ class PerspectiveDto1Mapper extends ClassMapperBase<PerspectiveDto1> {
 
   static PerspectiveDto1 _instantiate(DecodingData data) {
     return PerspectiveDto1(
-      text: data.dec(_f$text),
-      sources: data.dec(_f$sources),
-    );
+        text: data.dec(_f$text), sources: data.dec(_f$sources));
   }
 
   @override
@@ -61,37 +57,29 @@ mixin PerspectiveDto1Mappable {
   }
 
   Map<String, dynamic> toMap() {
-    return PerspectiveDto1Mapper.ensureInitialized().encodeMap<PerspectiveDto1>(
-      this as PerspectiveDto1,
-    );
+    return PerspectiveDto1Mapper.ensureInitialized()
+        .encodeMap<PerspectiveDto1>(this as PerspectiveDto1);
   }
 
   PerspectiveDto1CopyWith<PerspectiveDto1, PerspectiveDto1, PerspectiveDto1>
-  get copyWith => _PerspectiveDto1CopyWithImpl(
-    this as PerspectiveDto1,
-    $identity,
-    $identity,
-  );
+      get copyWith => _PerspectiveDto1CopyWithImpl(
+          this as PerspectiveDto1, $identity, $identity);
   @override
   String toString() {
-    return PerspectiveDto1Mapper.ensureInitialized().stringifyValue(
-      this as PerspectiveDto1,
-    );
+    return PerspectiveDto1Mapper.ensureInitialized()
+        .stringifyValue(this as PerspectiveDto1);
   }
 
   @override
   bool operator ==(Object other) {
-    return PerspectiveDto1Mapper.ensureInitialized().equalsValue(
-      this as PerspectiveDto1,
-      other,
-    );
+    return PerspectiveDto1Mapper.ensureInitialized()
+        .equalsValue(this as PerspectiveDto1, other);
   }
 
   @override
   int get hashCode {
-    return PerspectiveDto1Mapper.ensureInitialized().hashValue(
-      this as PerspectiveDto1,
-    );
+    return PerspectiveDto1Mapper.ensureInitialized()
+        .hashValue(this as PerspectiveDto1);
   }
 }
 
@@ -104,11 +92,10 @@ extension PerspectiveDto1ValueCopy<$R, $Out>
 abstract class PerspectiveDto1CopyWith<$R, $In extends PerspectiveDto1, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, SourceDto1, SourceDto1CopyWith<$R, SourceDto1, SourceDto1>>
-  get sources;
+      get sources;
   $R call({String? text, List<SourceDto1>? sources});
   PerspectiveDto1CopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  );
+      Then<$Out2, $R2> t);
 }
 
 class _PerspectiveDto1CopyWithImpl<$R, $Out>
@@ -121,26 +108,21 @@ class _PerspectiveDto1CopyWithImpl<$R, $Out>
       PerspectiveDto1Mapper.ensureInitialized();
   @override
   ListCopyWith<$R, SourceDto1, SourceDto1CopyWith<$R, SourceDto1, SourceDto1>>
-  get sources => ListCopyWith(
-    $value.sources,
-    (v, t) => v.copyWith.$chain(t),
-    (v) => call(sources: v),
-  );
+      get sources => ListCopyWith($value.sources,
+          (v, t) => v.copyWith.$chain(t), (v) => call(sources: v));
   @override
-  $R call({String? text, List<SourceDto1>? sources}) => $apply(
-    FieldCopyWithData({
-      if (text != null) #text: text,
-      if (sources != null) #sources: sources,
-    }),
-  );
+  $R call({String? text, List<SourceDto1>? sources}) =>
+      $apply(FieldCopyWithData({
+        if (text != null) #text: text,
+        if (sources != null) #sources: sources
+      }));
   @override
   PerspectiveDto1 $make(CopyWithData data) => PerspectiveDto1(
-    text: data.get(#text, or: $value.text),
-    sources: data.get(#sources, or: $value.sources),
-  );
+      text: data.get(#text, or: $value.text),
+      sources: data.get(#sources, or: $value.sources));
 
   @override
   PerspectiveDto1CopyWith<$R2, PerspectiveDto1, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  ) => _PerspectiveDto1CopyWithImpl($value, $cast, t);
+          Then<$Out2, $R2> t) =>
+      _PerspectiveDto1CopyWithImpl($value, $cast, t);
 }

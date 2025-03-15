@@ -11,8 +11,10 @@ import 'presentation/pages/new_home_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final Directory directory = await getApplicationDocumentsDirectory();
-  await Hive.initFlutter(directory.path);
-  Hive.registerAdapters();
+  Hive
+    ..init(directory.path)
+    ..registerAdapters();
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
       home: const NewHomePage(),
     );

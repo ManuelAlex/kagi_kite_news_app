@@ -23,6 +23,8 @@ export 'value_objects/cluster/cluster_dto_1.dart';
 export 'value_objects/cluster/cluster_dto_mapper.dart';
 export 'value_objects/domain/domain_dto_1.dart';
 export 'value_objects/domain/domain_dto_mapper.dart';
+export 'value_objects/on_this_day_event/on_this_day_event_dto_1.dart';
+export 'value_objects/on_this_day_event/on_this_day_event_dto_mapper.dart';
 export 'value_objects/perspective/perspective_dto_1.dart';
 export 'value_objects/perspective/perspective_dto_mapper.dart';
 export 'value_objects/source/source_dto_1.dart';

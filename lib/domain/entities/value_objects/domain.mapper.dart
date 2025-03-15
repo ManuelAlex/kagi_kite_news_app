@@ -76,17 +76,12 @@ class _DomainCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Domain, $Out>
   @override
   late final ClassMapperBase<Domain> $mapper = DomainMapper.ensureInitialized();
   @override
-  $R call({String? name, String? favicon}) => $apply(
-    FieldCopyWithData({
-      if (name != null) #name: name,
-      if (favicon != null) #favicon: favicon,
-    }),
-  );
+  $R call({String? name, String? favicon}) => $apply(FieldCopyWithData(
+      {if (name != null) #name: name, if (favicon != null) #favicon: favicon}));
   @override
   Domain $make(CopyWithData data) => Domain(
-    name: data.get(#name, or: $value.name),
-    favicon: data.get(#favicon, or: $value.favicon),
-  );
+      name: data.get(#name, or: $value.name),
+      favicon: data.get(#favicon, or: $value.favicon));
 
   @override
   DomainCopyWith<$R2, Domain, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>

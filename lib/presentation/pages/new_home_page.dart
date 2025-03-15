@@ -2,55 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/utils/results.dart';
-import '../../domain/entities/news_categories.dart';
-import '../../domain/entities/value_objects/category.dart';
-import '../providers/news_category_providers/news_category_provider.dart';
-import '../widgets/error_block.dart';
+import '../../domain/domain.dart';
 
-class NewHomePage extends ConsumerWidget {
+import '../presentation.dart';
+
+import '../providers/news_category_providers/news_category_provider.dart';
+import '../providers/news_category_providers/progress_state_provider.dart';
+import '../widgets/_kite_app_bar.dart';
+
+import '../widgets/kite_loading_widget.dart';
+import '../widgets/news_category_tab_view.dart';
+
+class NewHomePage extends ConsumerStatefulWidget {
   const NewHomePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<NewHomePage> createState() => _NewHomePageState();
+}
+
+class _NewHomePageState extends ConsumerState<NewHomePage> {
+  @override
+  Widget build(BuildContext context) {
     final AsyncValue<Result<NewsCategories>> newsCategoriesAsync = ref.watch(
       newsCategoriesProvider,
     );
 
+    final double progressValue = ref.watch(progressStateProvider);
+
     return Scaffold(
+      appBar: KiteAppBar(newsCategoriesAsync: newsCategoriesAsync),
+
       body: newsCategoriesAsync.when(
         data: (Result<NewsCategories> result) {
           return switch (result) {
-            final Success<NewsCategories> success => NewsCategoriesList(
+            final Success<NewsCategories> success => NewsCategoriesTabView(
               success.data,
             ),
             final Failure<NewsCategories> failure => ErrorBlock(
               failure.message,
               null,
             ),
-
             _ => const ErrorBlock('Unknown error', null),
           };
         },
         error: ErrorBlock.new,
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading:
+            () =>
+                Center(child: KiteLoadingWidget(progressValue: progressValue)),
       ),
-    );
-  }
-}
-
-class NewsCategoriesList extends StatelessWidget {
-  const NewsCategoriesList(this.newsCategories, {super.key});
-
-  final NewsCategories newsCategories;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: newsCategories.categories.length,
-      itemBuilder: (BuildContext context, int index) {
-        final Category category = newsCategories.categories[index];
-        return ListTile(title: Text(category.name));
-      },
     );
   }
 }

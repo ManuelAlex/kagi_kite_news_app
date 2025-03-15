@@ -1,7 +1,7 @@
-// Displays an error message and optionally a stack trace when [AsyncValue]
 import 'package:flutter/material.dart';
 import 'package:riverpod/riverpod.dart';
 
+/// Displays an error message and optionally a stack trace when [AsyncValue]
 /// fails.
 ///
 /// This widget is intended to be used in the UI layer to display errors
@@ -39,31 +39,34 @@ class ErrorBlock extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              const Text(
+              const SelectableText(
                 'Error:',
                 style: TextStyle(color: Colors.red, fontSize: 16),
               ),
               const SizedBox(height: 8),
-              Text(
+              SelectableText(
                 error.toString(),
                 style: const TextStyle(color: Colors.red, fontSize: 24),
-                softWrap: true,
+                //softWrap: true,
               ),
               if (stackTrace != null) ...<Widget>[
                 const SizedBox(height: 16),
-                const Text('Stack Trace:', style: TextStyle(fontSize: 16)),
+                const SelectableText(
+                  'Stack Trace:',
+                  style: TextStyle(fontSize: 16),
+                ),
                 const SizedBox(height: 8),
                 if (constraints.hasBoundedHeight)
                   Expanded(
                     child: SingleChildScrollView(
-                      child: Text(
+                      child: SelectableText(
                         stackTrace.toString(),
                         style: const TextStyle(fontSize: 12),
                       ),
                     ),
                   )
                 else
-                  Text(
+                  SelectableText(
                     stackTrace.toString(),
                     style: const TextStyle(fontSize: 12),
                   ),

@@ -49,10 +49,8 @@ mixin CategoryMappable {
 
   @override
   bool operator ==(Object other) {
-    return CategoryMapper.ensureInitialized().equalsValue(
-      this as Category,
-      other,
-    );
+    return CategoryMapper.ensureInitialized()
+        .equalsValue(this as Category, other);
   }
 
   @override
@@ -81,20 +79,15 @@ class _CategoryCopyWithImpl<$R, $Out>
   late final ClassMapperBase<Category> $mapper =
       CategoryMapper.ensureInitialized();
   @override
-  $R call({String? name, String? file}) => $apply(
-    FieldCopyWithData({
-      if (name != null) #name: name,
-      if (file != null) #file: file,
-    }),
-  );
+  $R call({String? name, String? file}) => $apply(FieldCopyWithData(
+      {if (name != null) #name: name, if (file != null) #file: file}));
   @override
   Category $make(CopyWithData data) => Category(
-    name: data.get(#name, or: $value.name),
-    file: data.get(#file, or: $value.file),
-  );
+      name: data.get(#name, or: $value.name),
+      file: data.get(#file, or: $value.file));
 
   @override
   CategoryCopyWith<$R2, Category, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  ) => _CategoryCopyWithImpl($value, $cast, t);
+          Then<$Out2, $R2> t) =>
+      _CategoryCopyWithImpl($value, $cast, t);
 }

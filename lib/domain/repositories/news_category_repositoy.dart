@@ -3,5 +3,5 @@ import '../entities/news_categories.dart';
 
 // ignore: one_member_abstracts
 abstract class NewsCategoryRepository {
-  Future<Result<NewsCategories>> getNewsCategories();
+  Future<Result<NewsCategories>> getNewsCategories({bool forceRefresh = false});
 }

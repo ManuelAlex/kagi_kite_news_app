@@ -14,6 +14,8 @@ export 'cluster/cluster_dto_1.dart';
 export 'cluster/cluster_dto_mapper.dart';
 export 'domain/domain_dto_1.dart';
 export 'domain/domain_dto_mapper.dart';
+export 'on_this_day_event/on_this_day_event_dto_1.dart';
+export 'on_this_day_event/on_this_day_event_dto_mapper.dart';
 export 'perspective/perspective_dto_1.dart';
 export 'perspective/perspective_dto_mapper.dart';
 export 'source/source_dto_1.dart';

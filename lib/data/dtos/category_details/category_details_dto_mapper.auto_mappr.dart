@@ -15,12 +15,15 @@ import '../../../domain/entities/value_objects/article.dart' as _i13;
 import '../../../domain/entities/value_objects/category.dart' as _i5;
 import '../../../domain/entities/value_objects/cluster.dart' as _i7;
 import '../../../domain/entities/value_objects/domain.dart' as _i15;
+import '../../../domain/entities/value_objects/on_this_day_event.dart' as _i17;
 import '../../../domain/entities/value_objects/perspective.dart' as _i9;
 import '../../../domain/entities/value_objects/source.dart' as _i11;
 import '../value_objects/article/article_dto_1.dart' as _i12;
 import '../value_objects/category/category_dto_1.dart' as _i4;
 import '../value_objects/cluster/cluster_dto_1.dart' as _i6;
 import '../value_objects/domain/domain_dto_1.dart' as _i14;
+import '../value_objects/on_this_day_event/on_this_day_event_dto_1.dart'
+    as _i16;
 import '../value_objects/perspective/perspective_dto_1.dart' as _i8;
 import '../value_objects/source/source_dto_1.dart' as _i10;
 import 'category_details_dto_1.dart' as _i2;
@@ -41,6 +44,8 @@ import 'category_details_dto_1.dart' as _i2;
 /// - `Article` → `ArticleDto1`.
 /// - `DomainDto1` → `Domain`.
 /// - `Domain` → `DomainDto1`.
+/// - `OnThisDayEventDto1` → `OnThisDayEvent`.
+/// - `OnThisDayEvent` → `OnThisDayEventDto1`.
 /// {@endtemplate}
 class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
   const $CategoryDetailsDtoMapper();
@@ -137,6 +142,18 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
             sourceTypeOf == _typeOf<_i15.Domain?>()) &&
         (targetTypeOf == _typeOf<_i14.DomainDto1>() ||
             targetTypeOf == _typeOf<_i14.DomainDto1?>())) {
+      return true;
+    }
+    if ((sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
+            sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1?>()) &&
+        (targetTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
+            targetTypeOf == _typeOf<_i17.OnThisDayEvent?>())) {
+      return true;
+    }
+    if ((sourceTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
+            sourceTypeOf == _typeOf<_i17.OnThisDayEvent?>()) &&
+        (targetTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
+            targetTypeOf == _typeOf<_i16.OnThisDayEventDto1?>())) {
       return true;
     }
     if (recursive) {
@@ -468,6 +485,30 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
       return (_map__i15$Domain_To__i14$DomainDto1((model as _i15.Domain?))
           as TARGET);
     }
+    if ((sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
+            sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1?>()) &&
+        (targetTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
+            targetTypeOf == _typeOf<_i17.OnThisDayEvent?>())) {
+      if (canReturnNull && model == null) {
+        return null;
+      }
+      return (_map__i16$OnThisDayEventDto1_To__i17$OnThisDayEvent(
+            (model as _i16.OnThisDayEventDto1?),
+          )
+          as TARGET);
+    }
+    if ((sourceTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
+            sourceTypeOf == _typeOf<_i17.OnThisDayEvent?>()) &&
+        (targetTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
+            targetTypeOf == _typeOf<_i16.OnThisDayEventDto1?>())) {
+      if (canReturnNull && model == null) {
+        return null;
+      }
+      return (_map__i17$OnThisDayEvent_To__i16$OnThisDayEventDto1(
+            (model as _i17.OnThisDayEvent?),
+          )
+          as TARGET);
+    }
     throw Exception('No ${model.runtimeType} -> $targetTypeOf mapping.');
   }
 
@@ -514,6 +555,14 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
                 (value) => _map__i6$ClusterDto1_To__i7$Cluster(value),
               )
               .toList(),
+      isRead: model.isRead,
+      events:
+          model.events
+              .map<_i17.OnThisDayEvent>(
+                (value) =>
+                    _map__i16$OnThisDayEventDto1_To__i17$OnThisDayEvent(value),
+              )
+              .toList(),
     );
   }
 
@@ -537,6 +586,14 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
                 (value) => _map__i7$Cluster_To__i6$ClusterDto1(value),
               )
               .toList(),
+      events:
+          model.events
+              .map<_i16.OnThisDayEventDto1>(
+                (value) =>
+                    _map__i17$OnThisDayEvent_To__i16$OnThisDayEventDto1(value),
+              )
+              .toList(),
+      isRead: model.isRead,
     );
   }
 
@@ -818,5 +875,41 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
       );
     }
     return _i14.DomainDto1(name: model.name, favicon: model.favicon);
+  }
+
+  _i17.OnThisDayEvent _map__i16$OnThisDayEventDto1_To__i17$OnThisDayEvent(
+    _i16.OnThisDayEventDto1? input,
+  ) {
+    final model = input;
+    if (model == null) {
+      throw Exception(
+        r'Mapping OnThisDayEventDto1 → OnThisDayEvent failed because OnThisDayEventDto1 was null, and no default value was provided. '
+        r'Consider setting the whenSourceIsNull parameter on the MapType<OnThisDayEventDto1, OnThisDayEvent> to handle null values during mapping.',
+      );
+    }
+    return _i17.OnThisDayEvent(
+      year: model.year,
+      content: model.content,
+      sortYear: model.sortYear,
+      type: model.type,
+    );
+  }
+
+  _i16.OnThisDayEventDto1 _map__i17$OnThisDayEvent_To__i16$OnThisDayEventDto1(
+    _i17.OnThisDayEvent? input,
+  ) {
+    final model = input;
+    if (model == null) {
+      throw Exception(
+        r'Mapping OnThisDayEvent → OnThisDayEventDto1 failed because OnThisDayEvent was null, and no default value was provided. '
+        r'Consider setting the whenSourceIsNull parameter on the MapType<OnThisDayEvent, OnThisDayEventDto1> to handle null values during mapping.',
+      );
+    }
+    return _i16.OnThisDayEventDto1(
+      year: model.year,
+      content: model.content,
+      sortYear: model.sortYear,
+      type: model.type,
+    );
   }
 }

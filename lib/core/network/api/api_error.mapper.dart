@@ -23,11 +23,8 @@ class ApiErrorMapper extends ClassMapperBase<ApiError> {
   static String _$code(ApiError v) => v.code;
   static const Field<ApiError, String> _f$code = Field('code', _$code);
   static String? _$message(ApiError v) => v.message;
-  static const Field<ApiError, String> _f$message = Field(
-    'message',
-    _$message,
-    opt: true,
-  );
+  static const Field<ApiError, String> _f$message =
+      Field('message', _$message, opt: true);
 
   @override
   final MappableFields<ApiError> fields = const {
@@ -53,15 +50,13 @@ class ApiErrorMapper extends ClassMapperBase<ApiError> {
 
 mixin ApiErrorMappable {
   String toJson() {
-    return ApiErrorMapper.ensureInitialized().encodeJson<ApiError>(
-      this as ApiError,
-    );
+    return ApiErrorMapper.ensureInitialized()
+        .encodeJson<ApiError>(this as ApiError);
   }
 
   Map<String, dynamic> toMap() {
-    return ApiErrorMapper.ensureInitialized().encodeMap<ApiError>(
-      this as ApiError,
-    );
+    return ApiErrorMapper.ensureInitialized()
+        .encodeMap<ApiError>(this as ApiError);
   }
 
   ApiErrorCopyWith<ApiError, ApiError, ApiError> get copyWith =>
@@ -73,10 +68,8 @@ mixin ApiErrorMappable {
 
   @override
   bool operator ==(Object other) {
-    return ApiErrorMapper.ensureInitialized().equalsValue(
-      this as ApiError,
-      other,
-    );
+    return ApiErrorMapper.ensureInitialized()
+        .equalsValue(this as ApiError, other);
   }
 
   @override
@@ -105,20 +98,17 @@ class _ApiErrorCopyWithImpl<$R, $Out>
   late final ClassMapperBase<ApiError> $mapper =
       ApiErrorMapper.ensureInitialized();
   @override
-  $R call({String? code, Object? message = $none}) => $apply(
-    FieldCopyWithData({
-      if (code != null) #code: code,
-      if (message != $none) #message: message,
-    }),
-  );
+  $R call({String? code, Object? message = $none}) => $apply(FieldCopyWithData({
+        if (code != null) #code: code,
+        if (message != $none) #message: message
+      }));
   @override
   ApiError $make(CopyWithData data) => ApiError(
-    code: data.get(#code, or: $value.code),
-    message: data.get(#message, or: $value.message),
-  );
+      code: data.get(#code, or: $value.code),
+      message: data.get(#message, or: $value.message));
 
   @override
   ApiErrorCopyWith<$R2, ApiError, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  ) => _ApiErrorCopyWithImpl($value, $cast, t);
+          Then<$Out2, $R2> t) =>
+      _ApiErrorCopyWithImpl($value, $cast, t);
 }

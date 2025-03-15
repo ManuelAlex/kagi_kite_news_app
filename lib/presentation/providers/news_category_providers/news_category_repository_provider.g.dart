@@ -7,7 +7,7 @@ part of 'news_category_repository_provider.dart';
 // **************************************************************************
 
 String _$newsCategoryRepositoryHash() =>
-    r'883db935290a51fa0d7f5b5f7be9dfa48db19f94';
+    r'af23a35318326a50a035fe0e6bdf07d94f102727';
 
 /// See also [newsCategoryRepository].
 @ProviderFor(newsCategoryRepository)

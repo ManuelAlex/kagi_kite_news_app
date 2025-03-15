@@ -43,4 +43,21 @@ class NewsCategoryDetailsLocalDataSource {
       );
     }
   }
+
+  Future<void> clearOldCacheForCategory(String name) async {
+    try {
+      final Box<CategoryDetailsDto1> box =
+          await Hive.openBox<CategoryDetailsDto1>(boxName);
+      final DateTime threeDaysAgo = DateTime.now().toUtc().subtract(
+        const Duration(days: 3),
+      );
+
+      final CategoryDetailsDto1? data = box.get(name.toLowerCase());
+      if (data != null && data.timestamp.isBefore(threeDaysAgo)) {
+        await box.delete(name.toLowerCase());
+      }
+    } catch (e) {
+      throw HiveStorageException('Failed to clear old cache for "$name": $e');
+    }
+  }
 }

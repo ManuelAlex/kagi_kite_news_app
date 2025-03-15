@@ -35,4 +35,21 @@ class NewsCategoryLocalDataSource {
       return Failure<NewsCategoriesDto1>('Failed to fetch news categories: $e');
     }
   }
+
+  Future<void> clearOldCache() async {
+    final Box<NewsCategoriesDto1> box = await Hive.openBox<NewsCategoriesDto1>(
+      'newsCategories',
+    );
+    final DateTime threeDaysAgo = DateTime.now().toUtc().subtract(
+      const Duration(days: 3),
+    );
+
+    final List<dynamic> keysToDelete =
+        box.keys.where((dynamic key) {
+          final NewsCategoriesDto1? data = box.get(key);
+          return data != null && data.timestamp.isBefore(threeDaysAgo);
+        }).toList();
+
+    await box.deleteAll(keysToDelete);
+  }
 }

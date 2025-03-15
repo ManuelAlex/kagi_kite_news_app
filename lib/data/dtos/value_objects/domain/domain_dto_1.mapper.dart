@@ -23,10 +23,8 @@ class DomainDto1Mapper extends ClassMapperBase<DomainDto1> {
   static String _$name(DomainDto1 v) => v.name;
   static const Field<DomainDto1, String> _f$name = Field('name', _$name);
   static String _$favicon(DomainDto1 v) => v.favicon;
-  static const Field<DomainDto1, String> _f$favicon = Field(
-    'favicon',
-    _$favicon,
-  );
+  static const Field<DomainDto1, String> _f$favicon =
+      Field('favicon', _$favicon);
 
   @override
   final MappableFields<DomainDto1> fields = const {
@@ -52,32 +50,27 @@ class DomainDto1Mapper extends ClassMapperBase<DomainDto1> {
 
 mixin DomainDto1Mappable {
   String toJson() {
-    return DomainDto1Mapper.ensureInitialized().encodeJson<DomainDto1>(
-      this as DomainDto1,
-    );
+    return DomainDto1Mapper.ensureInitialized()
+        .encodeJson<DomainDto1>(this as DomainDto1);
   }
 
   Map<String, dynamic> toMap() {
-    return DomainDto1Mapper.ensureInitialized().encodeMap<DomainDto1>(
-      this as DomainDto1,
-    );
+    return DomainDto1Mapper.ensureInitialized()
+        .encodeMap<DomainDto1>(this as DomainDto1);
   }
 
   DomainDto1CopyWith<DomainDto1, DomainDto1, DomainDto1> get copyWith =>
       _DomainDto1CopyWithImpl(this as DomainDto1, $identity, $identity);
   @override
   String toString() {
-    return DomainDto1Mapper.ensureInitialized().stringifyValue(
-      this as DomainDto1,
-    );
+    return DomainDto1Mapper.ensureInitialized()
+        .stringifyValue(this as DomainDto1);
   }
 
   @override
   bool operator ==(Object other) {
-    return DomainDto1Mapper.ensureInitialized().equalsValue(
-      this as DomainDto1,
-      other,
-    );
+    return DomainDto1Mapper.ensureInitialized()
+        .equalsValue(this as DomainDto1, other);
   }
 
   @override
@@ -107,20 +100,15 @@ class _DomainDto1CopyWithImpl<$R, $Out>
   late final ClassMapperBase<DomainDto1> $mapper =
       DomainDto1Mapper.ensureInitialized();
   @override
-  $R call({String? name, String? favicon}) => $apply(
-    FieldCopyWithData({
-      if (name != null) #name: name,
-      if (favicon != null) #favicon: favicon,
-    }),
-  );
+  $R call({String? name, String? favicon}) => $apply(FieldCopyWithData(
+      {if (name != null) #name: name, if (favicon != null) #favicon: favicon}));
   @override
   DomainDto1 $make(CopyWithData data) => DomainDto1(
-    name: data.get(#name, or: $value.name),
-    favicon: data.get(#favicon, or: $value.favicon),
-  );
+      name: data.get(#name, or: $value.name),
+      favicon: data.get(#favicon, or: $value.favicon));
 
   @override
   DomainDto1CopyWith<$R2, DomainDto1, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  ) => _DomainDto1CopyWithImpl($value, $cast, t);
+          Then<$Out2, $R2> t) =>
+      _DomainDto1CopyWithImpl($value, $cast, t);
 }

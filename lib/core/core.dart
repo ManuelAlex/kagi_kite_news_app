@@ -15,4 +15,5 @@ export 'network/api/api_status.dart';
 export 'network/api/base_exception.dart';
 export 'network/api/json_list.dart';
 export 'network/api/json_map.dart';
+export 'utils/is_recent.dart';
 export 'utils/results.dart';

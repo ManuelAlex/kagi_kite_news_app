@@ -13,6 +13,7 @@ export 'entities/value_objects/article.dart';
 export 'entities/value_objects/category.dart';
 export 'entities/value_objects/cluster.dart';
 export 'entities/value_objects/domain.dart';
+export 'entities/value_objects/on_this_day_event.dart';
 export 'entities/value_objects/perspective.dart';
 export 'entities/value_objects/source.dart';
 export 'entities/value_objects/value_objects.dart';

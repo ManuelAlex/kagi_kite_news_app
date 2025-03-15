@@ -7,18 +7,17 @@ import '../../../core/network/api/api_exception.dart';
 import '../../../core/network/api/api_response.dart';
 import '../../../core/network/api/json_map.dart';
 import '../../../core/utils/results.dart';
-import '../../../domain/entities/category_details.dart';
-import '../../dtos/category_details/category_details_dto_1.dart';
-import '../../dtos/category_details/category_details_dto_mapper.dart';
+import '../../../domain/domain.dart';
+import '../../dtos/dtos.dart';
 import '_base_url.dart';
 
 class NewsCategoryDetailsRemoteDataSource extends ApiClient {
   NewsCategoryDetailsRemoteDataSource();
 
-  Future<Result<CategoryDetails>> getCategoryDetailsByName(String name) async {
-    name = name.toLowerCase();
-
-    final Uri uri = Uri.parse('$baseUrl/${Uri.encodeComponent(name)}.json');
+  Future<Result<CategoryDetails>> getCategoryDetailsByFileName(
+    String fileName,
+  ) async {
+    final Uri uri = Uri.parse('$baseUrl/$fileName');
     final ApiResponse response = await get(uri);
 
     if (!response.status.isOk) {

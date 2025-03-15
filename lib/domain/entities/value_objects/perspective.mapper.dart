@@ -24,10 +24,8 @@ class PerspectiveMapper extends ClassMapperBase<Perspective> {
   static String _$text(Perspective v) => v.text;
   static const Field<Perspective, String> _f$text = Field('text', _$text);
   static List<Source> _$sources(Perspective v) => v.sources;
-  static const Field<Perspective, List<Source>> _f$sources = Field(
-    'sources',
-    _$sources,
-  );
+  static const Field<Perspective, List<Source>> _f$sources =
+      Field('sources', _$sources);
 
   @override
   final MappableFields<Perspective> fields = const {
@@ -48,17 +46,14 @@ mixin PerspectiveMappable {
       _PerspectiveCopyWithImpl(this as Perspective, $identity, $identity);
   @override
   String toString() {
-    return PerspectiveMapper.ensureInitialized().stringifyValue(
-      this as Perspective,
-    );
+    return PerspectiveMapper.ensureInitialized()
+        .stringifyValue(this as Perspective);
   }
 
   @override
   bool operator ==(Object other) {
-    return PerspectiveMapper.ensureInitialized().equalsValue(
-      this as Perspective,
-      other,
-    );
+    return PerspectiveMapper.ensureInitialized()
+        .equalsValue(this as Perspective, other);
   }
 
   @override
@@ -90,26 +85,18 @@ class _PerspectiveCopyWithImpl<$R, $Out>
       PerspectiveMapper.ensureInitialized();
   @override
   ListCopyWith<$R, Source, SourceCopyWith<$R, Source, Source>> get sources =>
-      ListCopyWith(
-        $value.sources,
-        (v, t) => v.copyWith.$chain(t),
-        (v) => call(sources: v),
-      );
+      ListCopyWith($value.sources, (v, t) => v.copyWith.$chain(t),
+          (v) => call(sources: v));
   @override
-  $R call({String? text, List<Source>? sources}) => $apply(
-    FieldCopyWithData({
-      if (text != null) #text: text,
-      if (sources != null) #sources: sources,
-    }),
-  );
+  $R call({String? text, List<Source>? sources}) => $apply(FieldCopyWithData(
+      {if (text != null) #text: text, if (sources != null) #sources: sources}));
   @override
   Perspective $make(CopyWithData data) => Perspective(
-    text: data.get(#text, or: $value.text),
-    sources: data.get(#sources, or: $value.sources),
-  );
+      text: data.get(#text, or: $value.text),
+      sources: data.get(#sources, or: $value.sources));
 
   @override
   PerspectiveCopyWith<$R2, Perspective, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  ) => _PerspectiveCopyWithImpl($value, $cast, t);
+          Then<$Out2, $R2> t) =>
+      _PerspectiveCopyWithImpl($value, $cast, t);
 }

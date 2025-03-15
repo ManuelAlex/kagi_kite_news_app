@@ -49,39 +49,33 @@ class CategoryDto1Mapper extends ClassMapperBase<CategoryDto1> {
 
 mixin CategoryDto1Mappable {
   String toJson() {
-    return CategoryDto1Mapper.ensureInitialized().encodeJson<CategoryDto1>(
-      this as CategoryDto1,
-    );
+    return CategoryDto1Mapper.ensureInitialized()
+        .encodeJson<CategoryDto1>(this as CategoryDto1);
   }
 
   Map<String, dynamic> toMap() {
-    return CategoryDto1Mapper.ensureInitialized().encodeMap<CategoryDto1>(
-      this as CategoryDto1,
-    );
+    return CategoryDto1Mapper.ensureInitialized()
+        .encodeMap<CategoryDto1>(this as CategoryDto1);
   }
 
   CategoryDto1CopyWith<CategoryDto1, CategoryDto1, CategoryDto1> get copyWith =>
       _CategoryDto1CopyWithImpl(this as CategoryDto1, $identity, $identity);
   @override
   String toString() {
-    return CategoryDto1Mapper.ensureInitialized().stringifyValue(
-      this as CategoryDto1,
-    );
+    return CategoryDto1Mapper.ensureInitialized()
+        .stringifyValue(this as CategoryDto1);
   }
 
   @override
   bool operator ==(Object other) {
-    return CategoryDto1Mapper.ensureInitialized().equalsValue(
-      this as CategoryDto1,
-      other,
-    );
+    return CategoryDto1Mapper.ensureInitialized()
+        .equalsValue(this as CategoryDto1, other);
   }
 
   @override
   int get hashCode {
-    return CategoryDto1Mapper.ensureInitialized().hashValue(
-      this as CategoryDto1,
-    );
+    return CategoryDto1Mapper.ensureInitialized()
+        .hashValue(this as CategoryDto1);
   }
 }
 
@@ -106,20 +100,15 @@ class _CategoryDto1CopyWithImpl<$R, $Out>
   late final ClassMapperBase<CategoryDto1> $mapper =
       CategoryDto1Mapper.ensureInitialized();
   @override
-  $R call({String? name, String? file}) => $apply(
-    FieldCopyWithData({
-      if (name != null) #name: name,
-      if (file != null) #file: file,
-    }),
-  );
+  $R call({String? name, String? file}) => $apply(FieldCopyWithData(
+      {if (name != null) #name: name, if (file != null) #file: file}));
   @override
   CategoryDto1 $make(CopyWithData data) => CategoryDto1(
-    name: data.get(#name, or: $value.name),
-    file: data.get(#file, or: $value.file),
-  );
+      name: data.get(#name, or: $value.name),
+      file: data.get(#file, or: $value.file));
 
   @override
   CategoryDto1CopyWith<$R2, CategoryDto1, $Out2> $chain<$R2, $Out2>(
-    Then<$Out2, $R2> t,
-  ) => _CategoryDto1CopyWithImpl($value, $cast, t);
+          Then<$Out2, $R2> t) =>
+      _CategoryDto1CopyWithImpl($value, $cast, t);
 }

@@ -11,5 +11,6 @@ export 'article.dart';
 export 'category.dart';
 export 'cluster.dart';
 export 'domain.dart';
+export 'on_this_day_event.dart';
 export 'perspective.dart';
 export 'source.dart';

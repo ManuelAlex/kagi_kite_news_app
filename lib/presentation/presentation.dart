@@ -15,9 +15,7 @@ export 'providers/news_category_details_provider/news_category_details_remote_da
 export 'providers/news_category_details_provider/news_category_details_repository_provider.dart';
 export 'providers/news_category_providers/fetch_news_category_provider.dart';
 export 'providers/news_category_providers/news_category_local_data_source_provider.dart';
-export 'providers/news_category_providers/news_category_provider.dart';
 export 'providers/news_category_providers/news_category_remote_data_source_provider.dart';
 export 'providers/news_category_providers/news_category_repository_provider.dart';
-export 'providers/providers.dart';
 export 'widgets/error_block.dart';
 export 'widgets/widgets.dart';

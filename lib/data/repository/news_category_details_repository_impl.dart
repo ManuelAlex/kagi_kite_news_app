@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import '../../core/utils/results.dart';
-import '../../domain/entities/category_details.dart';
-import '../../domain/repositories/news_category_details_repository.dart';
+import '../../core/core.dart';
+import '../../domain/domain.dart';
+
 import '../data_sources/local_data_sources/news_category_details_local_data_source.dart';
 import '../data_sources/remote_data_soureces/news_category_details_remote_data_source.dart';
-import '../dtos/category_details/category_details_dto_1.dart';
-import '../dtos/category_details/category_details_dto_mapper.dart';
+
+import '../dtos/dtos.dart';
 
 class NewsCategoryDetailsRepositoryImpl
     implements NewsCategoryDetailsRepository {
@@ -19,34 +19,61 @@ class NewsCategoryDetailsRepositoryImpl
   final NewsCategoryDetailsLocalDataSource localDataSource;
 
   @override
-  Future<Result<CategoryDetails>> getCategoryDetailsByName(String name) async {
-    final Result<CategoryDetails> remoteResult = await remoteDataSource
-        .getCategoryDetailsByName(name);
-
-    if (remoteResult is Success<CategoryDetails>) {
-      final CategoryDetails newsCategories = remoteResult.data;
-
-      // Store locally
-      final CategoryDetailsDto1 dto = const CategoryDetailsDtoMapper()
-          .convert<CategoryDetails, CategoryDetailsDto1>(newsCategories);
-
-      unawaited(localDataSource.saveNewsCategoryDetails(name, dto));
-
-      return Success<CategoryDetails>(newsCategories);
-    }
-
-    // If remote fetch fails, load from Hive
+  Future<Result<CategoryDetails>> getCategoryDetailsByFileName(
+    String fileName,
+  ) async {
+    // Load from local storage first
     final Result<CategoryDetailsDto1> localResult = await localDataSource
-        .fetchNewsCategoryDetails(name);
+        .fetchNewsCategoryDetails(fileName);
 
     if (localResult is Success<CategoryDetailsDto1>) {
-      final CategoryDetails categoryDetails = const CategoryDetailsDtoMapper()
-          .convert<CategoryDetailsDto1, CategoryDetails>(localResult.data);
-      return Success<CategoryDetails>(categoryDetails);
+      final CategoryDetailsDto1 localData = localResult.data;
+
+      // If cached data is from today, return it
+      if (localData.timestamp.isRecent) {
+        final CategoryDetails cachedCategoryDetails =
+            const CategoryDetailsDtoMapper()
+                .convert<CategoryDetailsDto1, CategoryDetails>(localData);
+
+        return Success<CategoryDetails>(cachedCategoryDetails);
+      }
     }
 
-    return const Failure<CategoryDetails>(
-      'Failed to fetch news categories from both remote and local sources.',
+    // If cache is outdated, fetch from API
+    final Result<CategoryDetails> remoteResult = await remoteDataSource
+        .getCategoryDetailsByFileName(fileName);
+
+    if (remoteResult is Success<CategoryDetails>) {
+      // Only clear old cache and save if the remote fetch is successful
+      unawaited(localDataSource.clearOldCacheForCategory(fileName));
+
+      final CategoryDetails categoryDetails = remoteResult.data;
+
+      // Convert and update timestamp before saving
+      final CategoryDetailsDto1 dto = const CategoryDetailsDtoMapper()
+          .convert<CategoryDetails, CategoryDetailsDto1>(categoryDetails)
+          .copyWith(timestamp: DateTime.now().toUtc());
+
+      // Save updated category details locally
+      await localDataSource.saveNewsCategoryDetails(fileName, dto);
+
+      // Retrieve the newly stored data from local storage
+      final Result<CategoryDetailsDto1> updatedLocalResult =
+          await localDataSource.fetchNewsCategoryDetails(fileName);
+
+      if (updatedLocalResult is Success<CategoryDetailsDto1>) {
+        final CategoryDetails updatedCategoryDetails =
+            const CategoryDetailsDtoMapper()
+                .convert<CategoryDetailsDto1, CategoryDetails>(
+                  updatedLocalResult.data,
+                );
+
+        return Success<CategoryDetails>(updatedCategoryDetails);
+      }
+    }
+
+    return Failure<CategoryDetails>(
+      'Failed to fetch category details for "$fileName" from both remote and local sources.',
     );
   }
 }
