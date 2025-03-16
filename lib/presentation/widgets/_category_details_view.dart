@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/core.dart';
-import '../../core/utils/first_letter_index.dart';
 import '../../core/utils/sort_cluster.dart';
 import '../../domain/domain.dart';
 
@@ -31,10 +30,45 @@ class _CategoryDetailsViewState extends ConsumerState<CategoryDetailsView> {
     _expandedIndex = _expandedIndex == index ? null : index;
   });
 
+  final Map<int, bool> _readStatusMap = <int, bool>{};
+
+  Future<void> _markAllAsRead(
+    List<Cluster> clusters,
+    ToggleNewsClusterIsReadUseCase isReadUseCase,
+  ) async {
+    final Map<int, bool> updatedReadStatusMap = {};
+
+    for (int i = 1; i < clusters.length + 1; i++) {
+      final ToggleClusterReadParam isReadClusterParam = ToggleClusterReadParam(
+        clusterIndex: i - 1,
+        fileName: widget.category.file,
+        isRead: true,
+      );
+
+      final Result<bool> result = await isReadUseCase.call(isReadClusterParam);
+      if (result.isSuccess) {
+        updatedReadStatusMap[i] = true;
+      }
+    }
+
+    setState(() {
+      _readStatusMap.addAll(updatedReadStatusMap);
+    });
+  }
+
+  bool _areAllClustersMarked(List<Cluster> clusters) {
+    return clusters.every((cluster) {
+      return _readStatusMap[cluster.clusterNumber] ?? cluster.isRead;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final AsyncValue<Result<CategoryDetails>> detailsAsync = ref.watch(
       newsCategoryDetailsProvider(widget.category.file),
+    );
+    final ToggleNewsClusterIsReadUseCase isReadUseCase = ref.watch(
+      toggleNewsClusterIsReadUseCaseProvider,
     );
 
     return detailsAsync.when(
@@ -47,32 +81,41 @@ class _CategoryDetailsViewState extends ConsumerState<CategoryDetailsView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    ...categoryDetails.data.clusters
-                        .sortCluster()
-                        .asMap()
-                        .entries
-                        .map<Widget>((MapEntry<int, Cluster> entry) {
-                          final int index = entry.key;
-                          final Cluster cluster = entry.value;
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0),
-                            child: ClusterView(
-                              cluster: cluster,
-
-                              isExpanded: _expandedIndex == index,
-                              onExpand: () => expandedIndex = index,
-                              clusterIndex: index,
-                              fileName: widget.category.file,
-                            ),
-                          );
-                        }),
+                    ...categoryDetails.data.clusters.sortCluster().map<Widget>((
+                      Cluster cluster,
+                    ) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4.0),
+                        child: ClusterView(
+                          key: ValueKey(cluster.clusterNumber),
+                          isReadOverride:
+                              _readStatusMap[cluster.clusterNumber] ??
+                              cluster.isRead,
+                          cluster: cluster,
+                          isExpanded: _expandedIndex == cluster.clusterNumber,
+                          onExpand: () => expandedIndex = cluster.clusterNumber,
+                          clusterIndex: cluster.clusterNumber,
+                          fileName: widget.category.file,
+                          onToggleRead: (bool isRead) {
+                            setState(() {
+                              _readStatusMap[cluster.clusterNumber] = isRead;
+                            });
+                          },
+                        ),
+                      );
+                    }),
                     const SizedBox(height: 16),
-                    if (categoryDetails.data.clusters.isNotEmpty)
+                    if (categoryDetails.data.clusters.isNotEmpty &&
+                        !_areAllClustersMarked(categoryDetails.data.clusters))
                       InkWell(
-                        onTap: () {},
+                        onTap: () async {
+                          await _markAllAsRead(
+                            categoryDetails.data.clusters,
+                            isReadUseCase,
+                          );
+                        },
                         child: Container(
                           width: double.infinity,
-
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             color: Colors.black12.withAlpha(20),
@@ -111,6 +154,8 @@ class ClusterView extends ConsumerStatefulWidget {
     required this.onExpand,
     required this.clusterIndex,
     required this.fileName,
+    required this.isReadOverride,
+    required this.onToggleRead,
   });
 
   final Cluster cluster;
@@ -118,6 +163,8 @@ class ClusterView extends ConsumerStatefulWidget {
   final VoidCallback onExpand;
   final int clusterIndex;
   final String fileName;
+  final bool isReadOverride;
+  final ValueChanged<bool> onToggleRead;
 
   @override
   ConsumerState<ClusterView> createState() => _ClusterViewState();
@@ -125,22 +172,26 @@ class ClusterView extends ConsumerStatefulWidget {
 
 class _ClusterViewState extends ConsumerState<ClusterView> {
   bool _isRead = false;
-  bool get isRead => _isRead;
-  set isRead(bool value) {
-    setState(() {
-      _isRead = value;
-    });
-  }
 
   @override
   void initState() {
-    _isRead = widget.cluster.isRead;
     super.initState();
+    _isRead = widget.isReadOverride;
+  }
+
+  @override
+  void didUpdateWidget(covariant ClusterView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.isReadOverride != widget.isReadOverride) {
+      setState(() {
+        _isRead = widget.isReadOverride;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final int index = widget.cluster.category.firstLetterIndex;
+    final int index = widget.cluster.clusterNumber;
     final MaterialColor categoryColor =
         Colors.primaries[index % Colors.primaries.length];
 
@@ -178,7 +229,8 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
                     Text(
                       widget.cluster.title,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
+                        fontWeight:
+                            _isRead ? FontWeight.normal : FontWeight.bold,
                       ),
                     ),
                   ],
@@ -189,25 +241,28 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
             InkWell(
               borderRadius: BorderRadius.circular(16),
               onTap: () async {
-                final bool newReadStatus = !isRead;
+                final bool newReadStatus = !_isRead;
                 final ToggleClusterReadParam isReadClusterParam =
                     ToggleClusterReadParam(
-                      clusterIndex: widget.clusterIndex,
+                      clusterIndex: widget.clusterIndex - 1,
                       fileName: widget.fileName,
                       isRead: newReadStatus,
                     );
                 final Result<bool> isReadResult = await isReadUseCase.call(
                   isReadClusterParam,
                 );
-
                 if (isReadResult.isSuccess) {
-                  isRead = newReadStatus;
+                  setState(() {
+                    _isRead = newReadStatus;
+                  });
+
+                  widget.onToggleRead(newReadStatus);
                 }
               },
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isRead ? Colors.blue : Colors.black12,
+                  color: _isRead ? Colors.blue : Colors.black12,
                 ),
                 padding: const EdgeInsets.all(4),
                 child: const Icon(Icons.check, size: 14, color: Colors.white),

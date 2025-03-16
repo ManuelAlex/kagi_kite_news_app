@@ -142,4 +142,5 @@ class Cluster with ClusterMappable {
   final List<Article> articles;
   final List<Domain> domains;
   final bool isRead;
+  int get uniqueIndex => category.hashCode ^ title.hashCode;
 }

@@ -55,7 +55,7 @@ class NewsCategoryDetailsRepositoryImpl
           .copyWith(timestamp: DateTime.now().toUtc());
 
       // Save updated category details locally
-      await localDataSource.saveNewsCategoryDetails(fileName, dto);
+      await localDataSource.updateCategoryDetails(fileName, dto);
 
       // Retrieve the newly stored data from local storage
       final Result<CategoryDetailsDto1> updatedLocalResult =
