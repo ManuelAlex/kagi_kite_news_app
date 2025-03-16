@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+
 part of 'cluster_dto_1.dart';
 
 // **************************************************************************
@@ -17,6 +19,7 @@ class ClusterDto1Adapter extends TypeAdapter<ClusterDto1> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ClusterDto1(
+      isRead: fields[43] == null ? false : fields[43] as bool,
       clusterNumber: (fields[0] as num).toInt(),
       uniqueDomains: (fields[1] as num).toInt(),
       numberOfTitles: (fields[2] as num).toInt(),
@@ -64,7 +67,7 @@ class ClusterDto1Adapter extends TypeAdapter<ClusterDto1> {
   @override
   void write(BinaryWriter writer, ClusterDto1 obj) {
     writer
-      ..writeByte(41)
+      ..writeByte(42)
       ..writeByte(0)
       ..write(obj.clusterNumber)
       ..writeByte(1)
@@ -146,7 +149,9 @@ class ClusterDto1Adapter extends TypeAdapter<ClusterDto1> {
       ..writeByte(41)
       ..write(obj.articles)
       ..writeByte(42)
-      ..write(obj.domains);
+      ..write(obj.domains)
+      ..writeByte(43)
+      ..write(obj.isRead);
   }
 
   @override

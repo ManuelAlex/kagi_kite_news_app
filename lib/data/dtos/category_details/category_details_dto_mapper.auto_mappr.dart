@@ -555,7 +555,6 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
                 (value) => _map__i6$ClusterDto1_To__i7$Cluster(value),
               )
               .toList(),
-      isRead: model.isRead,
       events:
           model.events
               .map<_i17.OnThisDayEvent>(
@@ -593,7 +592,6 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
                     _map__i17$OnThisDayEvent_To__i16$OnThisDayEventDto1(value),
               )
               .toList(),
-      isRead: model.isRead,
     );
   }
 
@@ -628,6 +626,7 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
       );
     }
     return _i7.Cluster(
+      isRead: model.isRead,
       clusterNumber: model.clusterNumber,
       uniqueDomains: model.uniqueDomains,
       numberOfTitles: model.numberOfTitles,
@@ -696,6 +695,7 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
       );
     }
     return _i6.ClusterDto1(
+      isRead: model.isRead,
       clusterNumber: model.clusterNumber,
       uniqueDomains: model.uniqueDomains,
       numberOfTitles: model.numberOfTitles,

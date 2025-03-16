@@ -39,9 +39,6 @@ class CategoryDetailsDto1Mapper extends ClassMapperBase<CategoryDetailsDto1> {
   static List<OnThisDayEventDto1> _$events(CategoryDetailsDto1 v) => v.events;
   static const Field<CategoryDetailsDto1, List<OnThisDayEventDto1>> _f$events =
       Field('events', _$events, opt: true, def: const <OnThisDayEventDto1>[]);
-  static bool _$isRead(CategoryDetailsDto1 v) => v.isRead;
-  static const Field<CategoryDetailsDto1, bool> _f$isRead =
-      Field('isRead', _$isRead, opt: true, def: false);
 
   @override
   final MappableFields<CategoryDetailsDto1> fields = const {
@@ -50,7 +47,6 @@ class CategoryDetailsDto1Mapper extends ClassMapperBase<CategoryDetailsDto1> {
     #read: _f$read,
     #clusters: _f$clusters,
     #events: _f$events,
-    #isRead: _f$isRead,
   };
 
   static CategoryDetailsDto1 _instantiate(DecodingData data) {
@@ -59,8 +55,7 @@ class CategoryDetailsDto1Mapper extends ClassMapperBase<CategoryDetailsDto1> {
         category: data.dec(_f$category),
         read: data.dec(_f$read),
         clusters: data.dec(_f$clusters),
-        events: data.dec(_f$events),
-        isRead: data.dec(_f$isRead));
+        events: data.dec(_f$events));
   }
 
   @override
@@ -130,8 +125,7 @@ abstract class CategoryDetailsDto1CopyWith<$R, $In extends CategoryDetailsDto1,
       String? category,
       int? read,
       List<ClusterDto1>? clusters,
-      List<OnThisDayEventDto1>? events,
-      bool? isRead});
+      List<OnThisDayEventDto1>? events});
   CategoryDetailsDto1CopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
 }
@@ -162,15 +156,13 @@ class _CategoryDetailsDto1CopyWithImpl<$R, $Out>
           String? category,
           int? read,
           List<ClusterDto1>? clusters,
-          List<OnThisDayEventDto1>? events,
-          bool? isRead}) =>
+          List<OnThisDayEventDto1>? events}) =>
       $apply(FieldCopyWithData({
         if (timestamp != null) #timestamp: timestamp,
         if (category != null) #category: category,
         if (read != null) #read: read,
         if (clusters != null) #clusters: clusters,
-        if (events != null) #events: events,
-        if (isRead != null) #isRead: isRead
+        if (events != null) #events: events
       }));
   @override
   CategoryDetailsDto1 $make(CopyWithData data) => CategoryDetailsDto1(
@@ -178,8 +170,7 @@ class _CategoryDetailsDto1CopyWithImpl<$R, $Out>
       category: data.get(#category, or: $value.category),
       read: data.get(#read, or: $value.read),
       clusters: data.get(#clusters, or: $value.clusters),
-      events: data.get(#events, or: $value.events),
-      isRead: data.get(#isRead, or: $value.isRead));
+      events: data.get(#events, or: $value.events));
 
   @override
   CategoryDetailsDto1CopyWith<$R2, CategoryDetailsDto1, $Out2>

@@ -20,7 +20,6 @@ class CategoryDetailsDto1 extends Dto with CategoryDetailsDto1Mappable {
     this.read = 0,
     this.clusters = const <ClusterDto1>[],
     this.events = const <OnThisDayEventDto1>[],
-    this.isRead = false,
   });
   @HiveField(0)
   final DateTime timestamp;
@@ -32,10 +31,7 @@ class CategoryDetailsDto1 extends Dto with CategoryDetailsDto1Mappable {
   final int read;
 
   @HiveField(3)
-  final bool isRead;
-
-  @HiveField(4)
   final List<ClusterDto1> clusters;
-  @HiveField(5)
+  @HiveField(4)
   final List<OnThisDayEventDto1> events;
 }

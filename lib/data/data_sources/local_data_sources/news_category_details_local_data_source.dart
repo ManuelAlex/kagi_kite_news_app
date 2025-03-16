@@ -60,4 +60,24 @@ class NewsCategoryDetailsLocalDataSource {
       throw HiveStorageException('Failed to clear old cache for "$name": $e');
     }
   }
+
+  Future<Result<bool>> updateCategoryDetails(
+    String categoryName,
+    CategoryDetailsDto1 updatedDto,
+  ) async {
+    try {
+      final Box<CategoryDetailsDto1> box =
+          await Hive.openBox<CategoryDetailsDto1>(boxName);
+
+      final String key = categoryName.toLowerCase();
+
+      await box.delete(key);
+
+      await box.put(key, updatedDto);
+
+      return const Success(true);
+    } catch (e) {
+      return Failure<bool>('Failed to update category details: $e');
+    }
+  }
 }

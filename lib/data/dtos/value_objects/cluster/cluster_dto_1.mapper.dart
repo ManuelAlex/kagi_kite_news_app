@@ -25,6 +25,9 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
   @override
   final String id = 'ClusterDto1';
 
+  static bool _$isRead(ClusterDto1 v) => v.isRead;
+  static const Field<ClusterDto1, bool> _f$isRead =
+      Field('isRead', _$isRead, opt: true, def: false);
   static int _$clusterNumber(ClusterDto1 v) => v.clusterNumber;
   static const Field<ClusterDto1, int> _f$clusterNumber =
       Field('clusterNumber', _$clusterNumber, key: r'cluster_number');
@@ -175,6 +178,7 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
 
   @override
   final MappableFields<ClusterDto1> fields = const {
+    #isRead: _f$isRead,
     #clusterNumber: _f$clusterNumber,
     #uniqueDomains: _f$uniqueDomains,
     #numberOfTitles: _f$numberOfTitles,
@@ -220,6 +224,7 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
 
   static ClusterDto1 _instantiate(DecodingData data) {
     return ClusterDto1(
+        isRead: data.dec(_f$isRead),
         clusterNumber: data.dec(_f$clusterNumber),
         uniqueDomains: data.dec(_f$uniqueDomains),
         numberOfTitles: data.dec(_f$numberOfTitles),
@@ -342,7 +347,8 @@ abstract class ClusterDto1CopyWith<$R, $In extends ClusterDto1, $Out>
   ListCopyWith<$R, DomainDto1, DomainDto1CopyWith<$R, DomainDto1, DomainDto1>>
       get domains;
   $R call(
-      {int? clusterNumber,
+      {bool? isRead,
+      int? clusterNumber,
       int? uniqueDomains,
       int? numberOfTitles,
       String? category,
@@ -472,7 +478,8 @@ class _ClusterDto1CopyWithImpl<$R, $Out>
           (v, t) => v.copyWith.$chain(t), (v) => call(domains: v));
   @override
   $R call(
-          {int? clusterNumber,
+          {bool? isRead,
+          int? clusterNumber,
           int? uniqueDomains,
           int? numberOfTitles,
           String? category,
@@ -514,6 +521,7 @@ class _ClusterDto1CopyWithImpl<$R, $Out>
           List<ArticleDto1>? articles,
           List<DomainDto1>? domains}) =>
       $apply(FieldCopyWithData({
+        if (isRead != null) #isRead: isRead,
         if (clusterNumber != null) #clusterNumber: clusterNumber,
         if (uniqueDomains != null) #uniqueDomains: uniqueDomains,
         if (numberOfTitles != null) #numberOfTitles: numberOfTitles,
@@ -569,6 +577,7 @@ class _ClusterDto1CopyWithImpl<$R, $Out>
       }));
   @override
   ClusterDto1 $make(CopyWithData data) => ClusterDto1(
+      isRead: data.get(#isRead, or: $value.isRead),
       clusterNumber: data.get(#clusterNumber, or: $value.clusterNumber),
       uniqueDomains: data.get(#uniqueDomains, or: $value.uniqueDomains),
       numberOfTitles: data.get(#numberOfTitles, or: $value.numberOfTitles),

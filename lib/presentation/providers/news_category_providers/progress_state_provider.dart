@@ -14,8 +14,8 @@ class ProgressState extends _$ProgressState {
     state = 0.0;
     _timer?.cancel();
 
-    const int totalDuration = 900;
-    const int interval = 20;
+    const int totalDuration = 1800;
+    const int interval = 60;
 
     int elapsed = 0;
     _timer = Timer.periodic(const Duration(milliseconds: interval), (timer) {

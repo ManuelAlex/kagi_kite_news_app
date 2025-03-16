@@ -21,21 +21,20 @@ class CategoryDetailsDto1Adapter extends TypeAdapter<CategoryDetailsDto1> {
       category: fields[1] == null ? 'OnThisDay' : fields[1] as String,
       read: fields[2] == null ? 0 : (fields[2] as num).toInt(),
       clusters:
-          fields[4] == null
+          fields[3] == null
               ? const <ClusterDto1>[]
-              : (fields[4] as List).cast<ClusterDto1>(),
+              : (fields[3] as List).cast<ClusterDto1>(),
       events:
-          fields[5] == null
+          fields[4] == null
               ? const <OnThisDayEventDto1>[]
-              : (fields[5] as List).cast<OnThisDayEventDto1>(),
-      isRead: fields[3] == null ? false : fields[3] as bool,
+              : (fields[4] as List).cast<OnThisDayEventDto1>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, CategoryDetailsDto1 obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.timestamp)
       ..writeByte(1)
@@ -43,10 +42,8 @@ class CategoryDetailsDto1Adapter extends TypeAdapter<CategoryDetailsDto1> {
       ..writeByte(2)
       ..write(obj.read)
       ..writeByte(3)
-      ..write(obj.isRead)
-      ..writeByte(4)
       ..write(obj.clusters)
-      ..writeByte(5)
+      ..writeByte(4)
       ..write(obj.events);
   }
 

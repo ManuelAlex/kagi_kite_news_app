@@ -76,4 +76,21 @@ class NewsCategoryDetailsRepositoryImpl
       'Failed to fetch category details for "$fileName" from both remote and local sources.',
     );
   }
+
+  @override
+  Future<Result<bool>> update(String fileName, CategoryDetails entity) async {
+    try {
+      final CategoryDetailsDto1 updatedDto = const CategoryDetailsDtoMapper()
+          .convert<CategoryDetails, CategoryDetailsDto1>(entity);
+
+      final Result<bool> success = await localDataSource.updateCategoryDetails(
+        fileName,
+        updatedDto,
+      );
+
+      return success;
+    } catch (e) {
+      return Failure<bool>('Error updating category details in repository: $e');
+    }
+  }
 }

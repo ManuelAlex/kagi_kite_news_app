@@ -423,6 +423,7 @@ class $ClusterDtoMapper implements _i1.AutoMapprInterface {
       );
     }
     return _i3.Cluster(
+      isRead: model.isRead,
       clusterNumber: model.clusterNumber,
       uniqueDomains: model.uniqueDomains,
       numberOfTitles: model.numberOfTitles,
@@ -491,6 +492,7 @@ class $ClusterDtoMapper implements _i1.AutoMapprInterface {
       );
     }
     return _i2.ClusterDto1(
+      isRead: model.isRead,
       clusterNumber: model.clusterNumber,
       uniqueDomains: model.uniqueDomains,
       numberOfTitles: model.numberOfTitles,

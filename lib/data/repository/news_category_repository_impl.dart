@@ -26,11 +26,6 @@ class NewsCategoryRepositoryImpl implements NewsCategoryRepository {
     // Load from local storage first
     final Result<NewsCategoriesDto1> localResult =
         await localDataSource.fetchNewsCategories();
-    print('==========');
-    print('==========');
-    print(forceRefresh);
-    print('==========');
-    print('==========');
     if (localResult is Success<NewsCategoriesDto1>) {
       final NewsCategoriesDto1 localData = localResult.data;
 

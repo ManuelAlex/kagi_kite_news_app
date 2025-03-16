@@ -24,6 +24,7 @@ part 'cluster_dto_1.g.dart';
 // we just cast all to a list
 class ClusterDto1 extends Dto with ClusterDto1Mappable {
   const ClusterDto1({
+    this.isRead = false,
     required this.clusterNumber,
     required this.uniqueDomains,
     required this.numberOfTitles,
@@ -242,4 +243,6 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
   final List<ArticleDto1> articles;
   @HiveField(42)
   final List<DomainDto1> domains;
+  @HiveField(43)
+  final bool isRead;
 }

@@ -19,7 +19,7 @@ class CategoryDetails extends Entity<String> with CategoryDetailsMappable {
     this.category = 'OnThisDay',
     this.read = 0,
     this.clusters = const <Cluster>[],
-    this.isRead = false,
+
     this.events = const <OnThisDayEvent>[],
   }) : super(id: category);
 
@@ -30,7 +30,7 @@ class CategoryDetails extends Entity<String> with CategoryDetailsMappable {
       timestamp: DateTime.now(),
       category: random.nextBool() ? 'OnThisDay' : 'GeneralCategory',
       read: random.nextInt(10),
-      isRead: random.nextBool(),
+
       clusters: List.generate(random.nextInt(3), (_) => Cluster.random()),
       events: List.generate(random.nextInt(5), (_) => OnThisDayEvent.random()),
     );
@@ -38,7 +38,7 @@ class CategoryDetails extends Entity<String> with CategoryDetailsMappable {
 
   final String category;
   final int read;
-  final bool isRead;
+
   final List<Cluster> clusters;
   final List<OnThisDayEvent> events;
 }

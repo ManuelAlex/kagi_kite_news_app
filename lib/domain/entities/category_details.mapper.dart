@@ -34,9 +34,6 @@ class CategoryDetailsMapper extends ClassMapperBase<CategoryDetails> {
   static List<Cluster> _$clusters(CategoryDetails v) => v.clusters;
   static const Field<CategoryDetails, List<Cluster>> _f$clusters =
       Field('clusters', _$clusters, opt: true, def: const <Cluster>[]);
-  static bool _$isRead(CategoryDetails v) => v.isRead;
-  static const Field<CategoryDetails, bool> _f$isRead =
-      Field('isRead', _$isRead, opt: true, def: false);
   static List<OnThisDayEvent> _$events(CategoryDetails v) => v.events;
   static const Field<CategoryDetails, List<OnThisDayEvent>> _f$events =
       Field('events', _$events, opt: true, def: const <OnThisDayEvent>[]);
@@ -47,7 +44,6 @@ class CategoryDetailsMapper extends ClassMapperBase<CategoryDetails> {
     #category: _f$category,
     #read: _f$read,
     #clusters: _f$clusters,
-    #isRead: _f$isRead,
     #events: _f$events,
   };
 
@@ -57,7 +53,6 @@ class CategoryDetailsMapper extends ClassMapperBase<CategoryDetails> {
         category: data.dec(_f$category),
         read: data.dec(_f$read),
         clusters: data.dec(_f$clusters),
-        isRead: data.dec(_f$isRead),
         events: data.dec(_f$events));
   }
 
@@ -104,7 +99,6 @@ abstract class CategoryDetailsCopyWith<$R, $In extends CategoryDetails, $Out>
       String? category,
       int? read,
       List<Cluster>? clusters,
-      bool? isRead,
       List<OnThisDayEvent>? events});
   CategoryDetailsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
       Then<$Out2, $R2> t);
@@ -133,14 +127,12 @@ class _CategoryDetailsCopyWithImpl<$R, $Out>
           String? category,
           int? read,
           List<Cluster>? clusters,
-          bool? isRead,
           List<OnThisDayEvent>? events}) =>
       $apply(FieldCopyWithData({
         if (timestamp != null) #timestamp: timestamp,
         if (category != null) #category: category,
         if (read != null) #read: read,
         if (clusters != null) #clusters: clusters,
-        if (isRead != null) #isRead: isRead,
         if (events != null) #events: events
       }));
   @override
@@ -149,7 +141,6 @@ class _CategoryDetailsCopyWithImpl<$R, $Out>
       category: data.get(#category, or: $value.category),
       read: data.get(#read, or: $value.read),
       clusters: data.get(#clusters, or: $value.clusters),
-      isRead: data.get(#isRead, or: $value.isRead),
       events: data.get(#events, or: $value.events));
 
   @override

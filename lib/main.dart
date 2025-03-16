@@ -14,6 +14,7 @@ void main() async {
   Hive
     ..init(directory.path)
     ..registerAdapters();
+  await Hive.deleteBoxFromDisk('newsCategoryDetailsBox');
 
   runApp(const ProviderScope(child: MyApp()));
 }

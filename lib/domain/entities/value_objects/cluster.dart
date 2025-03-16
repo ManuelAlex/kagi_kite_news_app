@@ -12,6 +12,7 @@ part 'cluster.mapper.dart';
 @MappableValueObject()
 class Cluster with ClusterMappable {
   const Cluster({
+    this.isRead = false,
     required this.clusterNumber,
     required this.uniqueDomains,
     required this.numberOfTitles,
@@ -140,4 +141,5 @@ class Cluster with ClusterMappable {
   final String technicalSpecifications;
   final List<Article> articles;
   final List<Domain> domains;
+  final bool isRead;
 }
