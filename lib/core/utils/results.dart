@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class Result<TEntity> {
+abstract class Result<TEntity> {
   const Result();
 
   bool get isSuccess => this is Success<TEntity>;

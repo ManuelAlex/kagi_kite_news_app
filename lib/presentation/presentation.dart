@@ -6,7 +6,7 @@
 
 library;
 
-export 'pages/new_home_page.dart';
+export 'pages/news_home_page.dart';
 export 'pages/pages.dart';
 export 'providers/news_category_details_provider/fetch_new_category_details_provider.dart';
 export 'providers/news_category_details_provider/news_category_details_local_data_source_provider.dart';

@@ -6,4 +6,4 @@
 
 library;
 
-export 'new_home_page.dart';
+export 'news_home_page.dart';

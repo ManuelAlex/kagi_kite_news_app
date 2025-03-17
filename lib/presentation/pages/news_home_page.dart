@@ -13,14 +13,14 @@ import '../widgets/_kite_app_bar.dart';
 import '../widgets/kite_loading_widget.dart';
 import '../widgets/news_category_tab_view.dart';
 
-class NewHomePage extends ConsumerStatefulWidget {
-  const NewHomePage({super.key});
+class NewsHomePage extends ConsumerStatefulWidget {
+  const NewsHomePage({super.key});
 
   @override
-  ConsumerState<NewHomePage> createState() => _NewHomePageState();
+  ConsumerState<NewsHomePage> createState() => _NewsHomePageState();
 }
 
-class _NewHomePageState extends ConsumerState<NewHomePage> {
+class _NewsHomePageState extends ConsumerState<NewsHomePage> {
   @override
   Widget build(BuildContext context) {
     final AsyncValue<Result<NewsCategories>> newsCategoriesAsync = ref.watch(
