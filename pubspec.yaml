@@ -32,6 +32,9 @@ dependencies:
     sdk: flutter
   # Code generation for mapping between different objects with ease.
   auto_mappr_annotation: ">=2.2.0"
+  # flutter library to show images from the internet 
+  # and keep them in the cache directory.
+  cached_network_image: ">=3.4.1"
   # improved json serialization and data classes with full support for generics, 
   # inheritance, customization and more.
   dart_mappable: ">=4.3.0"
@@ -63,10 +66,12 @@ dependencies:
   path_provider: ">=2.1.5"
   # A reactive caching and data-binding framework. Riverpod makes working with
   # asynchronous code a breeze.
-  riverpod: ^2.6.1
+  riverpod: ">=2.6.1"
   # A code generator for Riverpod. This both simplifies the syntax empowers it,
   # such as allowing stateful hot-reload.
   riverpod_annotation: ">=2.6.1"
+  # Flutter plugin for launching a URL. Supports web, phone, SMS, and email schemes
+  url_launcher: ">=6.3.1"
   
 dev_dependencies:
   # Code generator for auto_mappr.

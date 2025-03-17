@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/domain.dart';
-import '_category_details_view.dart';
+import 'category_details_view.dart';
 
 class NewsCategoriesTabView extends StatelessWidget {
   const NewsCategoriesTabView(this.newsCategories, {super.key});

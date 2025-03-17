@@ -8,7 +8,7 @@ import '../presentation.dart';
 
 import '../providers/news_category_providers/news_category_provider.dart';
 import '../providers/news_category_providers/progress_state_provider.dart';
-import '../widgets/_kite_app_bar.dart';
+import '../widgets/kite_app_bar.dart';
 
 import '../widgets/kite_loading_widget.dart';
 import '../widgets/news_category_tab_view.dart';

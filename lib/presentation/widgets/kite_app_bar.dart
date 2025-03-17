@@ -7,7 +7,7 @@ import '../../domain/domain.dart';
 import '../providers/news_category_providers/force_refresh_provider.dart';
 import '../providers/news_category_providers/news_category_provider.dart';
 import '../providers/news_category_providers/progress_state_provider.dart';
-import 'animated_kite_logo.dart';
+import '_animated_kite_logo.dart';
 
 class KiteAppBar extends ConsumerStatefulWidget implements PreferredSizeWidget {
   const KiteAppBar({super.key, required this.newsCategoriesAsync});

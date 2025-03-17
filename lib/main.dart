@@ -14,6 +14,7 @@ void main() async {
   Hive
     ..init(directory.path)
     ..registerAdapters();
+  await Hive.deleteBoxFromDisk('newsCategoryDetailsBox');
 
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.transparent),
       ),
       home: const NewsHomePage(),
     );
