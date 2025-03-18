@@ -137,7 +137,10 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
         if (!widget.isExpanded) const Divider(color: Colors.black12),
         ExpandableContainer(
           isExpanded: widget.isExpanded,
-          child: ClusterExpandedView(cluster: widget.cluster),
+          child: ClusterExpandedView(
+            cluster: widget.cluster,
+            closeStory: widget.onExpand,
+          ),
         ),
       ],
     );

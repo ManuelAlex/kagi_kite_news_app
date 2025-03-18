@@ -5,33 +5,47 @@ class EventTimeLineWidget extends StatelessWidget {
 
   final List<String> timeLines;
 
+  bool isValidReaction(String intReaction) {
+    final int firstSpaceIndex = intReaction.indexOf(' ');
+    if (firstSpaceIndex == -1) {
+      return false;
+    }
+
+    final String remainingText = intReaction.substring(firstSpaceIndex + 1);
+    final int firstColonIndex = remainingText.indexOf('::');
+    return firstColonIndex != -1;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final bool hasValidReactions = timeLines.any(isValidReaction);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (timeLines.isNotEmpty)
-          Text(
-            'Timeline of events',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-        const SizedBox(height: 8),
-        ...timeLines.asMap().entries.map((MapEntry<int, String> entry) {
-          final int index = entry.key + 1;
-          final String talkingPoint = entry.value;
-          final List<String> parts = talkingPoint.split('::');
-          final String title = parts.first;
-          final String content =
-              parts.length > 1 ? parts.sublist(1).join(':').trim() : '';
+      children:
+          !hasValidReactions
+              ? <Widget>[]
+              : [
+                Text(
+                  'Timeline of events',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const SizedBox(height: 8),
+                ...timeLines.asMap().entries.map((MapEntry<int, String> entry) {
+                  final int index = entry.key + 1;
+                  final String talkingPoint = entry.value;
+                  final List<String> parts = talkingPoint.split('::');
+                  final String title = parts.first;
+                  final String content =
+                      parts.length > 1 ? parts.sublist(1).join(':').trim() : '';
 
-          return _EventTimeLineWidget(
-            index: index,
-            title: title,
-            content: content,
-            lastIndex: timeLines.length,
-          );
-        }),
-      ],
+                  return _EventTimeLineWidget(
+                    index: index,
+                    title: title,
+                    content: content,
+                    lastIndex: timeLines.length,
+                  );
+                }),
+              ],
     );
   }
 }

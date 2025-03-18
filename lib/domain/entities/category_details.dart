@@ -25,7 +25,7 @@ class CategoryDetails extends Entity<String> with CategoryDetailsMappable {
 
   /// Factory constructor for generating random test data
   factory CategoryDetails.random() {
-    final random = Random();
+    final Random random = Random();
     return CategoryDetails(
       timestamp: DateTime.now(),
       category: random.nextBool() ? 'OnThisDay' : 'GeneralCategory',
@@ -41,4 +41,7 @@ class CategoryDetails extends Entity<String> with CategoryDetailsMappable {
 
   final List<Cluster> clusters;
   final List<OnThisDayEvent> events;
+
+  int get totalRead =>
+      clusters.where((Cluster cluster) => cluster.isRead).length;
 }
