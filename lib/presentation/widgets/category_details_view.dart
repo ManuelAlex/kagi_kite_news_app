@@ -92,8 +92,9 @@ class _CategoryDetailsViewState extends ConsumerState<CategoryDetailsView> {
                               _readStatusMap[cluster.clusterNumber] ??
                               cluster.isRead,
                           cluster: cluster,
-                          isExpanded: _expandedIndex == cluster.clusterNumber,
+                          isExpanded: expandedIndex == cluster.clusterNumber,
                           onExpand: () => expandedIndex = cluster.clusterNumber,
+                          closeStory: () => expandedIndex = null,
                           clusterIndex: cluster.clusterNumber,
                           fileName: widget.category.file,
                           onToggleRead: (bool isRead) {

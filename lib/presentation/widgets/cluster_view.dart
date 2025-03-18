@@ -19,6 +19,7 @@ class ClusterView extends ConsumerStatefulWidget {
     required this.fileName,
     required this.isReadOverride,
     required this.onToggleRead,
+    required this.closeStory,
   });
 
   final Cluster cluster;
@@ -28,6 +29,7 @@ class ClusterView extends ConsumerStatefulWidget {
   final String fileName;
   final bool isReadOverride;
   final ValueChanged<bool> onToggleRead;
+  final VoidCallback closeStory;
 
   @override
   ConsumerState<ClusterView> createState() => _ClusterViewState();
@@ -139,7 +141,7 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
           isExpanded: widget.isExpanded,
           child: ClusterExpandedView(
             cluster: widget.cluster,
-            closeStory: widget.onExpand,
+            closeStory: widget.closeStory,
           ),
         ),
       ],

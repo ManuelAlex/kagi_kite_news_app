@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/core.dart';
 import '../../core/utils/date_time_format.dart';
 import '../../domain/domain.dart';
-import '../presentation.dart';
 import '../providers/news_category_providers/force_refresh_provider.dart';
 import '../providers/news_category_providers/news_category_provider.dart';
 import '../providers/news_category_providers/progress_state_provider.dart';
@@ -73,43 +72,21 @@ class _KiteAppBarState extends ConsumerState<KiteAppBar> {
     final String formattedLastUpdated =
         newsCategories?.timestamp.notificationTime() ?? now.notificationTime();
 
-    final int totalRead =
-        hasData
-            ? newsCategories!.categories.fold<int>(0, (
-              int sum,
-              Category category,
-            ) {
-              final AsyncValue<Result<CategoryDetails>> categoryDetailsAsync =
-                  ref.watch(newsCategoryDetailsProvider(category.file));
+    const int totalRead = 42;
 
-              if (categoryDetailsAsync is AsyncData) {
-                final Result<CategoryDetails>? result =
-                    categoryDetailsAsync.value;
-                if (result != null && result.isSuccess) {
-                  final CategoryDetails categoryDetails =
-                      (result as Success<CategoryDetails>).data;
-                  return sum + categoryDetails.totalRead;
-                }
-              }
-              return sum;
-            })
-            : 0;
-
-    String getCurrentInfoText() {
-      return switch (_currentInfo) {
-        NewsInfo.newsDate => formattedNewsDate,
-        NewsInfo.newsAsWeekDay => formattedWeekAndDay,
-        NewsInfo.lastUpdated => formattedLastUpdated,
-        NewsInfo.totalRead => switch (totalRead) {
-          0 => "You've read no stories",
-          1 => "You've read 1 story",
-          _ =>
-            "You've read $totalRead stories", // This will only get the last current story after th last refresh
-          // as we are not using a stream, althogh the implementation is same with the website
-          // you will need to refresh with the kite logo icon to get the latest read total.
-        },
-      };
-    }
+    final String currentInfoText = switch (_currentInfo) {
+      NewsInfo.newsDate => formattedNewsDate,
+      NewsInfo.newsAsWeekDay => formattedWeekAndDay,
+      NewsInfo.lastUpdated => formattedLastUpdated,
+      NewsInfo.totalRead => switch (totalRead) {
+        0 => "You've read no stories",
+        1 => "You've read 1 story",
+        _ =>
+          "You've read $totalRead stories", // This will only get the last current story after th last refresh
+        // as we are not using a stream, althogh the implementation is same with the website
+        // you will need to refresh with the kite logo icon to get the latest read total.
+      },
+    };
 
     return AppBar(
       title: Row(
@@ -130,9 +107,11 @@ class _KiteAppBarState extends ConsumerState<KiteAppBar> {
           Expanded(
             child: GestureDetector(
               onTap: toggleInfo,
-              child: Text(
-                getCurrentInfoText(),
-                style: Theme.of(context).textTheme.titleMedium,
+              child: Center(
+                child: Text(
+                  currentInfoText,
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
               ),
             ),
           ),
