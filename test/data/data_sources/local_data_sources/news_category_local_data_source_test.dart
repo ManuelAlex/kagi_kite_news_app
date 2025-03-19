@@ -19,7 +19,6 @@ void main() {
   late MockHiveBox mockBox;
   late MockHiveInterface mockHive;
 
-  // Step 2: Register the Fake class before tests run
   setUpAll(() {
     registerFallbackValue(FakeNewsCategoriesDto1());
   });

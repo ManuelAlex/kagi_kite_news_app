@@ -9,14 +9,14 @@ import '../../dtos/news_categories/news_categories_dto_1.dart';
 import '../../dtos/news_categories/news_categories_dto_mapper.dart';
 import '_base_url.dart';
 
-class NewsCategoryRemoteDataSource extends ApiClient {
-  NewsCategoryRemoteDataSource();
-
+class NewsCategoryRemoteDataSource {
+  const NewsCategoryRemoteDataSource(this.apiClient);
+  final ApiClient apiClient;
   Future<Result<NewsCategories>> fetchNewsCategories() async {
     try {
       final Uri uri = Uri.parse('$baseUrl/kite.json');
 
-      final ApiResponse response = await get(uri);
+      final ApiResponse response = await apiClient.get(uri);
 
       if (response.status.isOk) {
         final JsonMap jsonMap = jsonDecode(response.asDataString) as JsonMap;

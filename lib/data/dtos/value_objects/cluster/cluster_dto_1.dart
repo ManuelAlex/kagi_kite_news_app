@@ -69,9 +69,9 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
   });
 
   factory ClusterDto1.random() => ClusterDto1(
-    clusterNumber: Random().nextInt(100),
-    uniqueDomains: Random().nextInt(100),
-    numberOfTitles: Random().nextInt(100),
+    clusterNumber: Random().nextInt(10),
+    uniqueDomains: Random().nextInt(10),
+    numberOfTitles: Random().nextInt(10),
     category: 'category',
     title: 'title',
     shortSummary: 'shortSummary',

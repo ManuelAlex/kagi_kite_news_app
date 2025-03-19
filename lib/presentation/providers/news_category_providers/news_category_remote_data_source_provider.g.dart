@@ -7,7 +7,7 @@ part of 'news_category_remote_data_source_provider.dart';
 // **************************************************************************
 
 String _$newsCategoryRemoteDataSourceHash() =>
-    r'71402c2862b3764da84f76a62a15ac811432b862';
+    r'cd2a49b2275cb735ae720ea32ba39fbe2aa1546d';
 
 /// See also [newsCategoryRemoteDataSource].
 @ProviderFor(newsCategoryRemoteDataSource)

@@ -11,14 +11,17 @@ import '../../../domain/domain.dart';
 import '../../dtos/dtos.dart';
 import '_base_url.dart';
 
-class NewsCategoryDetailsRemoteDataSource extends ApiClient {
-  NewsCategoryDetailsRemoteDataSource();
+class NewsCategoryDetailsRemoteDataSource {
+  const NewsCategoryDetailsRemoteDataSource(this.apiClient);
+  final ApiClient apiClient;
 
   Future<Result<CategoryDetails>> getCategoryDetailsByFileName(
     String fileName,
   ) async {
     final Uri uri = Uri.parse('$baseUrl/$fileName');
-    final ApiResponse response = await get(uri);
+    final ApiResponse response = await apiClient.get(
+      uri,
+    ); // Use injected ApiClient
 
     if (!response.status.isOk) {
       return Failure<CategoryDetails>(
@@ -28,12 +31,10 @@ class NewsCategoryDetailsRemoteDataSource extends ApiClient {
     }
 
     final JsonMap jsonMap = jsonDecode(response.asDataString);
-
     if (jsonMap.isEmpty) {
       return const Failure<CategoryDetails>('Category details not found.');
     }
 
-    // Run parsing in an isolate to avoid blocking the UI
     final CategoryDetails categoryDetails = await compute(
       _parseCategoryDetails,
       jsonMap,
@@ -42,7 +43,6 @@ class NewsCategoryDetailsRemoteDataSource extends ApiClient {
     return Success<CategoryDetails>(categoryDetails);
   }
 
-  /// Parses category details using compute() to offload heavy JSON processing to a separate isolate.
   static CategoryDetails _parseCategoryDetails(JsonMap jsonMap) {
     final CategoryDetailsDto1 dto = CategoryDetailsDto1Mapper.fromMap(jsonMap);
     return const CategoryDetailsDtoMapper()

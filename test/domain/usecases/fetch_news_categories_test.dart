@@ -52,5 +52,8 @@ void main() {
     // Assert
     expect(result, isA<Failure<NewsCategories>>());
     expect((result as Failure).message, 'Error fetching news categories');
+    verify(
+      () => repository.getNewsCategories(forceRefresh: forceRefresh),
+    ).called(1);
   });
 }

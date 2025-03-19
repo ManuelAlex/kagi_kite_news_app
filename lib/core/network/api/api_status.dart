@@ -24,6 +24,8 @@ enum ApiStatus {
   // Unauthorized request.
   unauthorized(401),
 
+  notFound(404),
+
   /// Conflict.
   ///
   /// A request conflict with the current state of the target resource.
