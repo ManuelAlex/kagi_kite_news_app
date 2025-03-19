@@ -7,7 +7,7 @@ part of 'news_category_local_data_source_provider.dart';
 // **************************************************************************
 
 String _$newsCategoryLocalDataSourceHash() =>
-    r'216f74ca93287edf4fb4b27728ab92b4ee264bf6';
+    r'f6696446e052eb719d4e55859f13204c843247bc';
 
 /// See also [newsCategoryLocalDataSource].
 @ProviderFor(newsCategoryLocalDataSource)

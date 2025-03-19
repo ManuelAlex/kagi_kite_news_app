@@ -5,23 +5,24 @@ import '../../../core/utils/results.dart';
 import '../../dtos/news_categories/news_categories_dto_1.dart';
 
 class NewsCategoryLocalDataSource {
+  NewsCategoryLocalDataSource(this.hiveInterface);
+  final HiveInterface hiveInterface;
   static const String boxName = 'newsCategoriesBox';
 
   Future<void> saveNewsCategories(NewsCategoriesDto1 dto) async {
     try {
-      final Box<NewsCategoriesDto1> box =
-          await Hive.openBox<NewsCategoriesDto1>(boxName);
+      final Box<NewsCategoriesDto1> box = await hiveInterface
+          .openBox<NewsCategoriesDto1>(boxName);
       await box.put('newsCategories', dto);
     } catch (e) {
-      // we might not need to throw exception so not to crash the app
       throw HiveStorageException('Failed to save news categories: $e');
     }
   }
 
   Future<Result<NewsCategoriesDto1>> fetchNewsCategories() async {
     try {
-      final Box<NewsCategoriesDto1> box =
-          await Hive.openBox<NewsCategoriesDto1>(boxName);
+      final Box<NewsCategoriesDto1> box = await hiveInterface
+          .openBox<NewsCategoriesDto1>(boxName);
       final NewsCategoriesDto1? dto = box.get('newsCategories');
 
       if (dto != null) {
@@ -37,9 +38,8 @@ class NewsCategoryLocalDataSource {
   }
 
   Future<void> clearOldCache() async {
-    final Box<NewsCategoriesDto1> box = await Hive.openBox<NewsCategoriesDto1>(
-      'newsCategories',
-    );
+    final Box<NewsCategoriesDto1> box = await hiveInterface
+        .openBox<NewsCategoriesDto1>(boxName);
     final DateTime threeDaysAgo = DateTime.now().toUtc().subtract(
       const Duration(days: 3),
     );

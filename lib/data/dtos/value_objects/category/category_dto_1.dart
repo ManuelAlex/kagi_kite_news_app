@@ -12,7 +12,8 @@ part 'category_dto_1.g.dart';
 @HiveType(typeId: HiveTypeIds.categoryDto)
 class CategoryDto1 extends Dto with CategoryDto1Mappable {
   const CategoryDto1({required this.name, required this.file});
-
+  factory CategoryDto1.random() =>
+      const CategoryDto1(name: 'name', file: 'file');
   @HiveField(0)
   final String name;
 

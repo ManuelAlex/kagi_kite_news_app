@@ -1,20 +1,21 @@
-import 'package:hive_ce/hive.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 
-import '../../../core/errors/hive_storage_exception.dart';
-import '../../../core/utils/results.dart';
+import '../../../core/core.dart';
 import '../../dtos/category_details/category_details_dto_1.dart';
 
 class NewsCategoryDetailsLocalDataSource {
+  NewsCategoryDetailsLocalDataSource(this.hiveInterface);
+  final HiveInterface hiveInterface;
   static const String boxName = 'newsCategoryDetailsBox';
 
-  /// Saves category details in Hive with the category name as the key.
+  /// Saves category details in hiveInterface with the category name as the key.
   Future<void> saveNewsCategoryDetails(
     String name,
     CategoryDetailsDto1 dto,
   ) async {
     try {
-      final Box<CategoryDetailsDto1> box =
-          await Hive.openBox<CategoryDetailsDto1>(boxName);
+      final Box<CategoryDetailsDto1> box = await hiveInterface
+          .openBox<CategoryDetailsDto1>(boxName);
       await box.put(name.toLowerCase(), dto);
     } catch (e) {
       throw HiveStorageException('Failed to save category details: $e');
@@ -26,8 +27,8 @@ class NewsCategoryDetailsLocalDataSource {
     String name,
   ) async {
     try {
-      final Box<CategoryDetailsDto1> box =
-          await Hive.openBox<CategoryDetailsDto1>(boxName);
+      final Box<CategoryDetailsDto1> box = await hiveInterface
+          .openBox<CategoryDetailsDto1>(boxName);
       final CategoryDetailsDto1? dto = box.get(name.toLowerCase());
 
       if (dto != null) {
@@ -46,8 +47,8 @@ class NewsCategoryDetailsLocalDataSource {
 
   Future<void> clearOldCacheForCategory(String name) async {
     try {
-      final Box<CategoryDetailsDto1> box =
-          await Hive.openBox<CategoryDetailsDto1>(boxName);
+      final Box<CategoryDetailsDto1> box = await hiveInterface
+          .openBox<CategoryDetailsDto1>(boxName);
       final DateTime threeDaysAgo = DateTime.now().toUtc().subtract(
         const Duration(days: 3),
       );
@@ -66,13 +67,12 @@ class NewsCategoryDetailsLocalDataSource {
     CategoryDetailsDto1 updatedDto,
   ) async {
     try {
-      final Box<CategoryDetailsDto1> box =
-          await Hive.openBox<CategoryDetailsDto1>(boxName);
+      final Box<CategoryDetailsDto1> box = await hiveInterface
+          .openBox<CategoryDetailsDto1>(boxName);
 
       final String key = categoryName.toLowerCase();
 
       await box.delete(key);
-
       await box.put(key, updatedDto);
 
       return const Success(true);

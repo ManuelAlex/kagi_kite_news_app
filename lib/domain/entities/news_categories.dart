@@ -9,6 +9,9 @@ part 'news_categories.mapper.dart';
 class NewsCategories extends Entity<void> with NewsCategoriesMappable {
   const NewsCategories({required super.timestamp, required this.categories})
     : super(id: null);
-
+  factory NewsCategories.random() => NewsCategories(
+    timestamp: DateTime.now().toUtc(),
+    categories: List.generate(6, (index) => Category.random()),
+  );
   final List<Category> categories;
 }

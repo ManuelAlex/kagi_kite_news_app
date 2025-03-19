@@ -14,7 +14,10 @@ part 'news_categories_dto_1.g.dart';
 @HiveType(typeId: HiveTypeIds.newCategoriesDto)
 class NewsCategoriesDto1 extends Dto with NewsCategoriesDto1Mappable {
   const NewsCategoriesDto1({required this.categories, required this.timestamp});
-
+  factory NewsCategoriesDto1.random() => NewsCategoriesDto1(
+    timestamp: DateTime.now().toUtc(),
+    categories: List.generate(6, (index) => CategoryDto1.random()),
+  );
   @HiveField(0)
   final List<CategoryDto1> categories;
 

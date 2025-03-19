@@ -34,9 +34,6 @@ class NewsCategoryRepositoryImpl implements NewsCategoryRepository {
             const NewsCategoriesDtoMapper()
                 .convert<NewsCategoriesDto1, NewsCategories>(localData);
 
-        // Trigger Preload for category details
-        await _preloadCategoryDetails(cachedNewsCategories.categories);
-
         return Success<NewsCategories>(cachedNewsCategories);
       }
     }

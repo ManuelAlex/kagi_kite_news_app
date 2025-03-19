@@ -1,22 +1,15 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive_ce_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart';
 
-import 'hive_registrar.g.dart';
+import 'core/app/app_initializer.dart';
+import 'core/app/run_application.dart';
+
 import 'presentation/pages/news_home_page.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final Directory directory = await getApplicationDocumentsDirectory();
-  Hive
-    ..init(directory.path)
-    ..registerAdapters();
-  //await Hive.deleteBoxFromDisk('newsCategoryDetailsBox');
-
-  runApp(const ProviderScope(child: MyApp()));
+  // Initialize the application before running the widget tree,
+  // ensuring dependencies like Hive are ready for synchronous use.
+  final AppInitializer appInitializer = AppInitializer();
+  await runApplication(appInitializer, const MyApp());
 }
 
 class MyApp extends StatelessWidget {

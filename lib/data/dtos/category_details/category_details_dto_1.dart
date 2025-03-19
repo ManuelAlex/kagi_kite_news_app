@@ -21,6 +21,13 @@ class CategoryDetailsDto1 extends Dto with CategoryDetailsDto1Mappable {
     this.clusters = const <ClusterDto1>[],
     this.events = const <OnThisDayEventDto1>[],
   });
+  factory CategoryDetailsDto1.random() => CategoryDetailsDto1(
+    timestamp: DateTime.now().toUtc(),
+    category: 'category',
+    read: 28,
+    clusters: List.generate(4, (_) => ClusterDto1.random()),
+    events: List.generate(4, (_) => OnThisDayEventDto1.random()),
+  );
   @HiveField(0)
   final DateTime timestamp;
 
