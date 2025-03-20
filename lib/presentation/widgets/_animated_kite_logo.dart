@@ -82,6 +82,7 @@ class _AnimatedKiteLogoState extends State<AnimatedKiteLogo>
               Transform.translate(
                 offset: Offset(dx, dy),
                 child: Image.asset(
+                  key: const Key('kiteLogo'),
                   'assets/kite_bg.png',
                   fit: BoxFit.contain,
                   height: 40,
@@ -90,6 +91,7 @@ class _AnimatedKiteLogoState extends State<AnimatedKiteLogo>
               ),
 
               TextButton(
+                key: const Key('kiteButton'),
                 onPressed: widget.onRefresh,
                 child: Text(
                   'Kite',

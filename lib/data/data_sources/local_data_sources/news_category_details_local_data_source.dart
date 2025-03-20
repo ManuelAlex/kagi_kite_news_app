@@ -2,11 +2,12 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 
 import '../../../core/core.dart';
 import '../../dtos/category_details/category_details_dto_1.dart';
+import 'hive_box.dart';
 
 class NewsCategoryDetailsLocalDataSource {
   NewsCategoryDetailsLocalDataSource(this.hiveInterface);
   final HiveInterface hiveInterface;
-  static const String boxName = 'newsCategoryDetailsBox';
+  static String boxName = HiveBoxStorage.newsCategoryDetailsBox.name;
 
   /// Saves category details in hiveInterface with the category name as the key.
   Future<void> saveNewsCategoryDetails(

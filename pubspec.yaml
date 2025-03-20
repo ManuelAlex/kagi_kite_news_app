@@ -86,9 +86,24 @@ dev_dependencies:
   # A Dart mock library which simplifies mocking with null safety support and no
   # manual mocks or code generation.
   mocktail: ">=1.0.4"
+  # This package provides a base class for platform interfaces of federated flutter plugins.
+  # Platform implementations should extends their platform interface class 
+  # rather than implements it, as newly added methods to platform interfaces 
+  # are not considered breaking changes. 
+  # Extending a platform interface ensures that subclasses will get the default implementations 
+  # from the base class, while platform implementations that implements 
+  # their platform interface will be broken by newly added methods.
+  plugin_platform_interface: ">=2.1.8"
+  # Enables self-driving testing of Flutter code on devices and emulators.
+  integration_test:
+    sdk: flutter
   # A code generator for Riverpod. This both simplifies the syntax empowers it,
   # such as allowing stateful hot-reload.
   riverpod_generator: ">=2.3.10"
+  # A common platform interface for the url_launcher plugin.
+  # This interface allows platform-specific implementations of the url_launcher plugin,
+  #  as well as the plugin itself, to ensure they are supporting the same interface.
+  url_launcher_platform_interface: ">=2.3.2"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -3,11 +3,12 @@ import 'package:hive_ce/hive.dart';
 import '../../../core/errors/hive_storage_exception.dart';
 import '../../../core/utils/results.dart';
 import '../../dtos/news_categories/news_categories_dto_1.dart';
+import 'hive_box.dart';
 
 class NewsCategoryLocalDataSource {
   NewsCategoryLocalDataSource(this.hiveInterface);
   final HiveInterface hiveInterface;
-  static const String boxName = 'newsCategoriesBox';
+  static String boxName = HiveBoxStorage.newsCategoriesBox.name;
 
   Future<void> saveNewsCategories(NewsCategoriesDto1 dto) async {
     try {

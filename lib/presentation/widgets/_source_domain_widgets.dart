@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../../core/utils/launch_any_url.dart';
 import '../../domain/entities/entities.dart';
 import '_expandable_container.dart';
-import '_expandable_icon.dart';
 
 class SourceDomainWidget extends StatefulWidget {
   const SourceDomainWidget({
@@ -57,7 +56,7 @@ class _SourceDomainWidgetState extends State<SourceDomainWidget> {
                 context,
               ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
-            ExpandableIcon(
+            ExpandIcon(
               size: 20,
               isExpanded: isExpanded,
               onPressed: (_) {

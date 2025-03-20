@@ -39,6 +39,7 @@ class _KiteLoadingWidgetState extends State<KiteLoadingWidget>
     const double dx = 0;
     final double dy = movementRange * progress * angle;
     return Column(
+      key: const Key('KiteLoadingWidget'),
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Transform.translate(

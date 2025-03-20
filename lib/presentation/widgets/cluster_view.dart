@@ -7,7 +7,6 @@ import '../../domain/usecases/toggle_news_cluster_is_read.dart';
 import '../providers/news_category_details_provider/toggle_news_cluster_is_read_usecase_provider.dart';
 import '_cluster_exapanded_view.dart';
 import '_expandable_container.dart';
-import '_expandable_icon.dart';
 
 class ClusterView extends ConsumerStatefulWidget {
   const ClusterView({
@@ -83,7 +82,7 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
                               ?.copyWith(color: categoryColor),
                         ),
                         const SizedBox(width: 4),
-                        ExpandableIcon(
+                        ExpandIcon(
                           size: 20,
                           isExpanded: widget.isExpanded,
                           onPressed: (_) => widget.onExpand(),
