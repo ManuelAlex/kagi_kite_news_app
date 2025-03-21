@@ -8,6 +8,7 @@ import '../../domain/domain.dart';
 import '../../domain/usecases/toggle_news_cluster_is_read.dart';
 import '../providers/news_category_details_provider/news_category_details_provider.dart';
 import '../providers/news_category_details_provider/toggle_news_cluster_is_read_usecase_provider.dart';
+import '_on_this_day_event_widget.dart';
 import 'cluster_view.dart';
 import 'error_block.dart';
 
@@ -79,6 +80,7 @@ class _CategoryDetailsViewState extends ConsumerState<CategoryDetailsView> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
+                  key: const Key('clusterListView'),
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     ...categoryDetails.data.clusters.sortCluster().map<Widget>((
@@ -109,6 +111,7 @@ class _CategoryDetailsViewState extends ConsumerState<CategoryDetailsView> {
                     if (categoryDetails.data.clusters.isNotEmpty &&
                         !_areAllClustersMarked(categoryDetails.data.clusters))
                       InkWell(
+                        key: const Key('markAllAsReadButton'),
                         onTap: () async {
                           await _markAllAsRead(
                             categoryDetails.data.clusters,
@@ -130,6 +133,8 @@ class _CategoryDetailsViewState extends ConsumerState<CategoryDetailsView> {
                           ),
                         ),
                       ),
+                    if (categoryDetails.data.events.isNotEmpty)
+                      const OnThisDayEventWidget(),
                   ],
                 ),
               ),

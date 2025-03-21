@@ -21,7 +21,10 @@ class NewsCategoriesTabView extends StatelessWidget {
             isScrollable: true,
             tabs:
                 newsCategories.categories
-                    .map((Category category) => Tab(text: category.name))
+                    .map(
+                      (Category category) =>
+                          Tab(key: const Key('tabButton'), text: category.name),
+                    )
                     .toList(),
           ),
           Expanded(

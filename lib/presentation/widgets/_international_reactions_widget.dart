@@ -82,6 +82,7 @@ class _InternationalReaction extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const SizedBox(height: 16),
             Row(
@@ -94,17 +95,24 @@ class _InternationalReaction extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20,
+                Flexible(
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            Text(content, style: Theme.of(context).textTheme.titleMedium),
+            Flexible(
+              child: Text(
+                content,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ),
           ],
         ),
       ),

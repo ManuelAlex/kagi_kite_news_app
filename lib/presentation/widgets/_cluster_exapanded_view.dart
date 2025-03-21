@@ -49,9 +49,11 @@ class ClusterExpandedView extends StatelessWidget {
               children: <Widget>[
                 const Icon(Icons.location_on, color: Colors.grey, size: 20),
                 const SizedBox(width: 4),
-                Text(
-                  cluster.location,
-                  style: Theme.of(context).textTheme.titleMedium,
+                Expanded(
+                  child: Text(
+                    cluster.location,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
                 ),
               ],
             ),

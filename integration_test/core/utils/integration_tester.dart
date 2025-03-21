@@ -132,4 +132,20 @@ class IntegrationTester {
     // Failed to remove the widget. The [expect] will throw an error.
     expect(widget, findsNothing);
   }
+
+  /// Returns true if one widget is found.
+  bool findsOneWidget({
+    Finder? finder,
+    Key? key,
+    String? stringKey,
+    IconData? icon,
+  }) {
+    final Finder widgets = _buildFinder(
+      finder: finder,
+      key: key,
+      stringKey: stringKey,
+      icon: icon,
+    );
+    return tester.widgetList(widgets).length == 1;
+  }
 }

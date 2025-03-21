@@ -103,6 +103,7 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
             ),
             const SizedBox(width: 8),
             InkWell(
+              key: const Key('isReadButton'),
               borderRadius: BorderRadius.circular(16),
               onTap: () async {
                 final bool newReadStatus = !_isRead;
@@ -124,6 +125,7 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
                 }
               },
               child: Container(
+                key: const Key('isReadContainer'),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _isRead ? Colors.blue : Colors.black12,
