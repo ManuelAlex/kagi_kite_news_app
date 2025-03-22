@@ -48,6 +48,8 @@ dependencies:
   # Hive is a lightweight and blazing fast key-value database written in pure Dart. 
   # Inspired by Bitcask. 
   hive_ce_flutter: ">=2.2.0"
+  # APIs for parsing and manipulating HTML content outside the browser.
+  html: ">=0.15.5"
   # A Reactive State-Management and Dependency Injection Framework.
   flutter_riverpod: ">=2.6.1"
   flutter_test:

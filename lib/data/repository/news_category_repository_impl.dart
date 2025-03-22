@@ -50,8 +50,7 @@ class NewsCategoryRepositoryImpl implements NewsCategoryRepository {
       // Convert & update timestamp before saving
       final NewsCategoriesDto1 dto = const NewsCategoriesDtoMapper()
           .convert<NewsCategories, NewsCategoriesDto1>(newsCategories)
-      //.copyWith(timestamp: DateTime.now().toUtc())
-      ;
+          .copyWith(timestamp: DateTime.now().toUtc());
 
       await localDataSource.saveNewsCategories(dto);
 

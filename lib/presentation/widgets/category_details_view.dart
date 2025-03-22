@@ -134,7 +134,7 @@ class _CategoryDetailsViewState extends ConsumerState<CategoryDetailsView> {
                         ),
                       ),
                     if (categoryDetails.data.events.isNotEmpty)
-                      const OnThisDayEventWidget(),
+                      OnThisDayEventWidget(events: categoryDetails.data.events),
                   ],
                 ),
               ),

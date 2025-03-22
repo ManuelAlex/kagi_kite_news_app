@@ -52,8 +52,7 @@ class NewsCategoryDetailsRepositoryImpl
       // Convert and update timestamp before saving
       final CategoryDetailsDto1 dto = const CategoryDetailsDtoMapper()
           .convert<CategoryDetails, CategoryDetailsDto1>(categoryDetails)
-      // .copyWith(timestamp: DateTime.now().toUtc())
-      ;
+          .copyWith(timestamp: DateTime.now().toUtc());
 
       // Save updated category details locally
       await localDataSource.updateCategoryDetails(fileName, dto);

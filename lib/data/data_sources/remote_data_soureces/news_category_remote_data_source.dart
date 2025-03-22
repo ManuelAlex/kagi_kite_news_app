@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 import '../../../core/network/api/api_client.dart';
 import '../../../core/network/api/api_response.dart';
 import '../../../core/network/api/json_map.dart';
@@ -12,20 +14,18 @@ import '_base_url.dart';
 class NewsCategoryRemoteDataSource {
   const NewsCategoryRemoteDataSource(this.apiClient);
   final ApiClient apiClient;
+
   Future<Result<NewsCategories>> fetchNewsCategories() async {
     try {
       final Uri uri = Uri.parse('$baseUrl/kite.json');
-
       final ApiResponse response = await apiClient.get(uri);
 
       if (response.status.isOk) {
         final JsonMap jsonMap = jsonDecode(response.asDataString) as JsonMap;
-
-        final NewsCategoriesDto1 dto = NewsCategoriesDto1Mapper.fromMap(
+        final NewsCategories newsCategories = await compute(
+          _parseNewsCategories,
           jsonMap,
         );
-        final NewsCategories newsCategories = const NewsCategoriesDtoMapper()
-            .convert<NewsCategoriesDto1, NewsCategories>(dto);
 
         return Success<NewsCategories>(newsCategories);
       }
@@ -37,5 +37,11 @@ class NewsCategoryRemoteDataSource {
     } catch (e) {
       return Failure<NewsCategories>('Unexpected error: $e');
     }
+  }
+
+  static NewsCategories _parseNewsCategories(JsonMap jsonMap) {
+    final NewsCategoriesDto1 dto = NewsCategoriesDto1Mapper.fromMap(jsonMap);
+    return const NewsCategoriesDtoMapper()
+        .convert<NewsCategoriesDto1, NewsCategories>(dto);
   }
 }
