@@ -13,8 +13,10 @@ class OnThisDayEventDto1Mapper extends ClassMapperBase<OnThisDayEventDto1> {
   static OnThisDayEventDto1Mapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = OnThisDayEventDto1Mapper._());
-      MapperContainer.globals
-          .useAll(<MapperBase<Object>>[DatetimeJsonMapper()]);
+      MapperContainer.globals.useAll(<MapperBase<Object>>[
+        DatetimeJsonMapper(),
+        InfinityToDoubleJsonMapper()
+      ]);
     }
     return _instance!;
   }
@@ -29,8 +31,9 @@ class OnThisDayEventDto1Mapper extends ClassMapperBase<OnThisDayEventDto1> {
   static const Field<OnThisDayEventDto1, String> _f$content =
       Field('content', _$content);
   static double _$sortYear(OnThisDayEventDto1 v) => v.sortYear;
-  static const Field<OnThisDayEventDto1, double> _f$sortYear =
-      Field('sortYear', _$sortYear, key: r'sort_year');
+  static const Field<OnThisDayEventDto1, double> _f$sortYear = Field(
+      'sortYear', _$sortYear,
+      key: r'sort_year', hook: InfinityToDoubleHook());
   static String _$type(OnThisDayEventDto1 v) => v.type;
   static const Field<OnThisDayEventDto1, String> _f$type =
       Field('type', _$type);

@@ -7,6 +7,7 @@ import 'package:mocktail/mocktail.dart';
 class MockNewsCategoryDetailsRepository extends Mock
     implements NewsCategoryDetailsRepository {}
 
+// ignore: avoid_implementing_value_types
 class FakeCategoryDetails extends Fake implements CategoryDetails {}
 
 void main() {

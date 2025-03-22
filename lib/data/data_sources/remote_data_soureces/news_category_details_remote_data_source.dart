@@ -30,7 +30,9 @@ class NewsCategoryDetailsRemoteDataSource {
       );
     }
 
-    final JsonMap jsonMap = jsonDecode(response.asDataString);
+    final String safeJson = _preprocessJson(response.asDataString);
+    final JsonMap jsonMap = jsonDecode(safeJson);
+
     if (jsonMap.isEmpty) {
       return const Failure<CategoryDetails>('Category details not found.');
     }
@@ -47,5 +49,17 @@ class NewsCategoryDetailsRemoteDataSource {
     final CategoryDetailsDto1 dto = CategoryDetailsDto1Mapper.fromMap(jsonMap);
     return const CategoryDetailsDtoMapper()
         .convert<CategoryDetailsDto1, CategoryDetails>(dto);
+  }
+
+  /// Replaces `Infinity` and `-Infinity` with string values before JSON decoding.
+  /// Encountered this issue on the 21st march
+  /// {year: 543 or 547, content: <b><a
+  /// href="https://en.wikipedia.org/wiki/Benedict_of_Nursia" data-wiki-id="Q44265"
+  /// title="Benedict of Nursia">Benedict of Nursia</a></b> (Italian saint) died., sort_year:
+  //  Infinity, type: people},
+  static String _preprocessJson(String json) {
+    return json
+        .replaceAll('Infinity', '"Infinity"')
+        .replaceAll('-Infinity', '"-Infinity"');
   }
 }
