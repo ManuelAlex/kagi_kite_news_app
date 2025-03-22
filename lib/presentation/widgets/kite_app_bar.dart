@@ -77,7 +77,7 @@ class _KiteAppBarState extends ConsumerState<KiteAppBar> {
     final String currentInfoText = switch (_currentInfo) {
       NewsInfo.newsDate => formattedNewsDate,
       NewsInfo.newsAsWeekDay => formattedWeekAndDay,
-      NewsInfo.lastUpdated => formattedLastUpdated,
+      NewsInfo.lastUpdated => 'updated $formattedLastUpdated',
       NewsInfo.totalRead => switch (totalRead) {
         0 => "You've read no stories",
         1 => "You've read 1 story",

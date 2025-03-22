@@ -228,90 +228,96 @@ class _EventPeopleState extends State<_EventPeople> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                widget.year,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Colors.blueAccent,
-                  fontWeight: FontWeight.bold,
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  widget.year,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Colors.blueAccent,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 4),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(
-                    width: 30,
-                    height: 30,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(15),
-                      child: CachedNetworkImage(
-                        height: 30,
-                        width: 30,
-                        imageUrl: widget.imageUrl,
-                        fit: BoxFit.cover,
-                        errorWidget:
-                            (BuildContext context, String url, Object error) =>
-                                const Icon(Icons.broken_image, size: 30),
+                const SizedBox(height: 4),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: CachedNetworkImage(
+                          height: 30,
+                          width: 30,
+                          imageUrl: widget.imageUrl,
+                          fit: BoxFit.cover,
+                          errorWidget:
+                              (
+                                BuildContext context,
+                                String url,
+                                Object error,
+                              ) => const Icon(Icons.broken_image, size: 30),
+                        ),
                       ),
                     ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        MenuAnchor(
-                          controller: menuController,
-                          menuChildren:
-                              menuContent != null
-                                  ? <Widget>[
-                                    _MenuChildren(menuContent: menuContent),
-                                  ]
-                                  : <Widget>[],
-                          child: InkWell(
-                            onTap: _showMenu,
-                            child: Text(
-                              widget.name,
-                              style: Theme.of(
-                                context,
-                              ).textTheme.bodySmall?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                decoration: TextDecoration.underline,
+                    const SizedBox(width: 16),
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          MenuAnchor(
+                            controller: menuController,
+                            menuChildren:
+                                menuContent != null
+                                    ? <Widget>[
+                                      _MenuChildren(menuContent: menuContent),
+                                    ]
+                                    : <Widget>[],
+                            child: InkWell(
+                              onTap: _showMenu,
+                              child: Text(
+                                widget.name,
+                                style: Theme.of(
+                                  context,
+                                ).textTheme.bodySmall?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          widget.description,
-                          style: Theme.of(context).textTheme.bodySmall,
-                          softWrap: true,
-                        ),
-                      ],
+                          const SizedBox(height: 4),
+                          Text(
+                            widget.description,
+                            style: Theme.of(context).textTheme.bodySmall,
+                            softWrap: true,
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(width: 8),
-        VerticalDivider(
-          color: widget.isLast ? Colors.transparent : Colors.blueAccent,
-          thickness: 1.0,
-          endIndent: 8,
-        ),
-        const SizedBox(width: 8),
-      ],
+          const SizedBox(width: 8),
+          VerticalDivider(
+            color: widget.isLast ? Colors.transparent : Colors.blueAccent,
+            thickness: 1.0,
+
+            width: 1,
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
     );
   }
 }
@@ -328,6 +334,7 @@ class _MenuChildren extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
+          primary: false,
           child: Column(
             children: <Widget>[
               CachedNetworkImage(
@@ -375,13 +382,12 @@ class _EventItemState extends State<_EventItem> {
   final MenuController menuController = MenuController();
   (String?, String?)? menuContent;
 
-  Future<void> _showMenu(BuildContext context) async {
+  Future<void> _showMenu() async {
     final data = await widget.eventContent.fetchData();
     setState(() {
       menuContent = data;
     });
 
-    // Ensure the menu is opened only after updating menuContent
     menuController.open();
   }
 
@@ -429,7 +435,7 @@ class _EventItemState extends State<_EventItem> {
 
                   Expanded(
                     child: MenuAnchor(
-                      controller: menuController, // ✅ Add controller
+                      controller: menuController,
                       menuChildren:
                           menuContent != null
                               ? <Widget>[
@@ -437,7 +443,7 @@ class _EventItemState extends State<_EventItem> {
                               ]
                               : <Widget>[],
                       child: InkWell(
-                        onTap: () => _showMenu(context), // ✅ Pass context
+                        onTap: _showMenu,
                         child: Text(
                           widget.description,
                           style: Theme.of(context).textTheme.bodyMedium,
