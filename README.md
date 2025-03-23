@@ -116,7 +116,7 @@ lib/
 ```
 
 ---
-## 🧠 Thinking Process
+## App Thinking Process
 
 The core design of the Kite News App revolves around **efficient data management** by prioritizing the local data source before making network requests. This approach ensures improved performance, minimal network usage, and a seamless user experience.
 
