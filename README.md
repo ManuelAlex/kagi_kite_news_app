@@ -116,6 +116,22 @@ lib/
 ```
 
 ---
+## 🧠 Thinking Process
+
+The core design of the Kite News App revolves around **efficient data management** by prioritizing the local data source before making network requests. This approach ensures improved performance, minimal network usage, and a seamless user experience.
+
+### **Data Fetching Strategy**
+- The app **primarily relies on the local data source**  Hive due to its light weight to serve news content.
+- A **remote fetch is only triggered** when the existing data is **older than 8 hours**.
+- This aligns with the **Kite Git repository**, where news updates occur every **8 hours**.
+- A **force refresh** allows users to manually fetch the latest data, overriding the 8-hour rule.
+
+### **Data Flow**
+1. **Check Local Data** → If the data is **recent (≤8 hours old)**, it is displayed to the user.
+2. **Fetch from Remote** → If the data is **stale (>8 hours old)** or a force refresh is triggered, new data is fetched from the server.
+3. **Update Local Data** → The latest data from the remote source is stored locally for future use.
+
+This structured approach ensures that users always have access to **timely and relevant news** while maintaining optimal performance and reducing unnecessary network requests.
 
 ## Development
 ### Git Workflow
