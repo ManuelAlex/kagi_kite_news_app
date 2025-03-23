@@ -188,7 +188,7 @@ eg. flutter test test/domain/usecases/fetch_news_categories_test.dart
 To run integration test use flutter test and the files relative directory 
 eg. flutter test integration_test/presentation/pages/home_page_integration_test.dart -d macos 
 
-Note that this project current does not support github actions for the test to be run on each commit as it was out of scope, although will try and implement ment it to keep track of all test
+Note that this project current does not support github actions for the test to be run on each commit as it was out of scope, although will try and implement  it to keep track of all test
 
 
 ## Screenshots
