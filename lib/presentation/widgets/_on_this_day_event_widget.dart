@@ -12,6 +12,9 @@ class OnThisDayEventWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<OnThisDayEvent> eventEvents =
         events.where((OnThisDayEvent event) => event.type == 'event').toList();
+    if (events.isEmpty) {
+      return const SizedBox();
+    }
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(

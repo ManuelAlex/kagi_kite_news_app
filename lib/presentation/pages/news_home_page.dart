@@ -22,33 +22,50 @@ class NewsHomePage extends ConsumerStatefulWidget {
 
 class _NewsHomePageState extends ConsumerState<NewsHomePage> {
   @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      ref.read(progressStateProvider.notifier).start();
+    });
+  }
+
+  void _handleDataLoad(AsyncValue<Result<NewsCategories>> newsCategoriesAsync) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      newsCategoriesAsync.whenOrNull(
+        data: (_) => ref.read(progressStateProvider.notifier).complete(),
+        error: (_, __) => ref.read(progressStateProvider.notifier).complete(),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final AsyncValue<Result<NewsCategories>> newsCategoriesAsync = ref.watch(
       newsCategoriesProvider,
     );
-
     final double progressValue = ref.watch(progressStateProvider);
+
+    // Trigger progress updates outside build phase
+    _handleDataLoad(newsCategoriesAsync);
 
     return Scaffold(
       appBar: KiteAppBar(newsCategoriesAsync: newsCategoriesAsync),
-
       body: newsCategoriesAsync.when(
-        data: (Result<NewsCategories> result) {
-          return switch (result) {
-            final Success<NewsCategories> success => NewsCategoriesTabView(
-              success.data,
-            ),
-            final Failure<NewsCategories> failure => ErrorBlock(
-              failure.message,
-              null,
-            ),
-            _ => const ErrorBlock('Unknown error', null),
-          };
-        },
-        error: ErrorBlock.new,
         loading:
             () =>
                 Center(child: KiteLoadingWidget(progressValue: progressValue)),
+        data:
+            (Result<NewsCategories> result) => switch (result) {
+              final Success<NewsCategories> success => NewsCategoriesTabView(
+                success.data,
+              ),
+              final Failure<NewsCategories> failure => ErrorBlock(
+                failure.message,
+                null,
+              ),
+              _ => const ErrorBlock('Unknown error', null),
+            },
+        error: ErrorBlock.new,
       ),
     );
   }

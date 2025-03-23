@@ -66,10 +66,14 @@ class NewsCategoryRepositoryImpl implements NewsCategoryRepository {
   }
 
   Future<void> _preloadCategoryDetails(List<Category> categories) async {
-    for (final Category category in categories) {
-      await newsCategoryDetailsRepository.getCategoryDetailsByFileName(
-        category.file,
-      );
-    }
+    final List<Future<Result<CategoryDetails>>> futures =
+        categories
+            .map(
+              (category) => newsCategoryDetailsRepository
+                  .getCategoryDetailsByFileName(category.file),
+            )
+            .toList();
+
+    await Future.wait(futures);
   }
 }

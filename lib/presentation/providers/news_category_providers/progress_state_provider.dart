@@ -14,21 +14,26 @@ class ProgressState extends _$ProgressState {
     state = 0.0;
     _timer?.cancel();
 
-    const int totalDuration = 1800;
-    const int interval = 60;
+    const int totalDuration = 900;
+    const int interval = 30;
+    const int totalSteps = totalDuration ~/ interval;
 
-    int elapsed = 0;
+    int elapsedSteps = 0;
     _timer = Timer.periodic(const Duration(milliseconds: interval), (timer) {
-      elapsed += interval;
-      state = (elapsed / totalDuration).clamp(0.0, 1.0);
+      elapsedSteps++;
+      state = (elapsedSteps / totalSteps).clamp(0.0, 1.0);
 
-      if (elapsed >= totalDuration) {
+      if (elapsedSteps >= totalSteps) {
         complete();
       }
     });
   }
 
   void complete() {
+    if (state == 1.0) {
+      return;
+    }
+
     _timer?.cancel();
     state = 1.0;
   }

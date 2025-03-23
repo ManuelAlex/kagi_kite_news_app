@@ -66,6 +66,7 @@ class ClusterExpandedView extends StatelessWidget {
             image: cluster.articles[0].image,
             domain: cluster.articles[0].domain,
             imageCaption: cluster.articles[0].imageCaption,
+            link: cluster.articles[0].link,
           ),
         ],
         // Highligts
@@ -90,6 +91,7 @@ class ClusterExpandedView extends StatelessWidget {
             image: cluster.articles[1].image,
             domain: cluster.articles[1].domain,
             imageCaption: cluster.articles[1].imageCaption,
+            link: cluster.articles[1].link,
           ),
         ],
 

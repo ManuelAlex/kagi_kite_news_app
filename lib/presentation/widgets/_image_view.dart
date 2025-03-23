@@ -9,9 +9,10 @@ class ImageView extends StatelessWidget {
     required this.domain,
     required this.image,
     required this.imageCaption,
+    this.link,
   });
 
-  final String? image, imageCaption;
+  final String? image, imageCaption, link;
   final String domain;
 
   @override
@@ -48,25 +49,28 @@ class ImageView extends StatelessWidget {
                   ),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: CachedNetworkImage(
-                      imageUrl: image!,
-                      fit: BoxFit.cover,
-                      progressIndicatorBuilder:
-                          (context, url, progress) => ClipRRect(
-                            child: SingleChildScrollView(
-                              child: KiteLoadingWidget(
-                                progressValue: progress.progress ?? 0.5,
+                    child: GestureDetector(
+                      onTap: link == null ? null : () => launchAnyUrl(link!),
+                      child: CachedNetworkImage(
+                        imageUrl: image!,
+                        fit: BoxFit.cover,
+                        progressIndicatorBuilder:
+                            (context, url, progress) => ClipRRect(
+                              child: SingleChildScrollView(
+                                child: KiteLoadingWidget(
+                                  progressValue: progress.progress ?? 0.5,
+                                ),
                               ),
                             ),
-                          ),
-                      errorWidget:
-                          (context, url, error) => const Center(
-                            child: Icon(
-                              Icons.broken_image,
-                              size: 150,
-                              color: Colors.grey,
+                        errorWidget:
+                            (context, url, error) => const Center(
+                              child: Icon(
+                                Icons.broken_image,
+                                size: 150,
+                                color: Colors.grey,
+                              ),
                             ),
-                          ),
+                      ),
                     ),
                   ),
                 ],

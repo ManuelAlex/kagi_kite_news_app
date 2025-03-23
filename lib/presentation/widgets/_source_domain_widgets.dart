@@ -224,20 +224,23 @@ class _SourceDomainState extends State<_SourceDomain> {
                 height: 24,
 
                 decoration: const BoxDecoration(shape: BoxShape.circle),
-                child: ClipOval(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
                   child: CachedNetworkImage(
                     imageUrl: widget.favIcon,
                     width: 24,
                     height: 24,
+
                     placeholder:
                         (BuildContext context, String url) => const SizedBox(
                           width: 24,
                           height: 24,
-                          child: CircularProgressIndicator(),
+                          child: Icon(Icons.broken_image),
                         ),
                     errorWidget:
                         (BuildContext context, String url, Object error) =>
                             const Icon(Icons.broken_image),
+                    fit: BoxFit.cover,
                   ),
                 ),
               )

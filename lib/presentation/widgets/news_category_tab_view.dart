@@ -22,8 +22,13 @@ class NewsCategoriesTabView extends StatelessWidget {
             tabs:
                 newsCategories.categories
                     .map(
-                      (Category category) =>
-                          Tab(key: const Key('tabButton'), text: category.name),
+                      (Category category) => Tab(
+                        key: const Key('tabButton'),
+                        text:
+                            category.name == 'OnThisDay'
+                                ? 'Today in History'
+                                : category.name,
+                      ),
                     )
                     .toList(),
           ),
