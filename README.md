@@ -195,7 +195,7 @@ Here are some screenshots of the application:
 Check out the application in action:
 
 ![Demo Video]<video controls width="600">
-  <source src="https://github.com/ManuelAlex/kagi_kite_news_app/assets/12345678/kite_video.mp4" type="video/mp4">
+  <source src="https://github.com/user-attachments/assets/9a305819-6c64-4688-88e7-e6fde133c4a7/kite_video.mp4" type="video/mp4">
 </video>
 
 
