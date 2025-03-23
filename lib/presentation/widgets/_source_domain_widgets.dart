@@ -259,6 +259,7 @@ class _SourceDomainState extends State<_SourceDomain> {
                   0 => 'No article',
                   1 => '${widget.articles.length} article',
                   _ => '${widget.articles.length} articles',
+                  // ignore: require_trailing_commas
                 }, style: Theme.of(context).textTheme.bodySmall),
               ],
             ),

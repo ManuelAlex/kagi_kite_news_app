@@ -1,5 +1,5 @@
 
-## Welcome to the Flutter Take-Home Assignment!
+## Welcome to the Kagi kite app, Flutter Take-Home Assignment!
 
 ## The Project
 This project is a simple news aggregator application built using Flutter. The core requirements are:

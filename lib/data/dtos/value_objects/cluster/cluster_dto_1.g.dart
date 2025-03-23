@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: avoid_bool_literals_in_conditional_expressions
+
 part of 'cluster_dto_1.dart';
 
 // **************************************************************************
