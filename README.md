@@ -1,5 +1,5 @@
 
-## Welcome to the Kagi kite app, Flutter Take-Home Assignment!
+## Welcome to the Kagi's Kite news app, a Flutter Take-Home Assignment!
 
 ## The Project
 This project is a simple news aggregator application built using Flutter. The core requirements are:
@@ -13,7 +13,8 @@ This project is a simple news aggregator application built using Flutter. The co
 This project tests the ability to develop Flutter applications while handling ambiguity and open-ended tasks.
 
 ## Inspiration
-This project is modeled on Kite, Kagi's news application. The goal is to create a fast and intuitive app that provides users with a quick overview of current events. The UX should be similar to Kite but can be improved based on your insights.
+This project is modeled on Kite, Kagi's news application.(https://kite.kagi.com/) 
+The goal is to create a fast and intuitive app that provides users with a quick overview of current events. The UX should be similar to Kite but can be improved based on your insights.
 
 ## Technical Requirements
 - Use **Flutter** and **Dart** for implementation.
@@ -23,6 +24,7 @@ This project is modeled on Kite, Kagi's news application. The goal is to create 
 - Include **unit tests** and **widget tests**.
 
 ### Out of Scope
+The folowing features where considered for now in this project
 - User authentication and settings.
 - Filtering or customization of news articles.
 - Support for video news.
@@ -108,8 +110,8 @@ lib/
  │    ├── pages/
  │    │    ├── home_page.dart
  │    │    ├── news_category_page.dart
- ├── tests/                  # Unit and widget tests
- ├── integration_tests/       # End-to-end integration tests
+ ├── tests/                  # End-to-end Unit and widget tests
+ ├── integration_tests/       # integration tests
  ├── tools/                   # Build commands, index generators, Dart fixes, etc.
 ```
 
@@ -137,12 +139,22 @@ If you modify the **data layer**, such as adding a new **DTO object**, follow th
 ### Repository Updates
 If changes are made in the **repository layer**, run its corresponding **unit tests** to verify functionality remains intact.
 
+### Lint Regulations
+The linter rule abided by the project follows the rules listed here
+(https://github.com/flutter/flutter/blob/master/analysis_options.yaml) 
+A list of all available lint and their documentation is published at
+(https://dart.dev/tools/linter-rules.)
+these rules are documented on and in the same order as
+the Dart Lint rules page to make maintenance easier
+(https://github.com/dart-lang/linter/blob/master/example/all.yaml)
+
+
 ### State management
   The State management used is Riverpod
 
 ###  heads up
- The entry to the application is a bit different because of hive initialization to avoid futures in all providers, so data are seed in the AppInitializer ready to be consumed  in the App as raw data. 
- integeration test provider container injection
+ The entry to the application is a bit different because of hive initialization to avoid futures in all providers, so data are seeded in the AppInitializer ready to be consumed  in the App as raw data. 
+ integeration test provider container injection also benefits from this.
  
  Use the AppInitializer class to initialize any future class or other registers before app is run.
 
