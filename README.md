@@ -194,7 +194,10 @@ Here are some screenshots of the application:
 
 Check out the application in action:
 
-![Demo Video](assets/screen_shots/kite_vid_x4.mp4)
+![Demo Video]<video controls width="600">
+  <source src="https://github.com/ManuelAlex/kagi_kite_news_app/assets/12345678/kite_video.mp4" type="video/mp4">
+</video>
+
 
 
 ## Conclusion
