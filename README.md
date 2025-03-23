@@ -194,7 +194,7 @@ Here are some screenshots of the application:
 
 Check out the application in action:
 
-![Demo Video](assets/screen_shots/kite_video (1).mp4)
+![Demo Video](assets/screen_shots/kite_video.mp4)
 
 
 ## Conclusion
