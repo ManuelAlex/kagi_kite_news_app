@@ -194,7 +194,7 @@ Here are some screenshots of the application:
 
 Check out the application in action:
 
-![Demo Video](assets/screen_shots/kagi_app_video.mov)
+![Demo Video](assets/screen_shots/kite_video (1).mp4)
 
 
 ## Conclusion
