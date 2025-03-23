@@ -194,11 +194,7 @@ Here are some screenshots of the application:
 
 Check out the application in action:
 
-![Demo Video]<video controls width="600">
-  <source src="https://github.com/user-attachments/assets/9a305819-6c64-4688-88e7-e6fde133c4a7/kite_video.mp4" type="video/mp4">
-</video>
-
-
+[Watch Demo Video](https://github.com/user-attachments/assets/9a305819-6c64-4688-88e7-e6fde133c4a7/kite_video.mp4.mp4)
 
 ## Conclusion
 This project demonstrates clean architecture principles in a Flutter news aggregator app. Follow the structure, adhere to best practices, and ensure code quality with tests. Feel free to contribute and enhance the project!
