@@ -63,14 +63,32 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
       toggleNewsClusterIsReadUseCaseProvider,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: GestureDetector(
-                onTap: widget.onExpand,
+    return GestureDetector(
+      onTap: () async {
+        final ToggleClusterReadParam isReadClusterParam =
+            ToggleClusterReadParam(
+              clusterIndex: widget.clusterIndex - 1,
+              fileName: widget.fileName,
+              isRead: true,
+            );
+        final Result<bool> isReadResult = await isReadUseCase.call(
+          isReadClusterParam,
+        );
+        if (isReadResult.isSuccess) {
+          setState(() {
+            _isRead = true;
+          });
+
+          widget.onToggleRead(true);
+        }
+        widget.onExpand();
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -100,52 +118,52 @@ class _ClusterViewState extends ConsumerState<ClusterView> {
                   ],
                 ),
               ),
-            ),
-            const SizedBox(width: 8),
-            InkWell(
-              key: const Key('isReadButton'),
-              borderRadius: BorderRadius.circular(16),
-              onTap: () async {
-                final bool newReadStatus = !_isRead;
-                final ToggleClusterReadParam isReadClusterParam =
-                    ToggleClusterReadParam(
-                      clusterIndex: widget.clusterIndex - 1,
-                      fileName: widget.fileName,
-                      isRead: newReadStatus,
-                    );
-                final Result<bool> isReadResult = await isReadUseCase.call(
-                  isReadClusterParam,
-                );
-                if (isReadResult.isSuccess) {
-                  setState(() {
-                    _isRead = newReadStatus;
-                  });
+              const SizedBox(width: 8),
+              InkWell(
+                key: const Key('isReadButton'),
+                borderRadius: BorderRadius.circular(16),
+                onTap: () async {
+                  final bool newReadStatus = !_isRead;
+                  final ToggleClusterReadParam isReadClusterParam =
+                      ToggleClusterReadParam(
+                        clusterIndex: widget.clusterIndex - 1,
+                        fileName: widget.fileName,
+                        isRead: newReadStatus,
+                      );
+                  final Result<bool> isReadResult = await isReadUseCase.call(
+                    isReadClusterParam,
+                  );
+                  if (isReadResult.isSuccess) {
+                    setState(() {
+                      _isRead = newReadStatus;
+                    });
 
-                  widget.onToggleRead(newReadStatus);
-                }
-              },
-              child: Container(
-                key: const Key('isReadContainer'),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _isRead ? Colors.blue : Colors.black12,
+                    widget.onToggleRead(newReadStatus);
+                  }
+                },
+                child: Container(
+                  key: const Key('isReadContainer'),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _isRead ? Colors.blue : Colors.black12,
+                  ),
+                  padding: const EdgeInsets.all(4),
+                  child: const Icon(Icons.check, size: 14, color: Colors.white),
                 ),
-                padding: const EdgeInsets.all(4),
-                child: const Icon(Icons.check, size: 14, color: Colors.white),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 4),
-        if (!widget.isExpanded) const Divider(color: Colors.black12),
-        ExpandableContainer(
-          isExpanded: widget.isExpanded,
-          child: ClusterExpandedView(
-            cluster: widget.cluster,
-            closeStory: widget.closeStory,
+            ],
           ),
-        ),
-      ],
+          const SizedBox(height: 4),
+          if (!widget.isExpanded) const Divider(color: Colors.black12),
+          ExpandableContainer(
+            isExpanded: widget.isExpanded,
+            child: ClusterExpandedView(
+              cluster: widget.cluster,
+              closeStory: widget.closeStory,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
