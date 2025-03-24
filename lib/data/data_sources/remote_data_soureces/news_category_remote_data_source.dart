@@ -2,10 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import '../../../core/network/api/api_client.dart';
-import '../../../core/network/api/api_response.dart';
-import '../../../core/network/api/json_map.dart';
-import '../../../core/utils/results.dart';
+import '../../../core/core.dart';
 import '../../../domain/entities/news_categories.dart';
 import '../../dtos/news_categories/news_categories_dto_1.dart';
 import '../../dtos/news_categories/news_categories_dto_mapper.dart';
@@ -29,10 +26,10 @@ class NewsCategoryRemoteDataSource {
 
         return Success<NewsCategories>(newsCategories);
       }
-
+      final ApiException apiFailure = ApiException.fromApiResponse(response);
       return Failure<NewsCategories>(
-        'API request failed: ${response.status}',
-        erroCode: response.status.httpCode,
+        apiFailure.message ?? 'API request failed: Unknown error',
+        erroCode: int.tryParse(apiFailure.code),
       );
     } catch (e) {
       return Failure<NewsCategories>('Unexpected error: $e');

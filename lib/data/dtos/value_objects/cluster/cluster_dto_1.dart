@@ -67,7 +67,7 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
     required this.articles,
     required this.domains,
   });
-
+  // Randon factory constructor for test purposes.
   factory ClusterDto1.random() => ClusterDto1(
     clusterNumber: Random().nextInt(10),
     uniqueDomains: Random().nextInt(10),

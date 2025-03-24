@@ -19,6 +19,7 @@ class ArticleDto1 extends Dto with ArticleDto1Mappable {
     this.image,
     this.imageCaption,
   });
+  // Randon factory constructor for test purposes.
   factory ArticleDto1.random() => ArticleDto1(
     title: 'title',
     link: 'link',

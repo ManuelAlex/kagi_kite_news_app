@@ -15,7 +15,7 @@ class SourceDto1 extends Dto with SourceDto1Mappable {
   /// Factory random constructor for test purposes
   factory SourceDto1.random() => const SourceDto1(name: 'test', url: 'url');
 
-  @HiveField(0) // Assign unique field IDs
+  @HiveField(0)
   final String name;
 
   @HiveField(1)

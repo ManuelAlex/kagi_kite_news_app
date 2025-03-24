@@ -22,9 +22,10 @@ class NewsCategoryDetailsRemoteDataSource {
     final ApiResponse response = await apiClient.get(uri);
 
     if (!response.status.isOk) {
+      final ApiException apiFailure = ApiException.fromApiResponse(response);
       return Failure<CategoryDetails>(
-        ApiException.fromApiResponse(response).toString(),
-        erroCode: response.status.httpCode,
+        apiFailure.message ?? 'Some unknown Api response error ',
+        erroCode: int.tryParse(apiFailure.code),
       );
     }
 

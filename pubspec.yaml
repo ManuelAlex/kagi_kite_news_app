@@ -84,6 +84,9 @@ dev_dependencies:
   dart_mappable_builder: ">=4.3.0"
   # Extension for Hive. Automatically generates TypeAdapters to store any class.
   hive_ce_generator: ">=1.8.2"
+  # A command-line tool which simplifies the task of updating your Flutter app's
+  # launcher icon.
+  flutter_launcher_icons: ">=0.14.3"
   flutter_lints: ^5.0.0
   # A Dart mock library which simplifies mocking with null safety support and no
   # manual mocks or code generation.
@@ -107,6 +110,11 @@ dev_dependencies:
   #  as well as the plugin itself, to ensure they are supporting the same interface.
   url_launcher_platform_interface: ">=2.3.2"
 
+flutter_launcher_icons:
+  image_path: "assets/kite_bg.png"
+  android: true
+  ios: true
+ 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

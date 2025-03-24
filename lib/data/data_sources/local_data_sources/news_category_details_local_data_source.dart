@@ -2,7 +2,7 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 
 import '../../../core/core.dart';
 import '../../dtos/category_details/category_details_dto_1.dart';
-import 'hive_box.dart';
+import 'hive_box_storage.dart';
 
 class NewsCategoryDetailsLocalDataSource {
   NewsCategoryDetailsLocalDataSource(this.hiveInterface);

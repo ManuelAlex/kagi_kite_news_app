@@ -21,6 +21,7 @@ class CategoryDetailsDto1 extends Dto with CategoryDetailsDto1Mappable {
     this.clusters = const <ClusterDto1>[],
     this.events = const <OnThisDayEventDto1>[],
   });
+  // Randon factory constructor for test purposes.
   factory CategoryDetailsDto1.random() => CategoryDetailsDto1(
     timestamp: DateTime.now().toUtc(),
     category: 'category',
