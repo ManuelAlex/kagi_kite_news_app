@@ -15,7 +15,6 @@ class OnThisDayEventDto1Mapper extends ClassMapperBase<OnThisDayEventDto1> {
       MapperContainer.globals.use(_instance = OnThisDayEventDto1Mapper._());
       MapperContainer.globals.useAll(<MapperBase<Object>>[
         DatetimeJsonMapper(),
-        InfinityToDoubleJsonMapper()
       ]);
     }
     return _instance!;
@@ -25,18 +24,26 @@ class OnThisDayEventDto1Mapper extends ClassMapperBase<OnThisDayEventDto1> {
   final String id = 'OnThisDayEventDto1';
 
   static String _$year(OnThisDayEventDto1 v) => v.year;
-  static const Field<OnThisDayEventDto1, String> _f$year =
-      Field('year', _$year);
+  static const Field<OnThisDayEventDto1, String> _f$year = Field(
+    'year',
+    _$year,
+  );
   static String _$content(OnThisDayEventDto1 v) => v.content;
-  static const Field<OnThisDayEventDto1, String> _f$content =
-      Field('content', _$content);
+  static const Field<OnThisDayEventDto1, String> _f$content = Field(
+    'content',
+    _$content,
+  );
   static double _$sortYear(OnThisDayEventDto1 v) => v.sortYear;
   static const Field<OnThisDayEventDto1, double> _f$sortYear = Field(
-      'sortYear', _$sortYear,
-      key: r'sort_year', hook: InfinityToDoubleHook());
+    'sortYear',
+    _$sortYear,
+    key: r'sort_year',
+  );
   static String _$type(OnThisDayEventDto1 v) => v.type;
-  static const Field<OnThisDayEventDto1, String> _f$type =
-      Field('type', _$type);
+  static const Field<OnThisDayEventDto1, String> _f$type = Field(
+    'type',
+    _$type,
+  );
 
   @override
   final MappableFields<OnThisDayEventDto1> fields = const {
@@ -48,10 +55,11 @@ class OnThisDayEventDto1Mapper extends ClassMapperBase<OnThisDayEventDto1> {
 
   static OnThisDayEventDto1 _instantiate(DecodingData data) {
     return OnThisDayEventDto1(
-        year: data.dec(_f$year),
-        content: data.dec(_f$content),
-        sortYear: data.dec(_f$sortYear),
-        type: data.dec(_f$type));
+      year: data.dec(_f$year),
+      content: data.dec(_f$content),
+      sortYear: data.dec(_f$sortYear),
+      type: data.dec(_f$type),
+    );
   }
 
   @override
@@ -77,41 +85,56 @@ mixin OnThisDayEventDto1Mappable {
         .encodeMap<OnThisDayEventDto1>(this as OnThisDayEventDto1);
   }
 
-  OnThisDayEventDto1CopyWith<OnThisDayEventDto1, OnThisDayEventDto1,
-          OnThisDayEventDto1>
-      get copyWith => _OnThisDayEventDto1CopyWithImpl(
-          this as OnThisDayEventDto1, $identity, $identity);
+  OnThisDayEventDto1CopyWith<
+    OnThisDayEventDto1,
+    OnThisDayEventDto1,
+    OnThisDayEventDto1
+  >
+  get copyWith => _OnThisDayEventDto1CopyWithImpl(
+    this as OnThisDayEventDto1,
+    $identity,
+    $identity,
+  );
   @override
   String toString() {
-    return OnThisDayEventDto1Mapper.ensureInitialized()
-        .stringifyValue(this as OnThisDayEventDto1);
+    return OnThisDayEventDto1Mapper.ensureInitialized().stringifyValue(
+      this as OnThisDayEventDto1,
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return OnThisDayEventDto1Mapper.ensureInitialized()
-        .equalsValue(this as OnThisDayEventDto1, other);
+    return OnThisDayEventDto1Mapper.ensureInitialized().equalsValue(
+      this as OnThisDayEventDto1,
+      other,
+    );
   }
 
   @override
   int get hashCode {
-    return OnThisDayEventDto1Mapper.ensureInitialized()
-        .hashValue(this as OnThisDayEventDto1);
+    return OnThisDayEventDto1Mapper.ensureInitialized().hashValue(
+      this as OnThisDayEventDto1,
+    );
   }
 }
 
 extension OnThisDayEventDto1ValueCopy<$R, $Out>
     on ObjectCopyWith<$R, OnThisDayEventDto1, $Out> {
   OnThisDayEventDto1CopyWith<$R, OnThisDayEventDto1, $Out>
-      get $asOnThisDayEventDto1 =>
-          $base.as((v, t, t2) => _OnThisDayEventDto1CopyWithImpl(v, t, t2));
+  get $asOnThisDayEventDto1 =>
+      $base.as((v, t, t2) => _OnThisDayEventDto1CopyWithImpl(v, t, t2));
 }
 
-abstract class OnThisDayEventDto1CopyWith<$R, $In extends OnThisDayEventDto1,
-    $Out> implements ClassCopyWith<$R, $In, $Out> {
+abstract class OnThisDayEventDto1CopyWith<
+  $R,
+  $In extends OnThisDayEventDto1,
+  $Out
+>
+    implements ClassCopyWith<$R, $In, $Out> {
   $R call({String? year, String? content, double? sortYear, String? type});
   OnThisDayEventDto1CopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
-      Then<$Out2, $R2> t);
+    Then<$Out2, $R2> t,
+  );
 }
 
 class _OnThisDayEventDto1CopyWithImpl<$R, $Out>
@@ -124,21 +147,24 @@ class _OnThisDayEventDto1CopyWithImpl<$R, $Out>
       OnThisDayEventDto1Mapper.ensureInitialized();
   @override
   $R call({String? year, String? content, double? sortYear, String? type}) =>
-      $apply(FieldCopyWithData({
-        if (year != null) #year: year,
-        if (content != null) #content: content,
-        if (sortYear != null) #sortYear: sortYear,
-        if (type != null) #type: type
-      }));
+      $apply(
+        FieldCopyWithData({
+          if (year != null) #year: year,
+          if (content != null) #content: content,
+          if (sortYear != null) #sortYear: sortYear,
+          if (type != null) #type: type,
+        }),
+      );
   @override
   OnThisDayEventDto1 $make(CopyWithData data) => OnThisDayEventDto1(
-      year: data.get(#year, or: $value.year),
-      content: data.get(#content, or: $value.content),
-      sortYear: data.get(#sortYear, or: $value.sortYear),
-      type: data.get(#type, or: $value.type));
+    year: data.get(#year, or: $value.year),
+    content: data.get(#content, or: $value.content),
+    sortYear: data.get(#sortYear, or: $value.sortYear),
+    type: data.get(#type, or: $value.type),
+  );
 
   @override
   OnThisDayEventDto1CopyWith<$R2, OnThisDayEventDto1, $Out2> $chain<$R2, $Out2>(
-          Then<$Out2, $R2> t) =>
-      _OnThisDayEventDto1CopyWithImpl($value, $cast, t);
+    Then<$Out2, $R2> t,
+  ) => _OnThisDayEventDto1CopyWithImpl($value, $cast, t);
 }

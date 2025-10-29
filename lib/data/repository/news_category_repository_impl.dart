@@ -4,7 +4,6 @@ import '../../core/utils/is_recent.dart';
 import '../../core/utils/results.dart';
 import '../../domain/domain.dart';
 import '../data.dart';
-import '../data_sources/local_data_sources/hive_box_storage.dart';
 import '../data_sources/local_data_sources/news_category_local_data_source.dart';
 import '../data_sources/remote_data_soureces/news_category_remote_data_source.dart';
 
@@ -23,10 +22,6 @@ class NewsCategoryRepositoryImpl implements NewsCategoryRepository {
   Future<Result<NewsCategories>> getNewsCategories({
     bool forceRefresh = false,
   }) async {
-    final bool hasLocalData = HiveBoxStorage.newsCategoriesBox.hasData(
-      HiveTypeIds.newCategoriesDto,
-    );
-
     // Load from local storage first
     final Result<NewsCategoriesDto1> localResult =
         await localDataSource.fetchNewsCategories();
@@ -35,7 +30,7 @@ class NewsCategoryRepositoryImpl implements NewsCategoryRepository {
       final localData = localResult.data;
 
       // Only use cache if box has data AND timestamp is recent
-      if (hasLocalData && localData.timestamp.isRecent && !forceRefresh) {
+      if (localData.timestamp.isRecent && !forceRefresh) {
         final cached = const NewsCategoriesDtoMapper()
             .convert<NewsCategoriesDto1, NewsCategories>(localData);
         return Success<NewsCategories>(cached);

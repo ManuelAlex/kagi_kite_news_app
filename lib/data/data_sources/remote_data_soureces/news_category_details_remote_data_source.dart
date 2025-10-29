@@ -29,8 +29,7 @@ class NewsCategoryDetailsRemoteDataSource {
       );
     }
 
-    final String safeJson = _preprocessJson(response.asDataString);
-    final JsonMap jsonMap = jsonDecode(safeJson);
+    final JsonMap jsonMap = jsonDecode(response.asDataString);
 
     if (jsonMap.isEmpty) {
       return const Failure<CategoryDetails>('Category details not found.');
@@ -48,12 +47,5 @@ class NewsCategoryDetailsRemoteDataSource {
     final CategoryDetailsDto1 dto = CategoryDetailsDto1Mapper.fromMap(jsonMap);
     return const CategoryDetailsDtoMapper()
         .convert<CategoryDetailsDto1, CategoryDetails>(dto);
-  }
-
-  /// Replaces `Infinity` and `-Infinity` with string values before JSON decoding.
-  static String _preprocessJson(String json) {
-    return json
-        .replaceAll('Infinity', '"Infinity"')
-        .replaceAll('-Infinity', '"-Infinity"');
   }
 }
