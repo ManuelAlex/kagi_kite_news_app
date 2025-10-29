@@ -15,10 +15,12 @@ import '../../../../domain/entities/value_objects/cluster.dart' as _i3;
 import '../../../../domain/entities/value_objects/domain.dart' as _i11;
 import '../../../../domain/entities/value_objects/perspective.dart' as _i5;
 import '../../../../domain/entities/value_objects/source.dart' as _i7;
+import '../../../../domain/entities/value_objects/timeline.dart' as _i13;
 import '../article/article_dto_1.dart' as _i8;
 import '../domain/domain_dto_1.dart' as _i10;
 import '../perspective/perspective_dto_1.dart' as _i4;
 import '../source/source_dto_1.dart' as _i6;
+import '../timeline/timeline_dto_1.dart' as _i12;
 import 'cluster_dto_1.dart' as _i2;
 
 /// {@template package:kagi_kite_news_app/data/dtos/value_objects/cluster/cluster_dto_mapper.dart}
@@ -33,6 +35,8 @@ import 'cluster_dto_1.dart' as _i2;
 /// - `Article` → `ArticleDto1`.
 /// - `DomainDto1` → `Domain`.
 /// - `Domain` → `DomainDto1`.
+/// - `TimelineDto1` → `Timeline`.
+/// - `Timeline` → `TimelineDto1`.
 /// {@endtemplate}
 class $ClusterDtoMapper implements _i1.AutoMapprInterface {
   const $ClusterDtoMapper();
@@ -105,6 +109,18 @@ class $ClusterDtoMapper implements _i1.AutoMapprInterface {
             sourceTypeOf == _typeOf<_i11.Domain?>()) &&
         (targetTypeOf == _typeOf<_i10.DomainDto1>() ||
             targetTypeOf == _typeOf<_i10.DomainDto1?>())) {
+      return true;
+    }
+    if ((sourceTypeOf == _typeOf<_i12.TimelineDto1>() ||
+            sourceTypeOf == _typeOf<_i12.TimelineDto1?>()) &&
+        (targetTypeOf == _typeOf<_i13.Timeline>() ||
+            targetTypeOf == _typeOf<_i13.Timeline?>())) {
+      return true;
+    }
+    if ((sourceTypeOf == _typeOf<_i13.Timeline>() ||
+            sourceTypeOf == _typeOf<_i13.Timeline?>()) &&
+        (targetTypeOf == _typeOf<_i12.TimelineDto1>() ||
+            targetTypeOf == _typeOf<_i12.TimelineDto1?>())) {
       return true;
     }
     if (recursive) {
@@ -388,6 +404,28 @@ class $ClusterDtoMapper implements _i1.AutoMapprInterface {
       return (_map__i11$Domain_To__i10$DomainDto1((model as _i11.Domain?))
           as TARGET);
     }
+    if ((sourceTypeOf == _typeOf<_i12.TimelineDto1>() ||
+            sourceTypeOf == _typeOf<_i12.TimelineDto1?>()) &&
+        (targetTypeOf == _typeOf<_i13.Timeline>() ||
+            targetTypeOf == _typeOf<_i13.Timeline?>())) {
+      if (canReturnNull && model == null) {
+        return null;
+      }
+      return (_map__i12$TimelineDto1_To__i13$Timeline(
+            (model as _i12.TimelineDto1?),
+          )
+          as TARGET);
+    }
+    if ((sourceTypeOf == _typeOf<_i13.Timeline>() ||
+            sourceTypeOf == _typeOf<_i13.Timeline?>()) &&
+        (targetTypeOf == _typeOf<_i12.TimelineDto1>() ||
+            targetTypeOf == _typeOf<_i12.TimelineDto1?>())) {
+      if (canReturnNull && model == null) {
+        return null;
+      }
+      return (_map__i13$Timeline_To__i12$TimelineDto1((model as _i13.Timeline?))
+          as TARGET);
+    }
     throw Exception('No ${model.runtimeType} -> $targetTypeOf mapping.');
   }
 
@@ -449,7 +487,12 @@ class $ClusterDtoMapper implements _i1.AutoMapprInterface {
       internationalReactions: model.internationalReactions,
       humanitarianImpact: model.humanitarianImpact,
       economicImplications: model.economicImplications,
-      timeline: model.timeline,
+      timeline:
+          model.timeline
+              .map<_i13.Timeline>(
+                (value) => _map__i12$TimelineDto1_To__i13$Timeline(value),
+              )
+              .toList(),
       futureOutlook: model.futureOutlook,
       keyPlayers: model.keyPlayers,
       technicalDetails: model.technicalDetails,
@@ -518,7 +561,12 @@ class $ClusterDtoMapper implements _i1.AutoMapprInterface {
       internationalReactions: model.internationalReactions,
       humanitarianImpact: model.humanitarianImpact,
       economicImplications: model.economicImplications,
-      timeline: model.timeline,
+      timeline:
+          model.timeline
+              .map<_i12.TimelineDto1>(
+                (value) => _map__i13$Timeline_To__i12$TimelineDto1(value),
+              )
+              .toList(),
       futureOutlook: model.futureOutlook,
       keyPlayers: model.keyPlayers,
       technicalDetails: model.technicalDetails,
@@ -672,5 +720,31 @@ class $ClusterDtoMapper implements _i1.AutoMapprInterface {
       );
     }
     return _i10.DomainDto1(name: model.name, favicon: model.favicon);
+  }
+
+  _i13.Timeline _map__i12$TimelineDto1_To__i13$Timeline(
+    _i12.TimelineDto1? input,
+  ) {
+    final model = input;
+    if (model == null) {
+      throw Exception(
+        r'Mapping TimelineDto1 → Timeline failed because TimelineDto1 was null, and no default value was provided. '
+        r'Consider setting the whenSourceIsNull parameter on the MapType<TimelineDto1, Timeline> to handle null values during mapping.',
+      );
+    }
+    return _i13.Timeline(date: model.date, content: model.content);
+  }
+
+  _i12.TimelineDto1 _map__i13$Timeline_To__i12$TimelineDto1(
+    _i13.Timeline? input,
+  ) {
+    final model = input;
+    if (model == null) {
+      throw Exception(
+        r'Mapping Timeline → TimelineDto1 failed because Timeline was null, and no default value was provided. '
+        r'Consider setting the whenSourceIsNull parameter on the MapType<Timeline, TimelineDto1> to handle null values during mapping.',
+      );
+    }
+    return _i12.TimelineDto1(date: model.date, content: model.content);
   }
 }

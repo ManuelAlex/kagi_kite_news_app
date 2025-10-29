@@ -12,8 +12,8 @@ class ApiClient {
   final Dio _dio = Dio(
     BaseOptions(
       responseType: ResponseType.bytes,
-      // connectTimeout: const Duration(seconds: 5),
-      receiveTimeout: const Duration(seconds: 5),
+      connectTimeout: const Duration(seconds: 5),
+      receiveTimeout: const Duration(seconds: 3),
       validateStatus: (int? status) => status != null && status < 600,
     ),
   );
@@ -32,19 +32,10 @@ class ApiClient {
     Object? data,
     Map<String, dynamic>? headers,
   }) async {
-    final Map<String, dynamic> resolvedHeaders = <String, dynamic>{
-      'Accept': 'application/json',
-      if (data != null) 'Content-Type': 'application/json',
-      ...?headers,
-    };
-
-    final Options options = Options(method: method, headers: resolvedHeaders);
-
     try {
       final Response<List<int>> response = await _dio.request(
         uri.toString(),
         data: data,
-        options: options,
       );
 
       return ApiResponse(

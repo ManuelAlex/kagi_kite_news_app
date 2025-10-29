@@ -76,10 +76,12 @@ class ImageView extends StatelessWidget {
                 ],
               ),
             ] else
-              const Icon(
-                Icons.image_not_supported,
-                size: 150,
-                color: Colors.grey,
+              const Center(
+                child: Icon(
+                  Icons.image_not_supported,
+                  size: 150,
+                  color: Colors.grey,
+                ),
               ),
 
             if (imageCaption != null) ...<Widget>[

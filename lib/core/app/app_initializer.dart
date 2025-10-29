@@ -5,7 +5,7 @@ import '../../presentation/providers/app_hive.dart';
 import '../../presentation/providers/hive_provider.dart';
 
 class AppInitializer {
-  AppInitializer({List<Override> overrides = const []})
+  AppInitializer({List<Override> overrides = const <Override>[]})
     : _overrides = overrides;
 
   /// A container for all providers.

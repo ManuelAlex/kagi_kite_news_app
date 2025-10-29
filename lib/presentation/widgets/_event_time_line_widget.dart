@@ -1,51 +1,38 @@
 import 'package:flutter/material.dart';
+import '../../../../domain/entities/value_objects/timeline.dart';
 
 class EventTimeLineWidget extends StatelessWidget {
   const EventTimeLineWidget({super.key, required this.timeLines});
 
-  final List<String> timeLines;
-
-  bool isValidReaction(String intReaction) {
-    final int firstSpaceIndex = intReaction.indexOf(' ');
-    if (firstSpaceIndex == -1) {
-      return false;
-    }
-
-    final String remainingText = intReaction.substring(firstSpaceIndex + 1);
-    final int firstColonIndex = remainingText.indexOf('::');
-    return firstColonIndex != -1;
-  }
+  final List<Timeline> timeLines;
 
   @override
   Widget build(BuildContext context) {
-    final bool hasValidReactions = timeLines.any(isValidReaction);
+    if (timeLines.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children:
-          !hasValidReactions
-              ? <Widget>[]
-              : [
-                Text(
-                  'Timeline of events',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const SizedBox(height: 8),
-                ...timeLines.asMap().entries.map((MapEntry<int, String> entry) {
-                  final int index = entry.key + 1;
-                  final String talkingPoint = entry.value;
-                  final List<String> parts = talkingPoint.split('::');
-                  final String title = parts.first;
-                  final String content =
-                      parts.length > 1 ? parts.sublist(1).join(':').trim() : '';
+      children: [
+        Text(
+          'Timeline of events',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        const SizedBox(height: 8),
 
-                  return _EventTimeLineWidget(
-                    index: index,
-                    title: title,
-                    content: content,
-                    lastIndex: timeLines.length,
-                  );
-                }),
-              ],
+        ...timeLines.asMap().entries.map((MapEntry<int, Timeline> entry) {
+          final int index = entry.key + 1;
+          final Timeline timeline = entry.value;
+
+          return _EventTimeLineWidget(
+            index: index,
+            title: timeline.date,
+            content: timeline.content,
+            lastIndex: timeLines.length,
+          );
+        }),
+      ],
     );
   }
 }
@@ -87,17 +74,15 @@ class _EventTimeLineWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-
             Flexible(
               child: Text(
                 title,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.w600,
-                  fontSize: 20,
+                  fontSize: 18,
                   color: blue,
                 ),
                 overflow: TextOverflow.ellipsis,
-                softWrap: true,
               ),
             ),
           ],
@@ -124,7 +109,7 @@ class _EventTimeLineWidget extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 8),
       ],
     );
   }

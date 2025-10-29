@@ -10,4 +10,5 @@ class HiveTypeIds {
   static const int onThisDayEventDto = 8;
   static const int onThisDayCategoryDetailsDto = 9;
   static const int baseCategoryDetailsDto = 10;
+  static const int timelineDto = 11;
 }

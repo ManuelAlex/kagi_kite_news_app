@@ -12,6 +12,7 @@ import 'data/dtos/value_objects/domain/domain_dto_1.dart';
 import 'data/dtos/value_objects/on_this_day_event/on_this_day_event_dto_1.dart';
 import 'data/dtos/value_objects/perspective/perspective_dto_1.dart';
 import 'data/dtos/value_objects/source/source_dto_1.dart';
+import 'data/dtos/value_objects/timeline/timeline_dto_1.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
@@ -24,5 +25,6 @@ extension HiveRegistrar on HiveInterface {
     registerAdapter(OnThisDayEventDto1Adapter());
     registerAdapter(PerspectiveDto1Adapter());
     registerAdapter(SourceDto1Adapter());
+    registerAdapter(TimelineDto1Adapter());
   }
 }

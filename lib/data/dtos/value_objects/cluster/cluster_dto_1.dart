@@ -10,6 +10,7 @@ import '../../_json_mappers/list_or_single_json_mapper.dart';
 import '../article/article_dto_1.dart';
 import '../domain/domain_dto_1.dart';
 import '../perspective/perspective_dto_1.dart';
+import '../timeline/timeline_dto_1.dart';
 
 part 'cluster_dto_1.mapper.dart';
 part 'cluster_dto_1.g.dart';
@@ -89,7 +90,7 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
     internationalReactions: const <String>['internationalReactions'],
     humanitarianImpact: 'humanitarianImpact',
     economicImplications: 'economicImplications',
-    timeline: const <String>['timeline'],
+    timeline: <TimelineDto1>[TimelineDto1.random()],
     futureOutlook: 'futureOutlook',
     keyPlayers: const <String>['keyPlayers'],
     technicalDetails: 'technicalDetails',
@@ -170,9 +171,9 @@ class ClusterDto1 extends Dto with ClusterDto1Mappable {
   @MappableField(key: 'economic_implications')
   @HiveField(21)
   final String economicImplications;
-  @MappableField(key: 'timeline', hook: ListOrSingleHook<String>())
+  @MappableField(key: 'timeline')
   @HiveField(22)
-  final List<String> timeline;
+  final List<TimelineDto1> timeline;
   @MappableField(key: 'future_outlook', hook: ListOrSingleHook<String>())
   @HiveField(23)
   final String futureOutlook;

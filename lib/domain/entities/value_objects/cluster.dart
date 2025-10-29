@@ -6,6 +6,7 @@ import '_mappable_value_object.dart';
 import 'article.dart';
 import 'domain.dart';
 import 'perspective.dart';
+import 'timeline.dart';
 
 part 'cluster.mapper.dart';
 
@@ -78,7 +79,7 @@ class Cluster with ClusterMappable {
     internationalReactions: const <String>['internationalReactions'],
     humanitarianImpact: 'humanitarianImpact',
     economicImplications: 'economicImplications',
-    timeline: const <String>['timeline'],
+    timeline: <Timeline>[Timeline.random()],
     futureOutlook: 'futureOutlook',
     keyPlayers: const <String>['keyPlayers'],
     technicalDetails: 'technicalDetails',
@@ -120,7 +121,7 @@ class Cluster with ClusterMappable {
   final List<String> internationalReactions;
   final String humanitarianImpact;
   final String economicImplications;
-  final List<String> timeline;
+  final List<Timeline> timeline;
   final String futureOutlook;
   final List<String> keyPlayers;
   final String technicalDetails;

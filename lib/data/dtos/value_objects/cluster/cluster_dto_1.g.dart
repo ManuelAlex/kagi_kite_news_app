@@ -1,7 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-// ignore_for_file: avoid_bool_literals_in_conditional_expressions
-
 part of 'cluster_dto_1.dart';
 
 // **************************************************************************
@@ -19,6 +17,7 @@ class ClusterDto1Adapter extends TypeAdapter<ClusterDto1> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ClusterDto1(
+      // ignore: avoid_bool_literals_in_conditional_expressions
       isRead: fields[43] == null ? false : fields[43] as bool,
       clusterNumber: (fields[0] as num).toInt(),
       uniqueDomains: (fields[1] as num).toInt(),
@@ -40,7 +39,7 @@ class ClusterDto1Adapter extends TypeAdapter<ClusterDto1> {
       internationalReactions: (fields[19] as List).cast<String>(),
       humanitarianImpact: fields[20] as String,
       economicImplications: fields[21] as String,
-      timeline: (fields[22] as List).cast<String>(),
+      timeline: (fields[22] as List).cast<TimelineDto1>(),
       futureOutlook: fields[23] as String,
       keyPlayers: (fields[24] as List).cast<String>(),
       technicalDetails: fields[25] as String,

@@ -16,6 +16,7 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
       MapperContainer.globals
           .useAll(<MapperBase<Object>>[ListOrSingleJsonMapper<String>()]);
       PerspectiveDto1Mapper.ensureInitialized();
+      TimelineDto1Mapper.ensureInitialized();
       ArticleDto1Mapper.ensureInitialized();
       DomainDto1Mapper.ensureInitialized();
     }
@@ -92,9 +93,9 @@ class ClusterDto1Mapper extends ClassMapperBase<ClusterDto1> {
   static const Field<ClusterDto1, String> _f$economicImplications = Field(
       'economicImplications', _$economicImplications,
       key: r'economic_implications');
-  static List<String> _$timeline(ClusterDto1 v) => v.timeline;
-  static const Field<ClusterDto1, List<String>> _f$timeline =
-      Field('timeline', _$timeline, hook: ListOrSingleHook<String>());
+  static List<TimelineDto1> _$timeline(ClusterDto1 v) => v.timeline;
+  static const Field<ClusterDto1, List<TimelineDto1>> _f$timeline =
+      Field('timeline', _$timeline);
   static String _$futureOutlook(ClusterDto1 v) => v.futureOutlook;
   static const Field<ClusterDto1, String> _f$futureOutlook = Field(
       'futureOutlook', _$futureOutlook,
@@ -326,7 +327,8 @@ abstract class ClusterDto1CopyWith<$R, $In extends ClusterDto1, $Out>
       get perspectives;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>
       get internationalReactions;
-  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get timeline;
+  ListCopyWith<$R, TimelineDto1,
+      TimelineDto1CopyWith<$R, TimelineDto1, TimelineDto1>> get timeline;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get keyPlayers;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>
       get businessAnglePoints;
@@ -368,7 +370,7 @@ abstract class ClusterDto1CopyWith<$R, $In extends ClusterDto1, $Out>
       List<String>? internationalReactions,
       String? humanitarianImpact,
       String? economicImplications,
-      List<String>? timeline,
+      List<TimelineDto1>? timeline,
       String? futureOutlook,
       List<String>? keyPlayers,
       String? technicalDetails,
@@ -418,9 +420,10 @@ class _ClusterDto1CopyWithImpl<$R, $Out>
           (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(internationalReactions: v));
   @override
-  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get timeline =>
-      ListCopyWith($value.timeline, (v, t) => ObjectCopyWith(v, $identity, t),
-          (v) => call(timeline: v));
+  ListCopyWith<$R, TimelineDto1,
+          TimelineDto1CopyWith<$R, TimelineDto1, TimelineDto1>>
+      get timeline => ListCopyWith($value.timeline,
+          (v, t) => v.copyWith.$chain(t), (v) => call(timeline: v));
   @override
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get keyPlayers =>
       ListCopyWith($value.keyPlayers, (v, t) => ObjectCopyWith(v, $identity, t),
@@ -499,7 +502,7 @@ class _ClusterDto1CopyWithImpl<$R, $Out>
           List<String>? internationalReactions,
           String? humanitarianImpact,
           String? economicImplications,
-          List<String>? timeline,
+          List<TimelineDto1>? timeline,
           String? futureOutlook,
           List<String>? keyPlayers,
           String? technicalDetails,

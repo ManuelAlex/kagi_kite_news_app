@@ -15,17 +15,19 @@ import '../../../domain/entities/value_objects/article.dart' as _i13;
 import '../../../domain/entities/value_objects/category.dart' as _i5;
 import '../../../domain/entities/value_objects/cluster.dart' as _i7;
 import '../../../domain/entities/value_objects/domain.dart' as _i15;
-import '../../../domain/entities/value_objects/on_this_day_event.dart' as _i17;
+import '../../../domain/entities/value_objects/on_this_day_event.dart' as _i19;
 import '../../../domain/entities/value_objects/perspective.dart' as _i9;
 import '../../../domain/entities/value_objects/source.dart' as _i11;
+import '../../../domain/entities/value_objects/timeline.dart' as _i17;
 import '../value_objects/article/article_dto_1.dart' as _i12;
 import '../value_objects/category/category_dto_1.dart' as _i4;
 import '../value_objects/cluster/cluster_dto_1.dart' as _i6;
 import '../value_objects/domain/domain_dto_1.dart' as _i14;
 import '../value_objects/on_this_day_event/on_this_day_event_dto_1.dart'
-    as _i16;
+    as _i18;
 import '../value_objects/perspective/perspective_dto_1.dart' as _i8;
 import '../value_objects/source/source_dto_1.dart' as _i10;
+import '../value_objects/timeline/timeline_dto_1.dart' as _i16;
 import 'category_details_dto_1.dart' as _i2;
 
 /// {@template package:kagi_kite_news_app/data/dtos/category_details/category_details_dto_mapper.dart}
@@ -44,6 +46,8 @@ import 'category_details_dto_1.dart' as _i2;
 /// - `Article` → `ArticleDto1`.
 /// - `DomainDto1` → `Domain`.
 /// - `Domain` → `DomainDto1`.
+/// - `TimelineDto1` → `Timeline`.
+/// - `Timeline` → `TimelineDto1`.
 /// - `OnThisDayEventDto1` → `OnThisDayEvent`.
 /// - `OnThisDayEvent` → `OnThisDayEventDto1`.
 /// {@endtemplate}
@@ -144,16 +148,28 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
             targetTypeOf == _typeOf<_i14.DomainDto1?>())) {
       return true;
     }
-    if ((sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
-            sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1?>()) &&
-        (targetTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
-            targetTypeOf == _typeOf<_i17.OnThisDayEvent?>())) {
+    if ((sourceTypeOf == _typeOf<_i16.TimelineDto1>() ||
+            sourceTypeOf == _typeOf<_i16.TimelineDto1?>()) &&
+        (targetTypeOf == _typeOf<_i17.Timeline>() ||
+            targetTypeOf == _typeOf<_i17.Timeline?>())) {
       return true;
     }
-    if ((sourceTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
-            sourceTypeOf == _typeOf<_i17.OnThisDayEvent?>()) &&
-        (targetTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
-            targetTypeOf == _typeOf<_i16.OnThisDayEventDto1?>())) {
+    if ((sourceTypeOf == _typeOf<_i17.Timeline>() ||
+            sourceTypeOf == _typeOf<_i17.Timeline?>()) &&
+        (targetTypeOf == _typeOf<_i16.TimelineDto1>() ||
+            targetTypeOf == _typeOf<_i16.TimelineDto1?>())) {
+      return true;
+    }
+    if ((sourceTypeOf == _typeOf<_i18.OnThisDayEventDto1>() ||
+            sourceTypeOf == _typeOf<_i18.OnThisDayEventDto1?>()) &&
+        (targetTypeOf == _typeOf<_i19.OnThisDayEvent>() ||
+            targetTypeOf == _typeOf<_i19.OnThisDayEvent?>())) {
+      return true;
+    }
+    if ((sourceTypeOf == _typeOf<_i19.OnThisDayEvent>() ||
+            sourceTypeOf == _typeOf<_i19.OnThisDayEvent?>()) &&
+        (targetTypeOf == _typeOf<_i18.OnThisDayEventDto1>() ||
+            targetTypeOf == _typeOf<_i18.OnThisDayEventDto1?>())) {
       return true;
     }
     if (recursive) {
@@ -485,27 +501,49 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
       return (_map__i15$Domain_To__i14$DomainDto1((model as _i15.Domain?))
           as TARGET);
     }
-    if ((sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
-            sourceTypeOf == _typeOf<_i16.OnThisDayEventDto1?>()) &&
-        (targetTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
-            targetTypeOf == _typeOf<_i17.OnThisDayEvent?>())) {
+    if ((sourceTypeOf == _typeOf<_i16.TimelineDto1>() ||
+            sourceTypeOf == _typeOf<_i16.TimelineDto1?>()) &&
+        (targetTypeOf == _typeOf<_i17.Timeline>() ||
+            targetTypeOf == _typeOf<_i17.Timeline?>())) {
       if (canReturnNull && model == null) {
         return null;
       }
-      return (_map__i16$OnThisDayEventDto1_To__i17$OnThisDayEvent(
-            (model as _i16.OnThisDayEventDto1?),
+      return (_map__i16$TimelineDto1_To__i17$Timeline(
+            (model as _i16.TimelineDto1?),
           )
           as TARGET);
     }
-    if ((sourceTypeOf == _typeOf<_i17.OnThisDayEvent>() ||
-            sourceTypeOf == _typeOf<_i17.OnThisDayEvent?>()) &&
-        (targetTypeOf == _typeOf<_i16.OnThisDayEventDto1>() ||
-            targetTypeOf == _typeOf<_i16.OnThisDayEventDto1?>())) {
+    if ((sourceTypeOf == _typeOf<_i17.Timeline>() ||
+            sourceTypeOf == _typeOf<_i17.Timeline?>()) &&
+        (targetTypeOf == _typeOf<_i16.TimelineDto1>() ||
+            targetTypeOf == _typeOf<_i16.TimelineDto1?>())) {
       if (canReturnNull && model == null) {
         return null;
       }
-      return (_map__i17$OnThisDayEvent_To__i16$OnThisDayEventDto1(
-            (model as _i17.OnThisDayEvent?),
+      return (_map__i17$Timeline_To__i16$TimelineDto1((model as _i17.Timeline?))
+          as TARGET);
+    }
+    if ((sourceTypeOf == _typeOf<_i18.OnThisDayEventDto1>() ||
+            sourceTypeOf == _typeOf<_i18.OnThisDayEventDto1?>()) &&
+        (targetTypeOf == _typeOf<_i19.OnThisDayEvent>() ||
+            targetTypeOf == _typeOf<_i19.OnThisDayEvent?>())) {
+      if (canReturnNull && model == null) {
+        return null;
+      }
+      return (_map__i18$OnThisDayEventDto1_To__i19$OnThisDayEvent(
+            (model as _i18.OnThisDayEventDto1?),
+          )
+          as TARGET);
+    }
+    if ((sourceTypeOf == _typeOf<_i19.OnThisDayEvent>() ||
+            sourceTypeOf == _typeOf<_i19.OnThisDayEvent?>()) &&
+        (targetTypeOf == _typeOf<_i18.OnThisDayEventDto1>() ||
+            targetTypeOf == _typeOf<_i18.OnThisDayEventDto1?>())) {
+      if (canReturnNull && model == null) {
+        return null;
+      }
+      return (_map__i19$OnThisDayEvent_To__i18$OnThisDayEventDto1(
+            (model as _i19.OnThisDayEvent?),
           )
           as TARGET);
     }
@@ -557,9 +595,9 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
               .toList(),
       events:
           model.events
-              .map<_i17.OnThisDayEvent>(
+              .map<_i19.OnThisDayEvent>(
                 (value) =>
-                    _map__i16$OnThisDayEventDto1_To__i17$OnThisDayEvent(value),
+                    _map__i18$OnThisDayEventDto1_To__i19$OnThisDayEvent(value),
               )
               .toList(),
     );
@@ -587,9 +625,9 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
               .toList(),
       events:
           model.events
-              .map<_i16.OnThisDayEventDto1>(
+              .map<_i18.OnThisDayEventDto1>(
                 (value) =>
-                    _map__i17$OnThisDayEvent_To__i16$OnThisDayEventDto1(value),
+                    _map__i19$OnThisDayEvent_To__i18$OnThisDayEventDto1(value),
               )
               .toList(),
     );
@@ -652,7 +690,12 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
       internationalReactions: model.internationalReactions,
       humanitarianImpact: model.humanitarianImpact,
       economicImplications: model.economicImplications,
-      timeline: model.timeline,
+      timeline:
+          model.timeline
+              .map<_i17.Timeline>(
+                (value) => _map__i16$TimelineDto1_To__i17$Timeline(value),
+              )
+              .toList(),
       futureOutlook: model.futureOutlook,
       keyPlayers: model.keyPlayers,
       technicalDetails: model.technicalDetails,
@@ -721,7 +764,12 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
       internationalReactions: model.internationalReactions,
       humanitarianImpact: model.humanitarianImpact,
       economicImplications: model.economicImplications,
-      timeline: model.timeline,
+      timeline:
+          model.timeline
+              .map<_i16.TimelineDto1>(
+                (value) => _map__i17$Timeline_To__i16$TimelineDto1(value),
+              )
+              .toList(),
       futureOutlook: model.futureOutlook,
       keyPlayers: model.keyPlayers,
       technicalDetails: model.technicalDetails,
@@ -877,8 +925,34 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
     return _i14.DomainDto1(name: model.name, favicon: model.favicon);
   }
 
-  _i17.OnThisDayEvent _map__i16$OnThisDayEventDto1_To__i17$OnThisDayEvent(
-    _i16.OnThisDayEventDto1? input,
+  _i17.Timeline _map__i16$TimelineDto1_To__i17$Timeline(
+    _i16.TimelineDto1? input,
+  ) {
+    final model = input;
+    if (model == null) {
+      throw Exception(
+        r'Mapping TimelineDto1 → Timeline failed because TimelineDto1 was null, and no default value was provided. '
+        r'Consider setting the whenSourceIsNull parameter on the MapType<TimelineDto1, Timeline> to handle null values during mapping.',
+      );
+    }
+    return _i17.Timeline(date: model.date, content: model.content);
+  }
+
+  _i16.TimelineDto1 _map__i17$Timeline_To__i16$TimelineDto1(
+    _i17.Timeline? input,
+  ) {
+    final model = input;
+    if (model == null) {
+      throw Exception(
+        r'Mapping Timeline → TimelineDto1 failed because Timeline was null, and no default value was provided. '
+        r'Consider setting the whenSourceIsNull parameter on the MapType<Timeline, TimelineDto1> to handle null values during mapping.',
+      );
+    }
+    return _i16.TimelineDto1(date: model.date, content: model.content);
+  }
+
+  _i19.OnThisDayEvent _map__i18$OnThisDayEventDto1_To__i19$OnThisDayEvent(
+    _i18.OnThisDayEventDto1? input,
   ) {
     final model = input;
     if (model == null) {
@@ -887,7 +961,7 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
         r'Consider setting the whenSourceIsNull parameter on the MapType<OnThisDayEventDto1, OnThisDayEvent> to handle null values during mapping.',
       );
     }
-    return _i17.OnThisDayEvent(
+    return _i19.OnThisDayEvent(
       year: model.year,
       content: model.content,
       sortYear: model.sortYear,
@@ -895,8 +969,8 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
     );
   }
 
-  _i16.OnThisDayEventDto1 _map__i17$OnThisDayEvent_To__i16$OnThisDayEventDto1(
-    _i17.OnThisDayEvent? input,
+  _i18.OnThisDayEventDto1 _map__i19$OnThisDayEvent_To__i18$OnThisDayEventDto1(
+    _i19.OnThisDayEvent? input,
   ) {
     final model = input;
     if (model == null) {
@@ -905,7 +979,7 @@ class $CategoryDetailsDtoMapper implements _i1.AutoMapprInterface {
         r'Consider setting the whenSourceIsNull parameter on the MapType<OnThisDayEvent, OnThisDayEventDto1> to handle null values during mapping.',
       );
     }
-    return _i16.OnThisDayEventDto1(
+    return _i18.OnThisDayEventDto1(
       year: model.year,
       content: model.content,
       sortYear: model.sortYear,

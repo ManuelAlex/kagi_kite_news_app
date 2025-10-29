@@ -14,6 +14,7 @@ class ClusterMapper extends ClassMapperBase<Cluster> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = ClusterMapper._());
       PerspectiveMapper.ensureInitialized();
+      TimelineMapper.ensureInitialized();
       ArticleMapper.ensureInitialized();
       DomainMapper.ensureInitialized();
     }
@@ -84,8 +85,8 @@ class ClusterMapper extends ClassMapperBase<Cluster> {
   static String _$economicImplications(Cluster v) => v.economicImplications;
   static const Field<Cluster, String> _f$economicImplications =
       Field('economicImplications', _$economicImplications);
-  static List<String> _$timeline(Cluster v) => v.timeline;
-  static const Field<Cluster, List<String>> _f$timeline =
+  static List<Timeline> _$timeline(Cluster v) => v.timeline;
+  static const Field<Cluster, List<Timeline>> _f$timeline =
       Field('timeline', _$timeline);
   static String _$futureOutlook(Cluster v) => v.futureOutlook;
   static const Field<Cluster, String> _f$futureOutlook =
@@ -279,7 +280,8 @@ abstract class ClusterCopyWith<$R, $In extends Cluster, $Out>
       PerspectiveCopyWith<$R, Perspective, Perspective>> get perspectives;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>
       get internationalReactions;
-  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get timeline;
+  ListCopyWith<$R, Timeline, TimelineCopyWith<$R, Timeline, Timeline>>
+      get timeline;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get keyPlayers;
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>>
       get businessAnglePoints;
@@ -319,7 +321,7 @@ abstract class ClusterCopyWith<$R, $In extends Cluster, $Out>
       List<String>? internationalReactions,
       String? humanitarianImpact,
       String? economicImplications,
-      List<String>? timeline,
+      List<Timeline>? timeline,
       String? futureOutlook,
       List<String>? keyPlayers,
       String? technicalDetails,
@@ -369,9 +371,9 @@ class _ClusterCopyWithImpl<$R, $Out>
           (v, t) => ObjectCopyWith(v, $identity, t),
           (v) => call(internationalReactions: v));
   @override
-  ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get timeline =>
-      ListCopyWith($value.timeline, (v, t) => ObjectCopyWith(v, $identity, t),
-          (v) => call(timeline: v));
+  ListCopyWith<$R, Timeline, TimelineCopyWith<$R, Timeline, Timeline>>
+      get timeline => ListCopyWith($value.timeline,
+          (v, t) => v.copyWith.$chain(t), (v) => call(timeline: v));
   @override
   ListCopyWith<$R, String, ObjectCopyWith<$R, String, String>> get keyPlayers =>
       ListCopyWith($value.keyPlayers, (v, t) => ObjectCopyWith(v, $identity, t),
@@ -449,7 +451,7 @@ class _ClusterCopyWithImpl<$R, $Out>
           List<String>? internationalReactions,
           String? humanitarianImpact,
           String? economicImplications,
-          List<String>? timeline,
+          List<Timeline>? timeline,
           String? futureOutlook,
           List<String>? keyPlayers,
           String? technicalDetails,

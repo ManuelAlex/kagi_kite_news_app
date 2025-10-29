@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:kagi_kite_news_app/domain/entities/value_objects/timeline.dart';
 import 'package:kagi_kite_news_app/presentation/widgets/_event_time_line_widget.dart';
 
 void main() {
@@ -7,13 +8,13 @@ void main() {
     testWidgets('renders timeline with valid events', (
       WidgetTester tester,
     ) async {
-      const List<String> testTimeLines = [
-        'Event 1:: This is the first event.',
-        'Event 2:: This is the second event.',
+      final List<Timeline> testTimeLines = <Timeline>[
+        Timeline.random(),
+        Timeline.random(),
       ];
 
       await tester.pumpWidget(
-        const MaterialApp(
+        MaterialApp(
           home: Scaffold(body: EventTimeLineWidget(timeLines: testTimeLines)),
         ),
       );
@@ -38,7 +39,7 @@ void main() {
       // Pump with an empty timeline
       await tester.pumpWidget(
         const MaterialApp(
-          home: Scaffold(body: EventTimeLineWidget(timeLines: [])),
+          home: Scaffold(body: EventTimeLineWidget(timeLines: <Timeline>[])),
         ),
       );
 
@@ -50,13 +51,12 @@ void main() {
       WidgetTester tester,
     ) async {
       // Invalid timeline data (missing "::")
-      const List<String> invalidTimeLines = [
-        'Invalid event format',
-        'Another invalid format',
+      final List<Timeline> invalidTimeLines = <Timeline>[
+        Timeline.random(),
+        Timeline.random(),
       ];
-
       await tester.pumpWidget(
-        const MaterialApp(
+        MaterialApp(
           home: Scaffold(
             body: EventTimeLineWidget(timeLines: invalidTimeLines),
           ),

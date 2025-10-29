@@ -19,7 +19,9 @@ class ProgressState extends _$ProgressState {
     const int totalSteps = totalDuration ~/ interval;
 
     int elapsedSteps = 0;
-    _timer = Timer.periodic(const Duration(milliseconds: interval), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: interval), (
+      Timer timer,
+    ) {
       elapsedSteps++;
       state = (elapsedSteps / totalSteps).clamp(0.0, 1.0);
 
